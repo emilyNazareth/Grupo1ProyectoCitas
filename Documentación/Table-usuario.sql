@@ -31,5 +31,5 @@ CREATE TABLE Usuario(
 	tc_especialidad VARCHAR(30) NULL,
 	tc_codigo_colegio VARCHAR(15) NULL,
 	tc_contrasena VARBINARY(2000) NULL,
-	tn_borrado bit DEFAULT ((0)) NOT NULL	
+	tn_borrado bit DEFAULT 0 NOT NULL	
 );
