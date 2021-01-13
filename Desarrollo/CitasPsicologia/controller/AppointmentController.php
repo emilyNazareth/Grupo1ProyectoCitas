@@ -11,8 +11,8 @@ class AppointmentController {
 
     //PROVIDER
 
-    public function showLoginView() {
-        $this->view->show("registerProduct.php", null);
+    public function showCheckHistory() {
+        $this->view->show("checkHistory.php", null);
     }
 
     
