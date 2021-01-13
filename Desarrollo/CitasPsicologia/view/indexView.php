@@ -10,7 +10,7 @@ include 'public/header.php';
             <a class="btn btn-success col-md-5 btn-block" href="?controlador=User&accion=showLoginView">Iniciar Sesión</a>
         </div>
         <div class="row homeOptions">
-            <a class="btn btn-success col-md-5 btn-block" href="?controlador=Index&accion=showInfo">Consulta de citas</a>
+            <a class="btn btn-success col-md-5 btn-block" href="?controlador=Appointment&accion=showCheckHistory">Consulta de citas</a>
         </div>
         <div class="row homeOptions">
             <div class="card">
@@ -38,7 +38,7 @@ include 'public/header.php';
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <a class="btn btn-success" href="?controlador=Index&accion=showInfo">Solicite su cita aquí</a>
+                <a class="btn btn-success" href="?controlador=Appointment&accion=showCheckHistory">Solicite su cita aquí</a>
             </div>
         </div>
     </div>
