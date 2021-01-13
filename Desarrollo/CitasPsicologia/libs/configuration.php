@@ -8,9 +8,9 @@ $config->set('controllerFolder', 'controller/');
 $config->set('modelFolder', 'model/');
 $config->set('viewFolder', 'view/');
 
-$config->set('dbhost', '163.178.107.2'); 
+$config->set('dbhost', '163.178.107.10'); 
 $config->set('dbname', 'test');
-$config->set('dbuser', 'labsturrialba');
-$config->set('dbpass', 'Saucr.2191');
+$config->set('dbuser', 'laboratorios');
+$config->set('dbpass', 'KmZpo.2796');
 ?>
 

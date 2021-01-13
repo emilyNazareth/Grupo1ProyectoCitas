@@ -24,12 +24,12 @@ class UserController {
     }
 
     public function showStartingMain() {
-        require 'model/ProductoModel.php';
-        $product = ProductoModel::singleton();
+        require 'model/UserModel.php';
+        $product = UserModel::singleton();
 
         $products['products'] = $product->show_all_products();
-
-        $this->view->show("startingMain.php", $products);
+        print_r($products);
+//        $this->view->show("startingMain.php", null);
     }
 
     public function showSearchProducts() {
