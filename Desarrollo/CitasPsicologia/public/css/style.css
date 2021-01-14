@@ -8,7 +8,8 @@
     border-radius: 1em;
 }*/
 
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
 }
@@ -52,7 +53,6 @@ body, html {
     margin-bottom: 3px;
     margin-top: 3px;
 }
-
 
 .scheduleDatesFilter {
     margin-bottom: 3px;
@@ -108,7 +108,6 @@ body, html {
     color: #FF9900 !important;
 }
 
-
 .scheduleDatesTable {
     font-size: 10px;
     max-width: 650px;
@@ -134,14 +133,13 @@ body, html {
 #instructions {
     color: white;
     background-color: #f47424;
-    
 }
 
 #instruction {
     color: black;
     background-color: white;
-    
 }
+
 #asignInstruction {
     color: black;
     background-color: #f7dd4b;
@@ -149,11 +147,12 @@ body, html {
 
 #welcomeMessage {
     position: relative;
-    left: 125px;    
+    left: 125px;
     top: 40px;
     color: yellow;
 }
-.title{
+
+.title {
     margin-top: 2em;
     height: 400px;
     background-image: url("../img/FondoSAPSO.png");
@@ -164,4 +163,3 @@ body, html {
     padding-top: 2em;
     text-align: center;
 }
-

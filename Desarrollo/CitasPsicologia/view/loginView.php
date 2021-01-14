@@ -5,7 +5,7 @@ include 'public/header.php';
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+<script src="public/js/script.js"></script>
 <center>
     <form id="login-form" class="bg1">
         <h3 class="titles" style="margin-right: 4px;" >Login</h3>
@@ -16,11 +16,16 @@ include 'public/header.php';
             <input type="Password" name="password" id="password" class="form-control" placeholder="Contraseña">
         </div>
         <br />
-        <span id="messageSpanId"></span>
+        <span id="messageSpanId"  style="color: black;"> </span>
         <br />
         <div>
-            <!--<a class="btn btn-success" id="administratorLogin" name="administratorLogin" style="margin-right: 1px;" onclick="login(); return false;">LogIn</a>-->
-            <a class="btn btn-success" href="?controlador=User&accion=showAdministratorMainView">Login</a>
+            <!--<a class="btn btn-success" id="administratorLogin" name="administratorLogin" style="margin-right: 1px;" onclick="login(); return false;">LogIn</a>
+            <a class="btn btn-success" href="?controlador=User&accion=showAdministratorMainView">Login</a>-->
+            <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
+                    onclick="userLogin($('#identification').val(), $('#password').val());return false;" 
+                    class="btn btn-success">Login
+
+            </button>
         </div>      
     </form>
 </center>

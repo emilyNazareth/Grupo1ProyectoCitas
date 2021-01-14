@@ -1,6 +1,6 @@
 <?php
 
-include 'public/header.php';
+include_once 'public/header.php';
 ?>
 
 
