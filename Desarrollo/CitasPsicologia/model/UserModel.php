@@ -22,7 +22,24 @@ class UserModel {
         }
         return self::$instance;
     }
+    //login
+    public function loginCheck($identification, $password) {
 
+        $consulta = $this->db->prepare("CALL  `sp_obtener_usuario`('" . $identification . "');");
+        $consulta->execute();
+        $resultado['users'] = $consulta->fetchAll();
+        $consulta->closeCursor();
+
+        $idRol = false;
+        foreach ($resultado['users'] as $item) {
+            if ($item['tc_contrasena'] == $password) {
+                $idRol = $item['pk_id_rol'];
+                break;
+            }
+        }
+        return $idRol;
+
+    }
     //PROVIDER ONE
     public function register_product($name, $price, $description, $quantity, $image) {
         $consulta = $this->db->prepare("call sp_insert_product('" . $name . "', " . $price . ", '" . $description . "'," . $this->providerID . "," . $quantity . ",'" . $image . "')");
