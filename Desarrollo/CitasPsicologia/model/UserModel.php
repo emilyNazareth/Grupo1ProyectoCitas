@@ -33,7 +33,7 @@ class UserModel {
     }
 
     public function show_all_products() {
-        $consulta = $this->db->prepare("call  sp_get_products(" . $this->providerID . ")");
+        $consulta = $this->db->prepare("call sp_obtener_roles");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();

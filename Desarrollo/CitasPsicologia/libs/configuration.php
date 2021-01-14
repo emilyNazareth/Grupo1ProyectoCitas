@@ -9,5 +9,6 @@ $config->set('dbhost', '163.178.107.2');
 $config->set('dbname', 'citas_psicologia');
 $config->set('dbuser', 'labsturrialba');
 $config->set('dbpass', 'Saucr.2191');
+
 ?>
 
