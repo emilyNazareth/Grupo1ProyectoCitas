@@ -9,9 +9,9 @@ include 'public/header.php';
         <div class="row homeOptions">
             <a class="btn btn-success col-md-5 btn-block" href="?controlador=User&accion=showLoginView">Iniciar Sesión</a>
         </div>
-<!--        <div class="row homeOptions">
+        <div class="row homeOptions">
             <a class="btn btn-success col-md-5 btn-block" href="?controlador=Appointment&accion=showCheckHistory">Consulta de citas</a>
-        </div>-->
+        </div>
         <div class="row homeOptions">
             <div class="card">
                 <div id="instructions" class="card-header">
