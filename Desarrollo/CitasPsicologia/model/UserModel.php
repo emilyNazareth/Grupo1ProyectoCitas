@@ -22,6 +22,7 @@ class UserModel {
         }
         return self::$instance;
     }
+
     //login
     public function loginCheck($identification, $password) {
 
@@ -38,8 +39,8 @@ class UserModel {
             }
         }
         return $idRol;
-
     }
+
     //PROVIDER ONE
     public function register_product($name, $price, $description, $quantity, $image) {
         $consulta = $this->db->prepare("call sp_insert_product('" . $name . "', " . $price . ", '" . $description . "'," . $this->providerID . "," . $quantity . ",'" . $image . "')");
@@ -55,35 +56,6 @@ class UserModel {
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
         return $resultado;
-    }
-
-    public function search_products($name) {
-        $consulta = $this->db->prepare("call  sp_search_products_by_name('" . $name . "'," . $this->providerID . ")");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        $consulta->closeCursor();
-        return $resultado;
-    }
-
-    public function search_product_by_id($id) {
-        $consulta = $this->db->prepare("call sp_search_product_by_id(" . $id . "," . $this->providerID . ")");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        $consulta->closeCursor();
-        return $resultado;
-    }
-
-    public function delete_product($id) {
-        $consulta = $this->db->prepare("call sp_delete_product_by_id(" . $id . "," . $this->providerID . ")");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        $consulta->closeCursor();
-        return $resultado;
-    }
-
-    public function updateProduct($id, $name, $price, $description, $quantity) {
-        $consulta = $this->db->prepare("call sp_update_product(" . $id . ", '" . $name . "'," . $price . ", '" . $description . "'," . $quantity . "," . $this->providerID . ")");
-        $consulta->execute();
     }
 
 }
