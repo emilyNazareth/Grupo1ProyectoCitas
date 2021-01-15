@@ -38,7 +38,7 @@ include 'public/header.php';
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <!--<a class="btn btn-success" href="?controlador=User&accion=showStartingMain">Solicite su cita aquí</a>-->
+                <a class="btn btn-success" href="?controlador=User&accion=showStartingMain">Solicite su cita aquí</a>
             </div>
         </div>
     </div>
