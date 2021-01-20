@@ -59,5 +59,7 @@ class UserController {
         print_r($products);
 //        $this->view->show("startingMain.php", null);
     }
+    
+       
 
 }
