@@ -42,10 +42,10 @@ class UserModel {
     }
 
     public function register_professional($identification, $password, $name,
-        $firstLastName , $secondLastName, $personalPhone, $roomPhone, $birthday,
-        $gender, $civilStatus, $placeNumber, $status, $emergencyContactName,
-        $emergencyContactNumber, $scholarship, $specialty, $schoolCode, 
-        $province, $canton, $district, $address) {
+            $firstLastName , $secondLastName, $personalPhone, $roomPhone, $birthday,
+            $gender, $civilStatus, $placeNumber, $status, $emergencyContactName,
+            $emergencyContactNumber, $scholarship, $specialty, $schoolCode, 
+            $province, $canton, $district, $address) {
         $consulta = $this->db->prepare("call sp_registrar_profesional("
             . $identification . $password . ",'" . $name . "','" . 
             $firstLastName . "','" . $secondLastName . "','" . $personalPhone . 
