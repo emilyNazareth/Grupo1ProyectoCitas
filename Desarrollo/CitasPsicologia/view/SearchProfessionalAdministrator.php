@@ -9,13 +9,14 @@ include 'public/header.php';
 </center>
 
 <center>
+
 <font color="Black">
+
     <form id="login-form">
         <div class="form-group row">
             <label for="identificationInput" class="col-sm-7 col-form-label-sm">C&eacutedula</label>
 
             <input type="number" name="id" id="id" class="col-sm-5 form-control form-control-sm">
-
         </div>
         <div class="form-group row">
             <label for="nameInput" class="col-sm-7 col-form-label-sm" >Nombre</label>
