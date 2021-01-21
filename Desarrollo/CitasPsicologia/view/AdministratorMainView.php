@@ -20,7 +20,7 @@ include_once 'public/header.php';
                      <a class="dropdown-item" href="?controlador=Index&accion=showInfo">Registrar Profesional</a>
                     <!--@Html.ActionLink("Registrar Profesional", "MainProfessionalRegisterAdministrator", "User", null, new { @class = "dropdown-item" })-->
                     <!--@Html.ActionLink("Buscar Profesional", "SearchProfessionalAdministrator", "User", null, new { @class = "dropdown-item" })-->
-                    <a class="dropdown-item" href="?controlador=Index&accion=showInfo">Buscar Profesional</a>
+                    <a class="dropdown-item" href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
 
                 </div>
             </li>
