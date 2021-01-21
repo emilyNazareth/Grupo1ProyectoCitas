@@ -19,4 +19,8 @@ class IndexController {
         $this->view->show("indexView.php", null);
     }
 
+    public function showSearchProfessionalAdministrator() {
+        $this->view->show("SearchProfessionalAdministrator.php", null);
+    }
+
 }
