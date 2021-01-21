@@ -1,14 +1,10 @@
 <?php
 
-/**
- * 
- */
 class UserController {
 
     public function __construct() {
         $this->view = new View();
     }
-
 
     public function showLoginView() {
         $this->view->show("loginView.php", null);
@@ -60,6 +56,8 @@ class UserController {
 //        $this->view->show("startingMain.php", null);
     }
     
-       
+    public function showRegisterProfessionalView() {
+        $this->view->show("RegisterProfessionalView.php", null);
+    }
 
 }
