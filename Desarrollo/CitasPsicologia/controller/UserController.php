@@ -51,14 +51,13 @@ class UserController {
         $this->view->show("AdministratorMainView.php", null);
     }
 
-    public function showStartingMain() {
+    public function showSearchProfessionalAdministrator() {
         require 'model/UserModel.php';
-        $product = UserModel::singleton();
-
-        $products['products'] = $product->show_all_products();
-        print_r($products);
-//        $this->view->show("startingMain.php", null);
+        $professional = UserModel::singleton();
+        $data['professional'] =  $professional->getProfessionals();
+        $this->view->show("SearchProfessionalAdministrator.php", $data);
     }
+
     
     public function registerProfessional() {
         require 'model/UserModel.php';
@@ -76,6 +75,30 @@ class UserController {
             $_POST['address']);
         echo('Profesional Registrado');
     }
+
+    public function searchProfessional() {
+        require 'model/UserModel.php';
+        $identification = $_POST['cedula'];
+        $name = $_POST['nombre'];
+        $lastName = $_POST['apellido'];
+        $user = UserModel::singleton();
+        $data['users'] = $user->searchProfessional($identification, $name, $lastName);
+        
+         //echo json_encode($data);  probar
+        $resultado = "";
+        foreach ($data['users'] as $value) {
+            $resultado .= "<tr>";
+            $resultado .= '<td style="display:none;">' . $value[0] . '</td>';
+            $resultado .= '<td>' . $value[1] . '</td>';
+            $resultado .= '<td>' . $value[2] . '</td>';
+            $resultado .= '<td>' . $value[3] . '</td>';
+            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
+            $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>'; 
+            $resultado .= "</tr>";
+        }
+        echo $resultado;
+    }
+    
        
 
 }
