@@ -20,6 +20,7 @@ class IndexController {
     }
 
     public function showSearchProfessionalAdministrator() {
+
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['professional'] =  $professional->getProfessionals();
