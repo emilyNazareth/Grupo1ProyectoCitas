@@ -10,5 +10,6 @@ $config->set('dbname', 'controlcitas');
 $config->set('dbuser', 'controlcitas');
 $config->set('dbpass', '67ConTrol734!');
 
+
 ?>
 
