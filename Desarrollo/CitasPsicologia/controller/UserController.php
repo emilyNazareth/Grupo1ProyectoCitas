@@ -60,6 +60,32 @@ class UserController {
 //        $this->view->show("startingMain.php", null);
     }
     
+    public function registerProfessional() {
+        require 'model/UserModel.php';
+        $professional = UserModel::singleton();
+        
+        $professional->register_professional($_POST['identification'], 
+            $_POST['password'], $_POST['name'], $_POST['firstLastName'], 
+            $_POST['secondLastName'], $_POST['personalPhone'],
+            $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], 
+            $_POST['civilStatus'], $_POST['placeNumber'],               
+            $_POST['status'], $_POST['emergencyContactName'], 
+            $_POST['emergencyContactNumber'], $_POST['scholarship'], 
+            $_POST['specialty'],  $_POST['schoolCode'], 
+            $_POST['province'], $_POST['canton'], $_POST['district'],
+            $_POST['address']);
+//        $professional->register_professional(304850984, 
+//            123, 'Emily Profesional', 'Meléndez', 
+//            'Castro', '25348790',
+//            '25678743', '1995-03-30', 'F', 
+//            'soltera', 456,               
+//            1, 'Marvin Meléndez', 
+//            88888888, 'secundaria', 
+//            'psicologa',  'CPH78', 
+//            'Cartago', 'Alvarado', 'Pacayas',
+//            '800 metros este del BN');
+        echo('Profesional Registrado');
+    }
        
 
 }

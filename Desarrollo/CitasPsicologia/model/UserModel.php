@@ -13,7 +13,6 @@ class UserModel {
     private function __construct() {
         require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
-        $this->providerID = 1;
     }
 
     public static function singleton() {
@@ -25,6 +24,7 @@ class UserModel {
 
     //login
     public function loginCheck($identification, $password) {
+
 
         $consulta = $this->db->prepare("CALL  `sp_obtener_usuario`('" . $identification . "');");
         $consulta->execute();
@@ -41,9 +41,16 @@ class UserModel {
         return $idRol;
     }
 
-    //PROVIDER ONE
-    public function register_product($name, $price, $description, $quantity, $image) {
-        $consulta = $this->db->prepare("call sp_insert_product('" . $name . "', " . $price . ", '" . $description . "'," . $this->providerID . "," . $quantity . ",'" . $image . "')");
+    public function register_professional($identification, $password, $name, $firstLastName, $secondLastName, $personalPhone, $roomPhone, $birthday, $gender, $civilStatus, $placeNumber, $status, $emergencyContactName, $emergencyContactNumber, $scholarship, $specialty, $schoolCode, $province, $canton, $district, $address) {
+        $consulta = $this->db->prepare("call sp_registrar_profesional("
+                . $identification . "," . $password . ",'" . $name . "','" .
+                $firstLastName . "','" . $secondLastName . "','" . $personalPhone .
+                "','" . $roomPhone . "','" . $birthday . "','" . $gender . "','" .
+                $civilStatus . "'," . $placeNumber . "," . $status . ",'" .
+                $emergencyContactName . "'," . $emergencyContactNumber . ",'" .
+                $scholarship . "','" . $specialty . "','" . $schoolCode . "','" .
+                $province . "','" . $canton . "','" . $district . "','" . $address
+                . "')");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
@@ -51,6 +58,7 @@ class UserModel {
     }
 
     public function show_all_products() {
+
         $consulta = $this->db->prepare("call sp_obtener_roles");
         $consulta->execute();
         $resultado = $consulta->fetchAll();

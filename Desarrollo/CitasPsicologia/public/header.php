@@ -28,14 +28,48 @@
         <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
         <script src="public/js/script.js" type="text/javascript"></script>
 
+        <script>
+            function registerProfessional(identification, password, name,
+                    firstLastName, secondLastName, personalPhone, roomPhone, 
+                    birthday, gender, civilStatus, placeNumber, status,
+                    emergencyContactName, emergencyContactNumber, scholarship,
+                    specialty, schoolCode, province, canton, district, address) {
+                var parametros = {"identification": identification,
+                    "password": password, "name": name, 
+                    "firstLastName": firstLastName,
+                    "secondLastName": secondLastName, 
+                    "personalPhone": personalPhone,
+                    "roomPhone": roomPhone, "birthday": birthday,
+                    "gender": gender, "civilStatus": civilStatus,
+                    "placeNumber": placeNumber, "status": status,
+                    "emergencyContactName": emergencyContactName,
+                    "emergencyContactNumber": emergencyContactNumber,
+                    "scholarship": scholarship, "specialty": specialty,
+                    "schoolCode": schoolCode, "province": province,
+                    "canton": canton, "district": district, "address": address};
+                $.ajax(
+                        {
+                            data: parametros,
+                            url: '?controlador=User&accion=registerProfessional',
+                            type: 'post',
 
+                            beforeSend: function () {
+                                $("#resultado").html("Procesando, espere por favor ...");
+                            },
+                            success: function (response) {
+                                $("#resultado").html(response);
+                            }
+                        }
+                );
+            }
+        </script>
 
 
 
     </head>
     <body class="title">
-                
-               
+
+
 
 
 
