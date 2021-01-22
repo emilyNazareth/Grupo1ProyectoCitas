@@ -13,14 +13,14 @@ include 'public/header.php';
 
                 <!--IDENTIFICACION-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="Cedula">N&uacute;mero de identificaci&oacute;n:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="Cedula" name="Cedula" required>
+                    <label class="col-sm-4 control-label small" for="identification">N&uacute;mero de identificaci&oacute;n:</label>
+                    <input class="col-sm-6 form-control form-control-sm" type="number" id="identification" name="identification" required>
                 </div>
 
                 <!--CONTRASENA-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="name">Contrase&ntilde;a:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="password" id="Password" name="Password">
+                    <input class="col-sm-6 form-control form-control-sm" type="password" id="password" name="password">
                 </div>
 
                 <!--NOMBRE-->
@@ -49,7 +49,7 @@ include 'public/header.php';
 
                 <!--TELEFONO DE HABITACION-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="RoomPhone">Tel&eacutefono de habitaci&oacuten:</label>
+                    <label class="col-sm-4 control-label small" for="roomPhone">Tel&eacutefono de habitaci&oacuten:</label>
                     <input class="col-sm-6 form-control form-control-sm" type="number" id="roomPhone" name="roomPhone">
                 </div>
 
@@ -91,23 +91,23 @@ include 'public/header.php';
 
                 <!--ESTADO-->
                 <div class="row professional-register" id="state">
-                    <label class="col-sm-4 control-label small" for="state">Estado</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="state" name="state">
-                        <option id="active" value="M">Activo</option>
-                        <option id="inactive" value="F">Inactivo</option>
+                    <label class="col-sm-4 control-label small" for="status">Estado</label>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="status" name="status">
+                        <option id="active" value="1">Activo</option>
+                        <option id="inactive" value="0">Inactivo</option>
                     </select>
                 </div>
 
                 <!--CONTACTO EMERGENCIA-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="EmergencyContact">Contacto en caso de emergencia:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="text" id="EmergencyContact" name="EmergencyContact">
+                    <label class="col-sm-4 control-label small" for="emergencyContactName">Contacto en caso de emergencia:</label>
+                    <input class="col-sm-6 form-control form-control-sm" type="text" id="emergencyContactName" name="emergencyContactName">
                 </div>
 
                 <!--NUM CONTACTO EMERGENCIA-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="EmergencyContactNumber">N&uacutemero del contacto:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="EmergencyContactNumber" name="EmergencyContactNumber">
+                    <label class="col-sm-4 control-label small" for="emergencyContactNumber">N&uacutemero del contacto:</label>
+                    <input class="col-sm-6 form-control form-control-sm" type="number" id="emergencyContactNumber" name="emergencyContactNumber">
                 </div>
 
                 <!--ESCOLARIDAD-->
@@ -172,13 +172,13 @@ include 'public/header.php';
                     <!--BT ACEPTAR-->
                     <div class="col-sm-6">
                         <div class="row">
-                            <div class="col-sm-4">a</div>
+                            <div class="col-sm-4"></div>
                         
                             <div class="col-sm-6 btn-action">
-                                <a onclick="registerProfessional()" class="btn btn-success btn-sm">Aceptar</a>
+                                <button type="button" onclick="registerProfessional()" class="btn btn-success btn-sm">Aceptar</button>
 
                             <!--BT CANCELAR-->
-                            <a onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-cancel">Cancelar</a>
+                            <a onclick="" class="btn btn-success btn-sm" id="btn-cancel">Cancelar</a>
                         </div>
                         </div>
                         

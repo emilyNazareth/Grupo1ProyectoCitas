@@ -70,6 +70,37 @@ function activeDistrict() {
     );
 }
 
+function registerProfessional() {
+    var parametros = {"identification": $("#identification").val(),
+        "password": $("#password").val(), "name": $("#name").val(), 
+        "firstLastName": $("#firstLastName").val(), "secondLastName": $("#secondLastName").val(), 
+        "personalPhone": $("#personalPhone").val(), "roomPhone": $("#roomPhone").val(), 
+        "birthday": $("#birthday").val(), "gender": $("#gender").val(), "civilStatus": $("#civilStatus").val(),
+        "placeNumber": $("#placeNumber").val(), "status": $("#status").val(),
+        "emergencyContactName": $("#emergencyContactName").val(),
+        "emergencyContactNumber": $("#emergencyContactNumber").val(),
+        "scholarship": $("#scholarship").val(), "specialty": $("#specialty").val(),
+        "schoolCode": $("#schoolCode").val(), "province": $("#province").val(),
+        "canton": $("#canton").val(), "district": $("#district").val(), "address": $("#address").val()};
+    $.ajax(
+        {
+            data: parametros,
+            url: '?controlador=User&accion=registerProfessional',
+            type: 'post',
+
+            beforeSend: function () {
+                $("#resultado").html("Procesando, espere por favor ...");
+            },
+            success: function (response) {
+                $("#resultado").html(response);
+            },
+            error: function(e){
+                 $("#resultado").html(e);
+            }
+        }
+    );
+}
+
 
 
 
