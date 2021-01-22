@@ -13,5 +13,9 @@ class IndexController {
     public function showSearchProfessionalAdministrator() {
         $this->view->show("SearchProfessionalAdministrator.php", null);
     }
+    
+    public function showRegisterProfessionalView() {
+        $this->view->show("RegisterProfessionalView.php", null);
+    }
 
 }

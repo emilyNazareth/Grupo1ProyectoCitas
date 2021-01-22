@@ -24,15 +24,12 @@
 
         <!--DATEPICKER-->
         <script type="text/javascript" src="libs\bootstrap-datepicker\js\bootstrap-datepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="libs\bootstrap-datepicker\css\bootstrap-datepicker.css">
-
-        <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
         <script src="public/js/script.js" type="text/javascript"></script>
-
-
-
-
-
+        <script src="public/js/Site.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="libs\bootstrap-datepicker\css\bootstrap-datepicker.css">
+        <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
+        
     </head>
     <body class="title">
                 

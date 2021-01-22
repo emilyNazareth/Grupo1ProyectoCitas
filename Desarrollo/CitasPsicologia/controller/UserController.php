@@ -55,9 +55,5 @@ class UserController {
         print_r($products);
 //        $this->view->show("startingMain.php", null);
     }
-    
-    public function showRegisterProfessionalView() {
-        $this->view->show("RegisterProfessionalView.php", null);
-    }
 
 }
