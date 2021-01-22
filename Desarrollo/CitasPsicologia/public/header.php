@@ -30,13 +30,15 @@
 
         <script>
             function registerProfessional(identification, password, name,
-                    firstName, secondName, personalPhone, roomPhone, birthday,
-                    gender, civilStatus, placeNumber, status,
+                    firstLastName, secondLastName, personalPhone, roomPhone, 
+                    birthday, gender, civilStatus, placeNumber, status,
                     emergencyContactName, emergencyContactNumber, scholarship,
                     specialty, schoolCode, province, canton, district, address) {
                 var parametros = {"identification": identification,
-                    "password": password, "name": name, "firstName": firstName,
-                    "secondName": secondName, "personalPhone": personalPhone,
+                    "password": password, "name": name, 
+                    "firstLastName": firstLastName,
+                    "secondLastName": secondLastName, 
+                    "personalPhone": personalPhone,
                     "roomPhone": roomPhone, "birthday": birthday,
                     "gender": gender, "civilStatus": civilStatus,
                     "placeNumber": placeNumber, "status": status,

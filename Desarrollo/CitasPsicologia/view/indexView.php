@@ -38,7 +38,21 @@ include 'public/header.php';
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <a class="btn btn-success" href="?controlador=User&accion=showStartingMain">Solicite su cita aquí</a>
+                <!--<a class="btn btn-success" href="?controlador=User&accion=registerProfessional">Solicite su cita aquí</a>-->
+                <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
+                        onclick="registerProfessional(304850984, 
+            123, 'Emily Profesional', 'Melendez', 
+            'Castro', '25348790',
+            '25678743', '1995-03-30', 'F', 
+            'soltera', 456,               
+            1, 'Marvin Melendez', 
+            88888888, 'secundaria', 
+            'psicologa',  'CPH78', 
+            'Cartago', 'Alvarado', 'Pacayas',
+            '800 metros este del BN');return false;" 
+                    class="btn btn-success">Solicite su cita aquí
+
+            </button>
             </div>
         </div>
     </div>

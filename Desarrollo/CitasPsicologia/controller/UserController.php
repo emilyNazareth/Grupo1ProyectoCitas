@@ -63,6 +63,7 @@ class UserController {
     public function registerProfessional() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
+        
         $professional->register_professional($_POST['identification'], 
             $_POST['password'], $_POST['name'], $_POST['firstLastName'], 
             $_POST['secondLastName'], $_POST['personalPhone'],
@@ -73,7 +74,17 @@ class UserController {
             $_POST['specialty'],  $_POST['schoolCode'], 
             $_POST['province'], $_POST['canton'], $_POST['district'],
             $_POST['address']);
-        echo("Profesional registrado");
+//        $professional->register_professional(304850984, 
+//            123, 'Emily Profesional', 'Meléndez', 
+//            'Castro', '25348790',
+//            '25678743', '1995-03-30', 'F', 
+//            'soltera', 456,               
+//            1, 'Marvin Meléndez', 
+//            88888888, 'secundaria', 
+//            'psicologa',  'CPH78', 
+//            'Cartago', 'Alvarado', 'Pacayas',
+//            '800 metros este del BN');
+        echo('Profesional Registrado');
     }
        
 

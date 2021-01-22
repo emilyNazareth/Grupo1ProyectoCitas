@@ -13,7 +13,6 @@ class UserModel {
     private function __construct() {
         require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
-        $this->providerID = 1;
     }
 
     public static function singleton() {
@@ -41,20 +40,16 @@ class UserModel {
         return 1;
     }
 
-    public function register_professional($identification, $password, $name,
-            $firstLastName , $secondLastName, $personalPhone, $roomPhone, $birthday,
-            $gender, $civilStatus, $placeNumber, $status, $emergencyContactName,
-            $emergencyContactNumber, $scholarship, $specialty, $schoolCode, 
-            $province, $canton, $district, $address) {
+    public function register_professional($identification, $password, $name, $firstLastName, $secondLastName, $personalPhone, $roomPhone, $birthday, $gender, $civilStatus, $placeNumber, $status, $emergencyContactName, $emergencyContactNumber, $scholarship, $specialty, $schoolCode, $province, $canton, $district, $address) {
         $consulta = $this->db->prepare("call sp_registrar_profesional("
-            . $identification . $password . ",'" . $name . "','" . 
-            $firstLastName . "','" . $secondLastName . "','" . $personalPhone . 
-            "','" . $roomPhone . "','" . $birthday . "','" . $gender. "','" . 
-            $civilStatus . "'," . $placeNumber . $status . ",'" . 
-            $emergencyContactName . "'," . $emergencyContactNumber . ",'" .
-            $scholarship . "','" . $specialty . "','" . $schoolCode . "','" .
-            $province . "','" . $canton . "','" . $district . "','" . $address  
-            . "')");
+                . $identification . "," . $password . ",'" . $name . "','" .
+                $firstLastName . "','" . $secondLastName . "','" . $personalPhone .
+                "','" . $roomPhone . "','" . $birthday . "','" . $gender . "','" .
+                $civilStatus . "'," . $placeNumber . "," . $status . ",'" .
+                $emergencyContactName . "'," . $emergencyContactNumber . ",'" .
+                $scholarship . "','" . $specialty . "','" . $schoolCode . "','" .
+                $province . "','" . $canton . "','" . $district . "','" . $address
+                . "')");    
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
@@ -62,11 +57,12 @@ class UserModel {
     }
 
     public function show_all_products() {
+        
         $consulta = $this->db->prepare("call sp_obtener_roles");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
-        return $resultado;
+        return $resultado;                    
     }
 
 }
