@@ -11,7 +11,10 @@ class IndexController {
     }
 
     public function showSearchProfessionalAdministrator() {
-        $this->view->show("SearchProfessionalAdministrator.php", null);
+        require 'model/UserModel.php';
+        $professional = UserModel::singleton();
+        $data['professional'] =  $professional->getProfessionals();
+        $this->view->show("SearchProfessionalAdministrator.php", $data);
     }
     
     public function showRegisterProfessionalView() {
