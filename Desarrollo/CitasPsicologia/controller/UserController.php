@@ -32,12 +32,12 @@ class UserController {
             if ($result != null) {
 
 
-                if ($result == 1) {//admi
-                    echo '1';
-                    //$_SESSION['user'][0] = $identification;
+                if ($result == 1) {//admi      
+                    $_SESSION['user'][0] = $identification;
+                    echo  '1';
                 } elseif ($result == 2) {//profesional
                     echo '2';
-                    //$_SESSION['user'][0] = $identification;
+                    $_SESSION['user'][0] = $identification;
                 } else {
                     echo '3';
                 }
