@@ -1,5 +1,3 @@
-
-CALL `controlcitas`.`sp_obtener_profesionales`();
 DELIMITER $$
 CREATE DEFINER=`controlcitas`@`%` PROCEDURE `sp_obtener_profesionales`()
 BEGIN
