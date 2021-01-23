@@ -38,8 +38,8 @@ include 'public/header.php';
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <!--<a class="btn btn-success" href="?controlador=User&accion=registerProfessional">Solicite su cita aquí</a>-->
-                <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
+                <a class="btn btn-success" href="?controlador=User&accion=registerProfessional">Solicite su cita aquí</a>
+<!--                <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
                         onclick="registerProfessional(304850984, 
             123, 'Emily Profesional', 'Melendez', 
             'Castro', '25348790',
@@ -51,7 +51,7 @@ include 'public/header.php';
             'Cartago', 'Alvarado', 'Pacayas',
             '800 metros este del BN');return false;" 
                     class="btn btn-success">Solicite su cita aquí
-            </button>
+            </button>-->
             </div>
         </div>
     </div>
