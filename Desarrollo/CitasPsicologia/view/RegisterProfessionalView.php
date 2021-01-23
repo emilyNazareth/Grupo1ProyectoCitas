@@ -177,7 +177,7 @@ include 'public/header.php';
 
                             <div class="col-sm-6 btn-action">
                                 <!--BT ACEPTAR-->
-                                <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
+                             <!--   <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
                                         onclick="registerProfessional(
                                                     $('#identification').val(),
                                                     $('#password').val(), 
@@ -194,8 +194,8 @@ include 'public/header.php';
                                                         '800 metros este del BN');
                                                 return false;" 
                                         class="btn btn-success">Aceptar
-                                </button>
-<!--                                <input type="button" onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-accept" value="Aceptar"/>-->
+                                </button> -->
+                               <input type="button" onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-accept" value="Aceptar"/>
 
                                 <!--BT CANCELAR-->
                                 <button type="button" onclick="cleanFormRegisterProfessional()" class="btn btn-success btn-sm" id="btn-cancel">Cancelar</button>
@@ -212,6 +212,7 @@ include 'public/header.php';
 
 </form>
 
+<script src="public/js/Site.js" type="text/javascript"></script>
 <script>
     window.onload = function () {
         $("#canton").prop("disabled", true);
