@@ -11,4 +11,11 @@ class TestController {
         
         
     }
+
+public function testSearchProfessional() {
+
+        require 'test/SearchProfessionalTest.php';
+        $SearchProfessionalTest = new SearchProfessionalTest();
+        $SearchProfessionalTest->testSearchProfessionalModel();
+    }
 }

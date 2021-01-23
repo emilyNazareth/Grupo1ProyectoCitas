@@ -109,29 +109,31 @@ include 'public/header.php';
         if (!apellido) {
             apellido = "";
         }
-        if (nombre == "" && cedula == -1 && apellido == "") {
-            $("#resultado").html("*No se especificó ningún tipo de búsqueda");
-            return;
-        }
+<?php
+echo 'if (nombre == "" && cedula == -1 && apellido == "") {';
+echo '$("#resultado").html("*No se especificó ningún tipo de búsqueda");';
 
-        if (nombre != "") {
-            if (nombre.match(letters) == null) {
-                $("#resultado").html("*El campo Nombre es inválido");
-                // return;
-            }
-        }
-        if (apellido != "") {
-            if (apellido.match(letters) == null) {
-                $("#resultado").html("*El campo Apellidos es inválido");
-                //return;
-            }
-        }
-        if (cedula != -1) {
-            if (cedula < 0) {
-                $("#resultado").html("*El campo Cédula es inválido");
-                return;
-            }
-        }
+echo '}';
+echo '';
+echo 'if (nombre != "") {';
+echo 'if (nombre.match(letters) == null) {';
+echo '$("#resultado").html("*El campo Nombre es inválido");';
+
+echo '}';
+echo '}';
+echo 'if (apellido != "") {';
+echo 'if (apellido.match(letters) == null) {';
+echo '$("#resultado").html("*El campo Apellidos es inválido");';
+
+echo '}';
+echo '}';
+echo 'if (cedula != -1) {';
+echo 'if (cedula < 0) {';
+echo '$("#resultado").html("*El campo Cédula es inválido");';
+
+echo '}';
+echo '}';
+?>
         var parameters = {
             "cedula": cedula,
             "nombre": nombre,
