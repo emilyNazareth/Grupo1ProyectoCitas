@@ -60,21 +60,40 @@ class UserController {
 //        $this->view->show("startingMain.php", null);
     }
     
-    public function registerProfessional() {
+     public function registerProfessional()
+    {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
+        $result = $professional->verify_user_identification($_POST['identification']);
+        if ($result[0][0] == 1) {
+            echo ('El profesional ya existe en el sistema, digite otro');
+        } else {
+            $professional->register_professional(
+            $_POST['identification'],
+            $_POST['password'],
+            $_POST['name'],
+            $_POST['firstLastName'],
+            $_POST['secondLastName'],
+            $_POST['personalPhone'],
+            $_POST['roomPhone'],
+            $_POST['birthday'],
+            $_POST['gender'],
+            $_POST['civilStatus'],
+            $_POST['placeNumber'],
+            $_POST['status'],
+            $_POST['emergencyContactName'],
+            $_POST['emergencyContactNumber'],
+            $_POST['scholarship'],
+            $_POST['specialty'],
+            $_POST['schoolCode'],
+            $_POST['province'],
+            $_POST['canton'],
+            $_POST['district'],
+            $_POST['address']
+        );
+        echo ('Profesional Registrado');
+        }
         
-        $professional->register_professional($_POST['identification'], 
-            $_POST['password'], $_POST['name'], $_POST['firstLastName'], 
-            $_POST['secondLastName'], $_POST['personalPhone'],
-            $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], 
-            $_POST['civilStatus'], $_POST['placeNumber'],               
-            $_POST['status'], $_POST['emergencyContactName'], 
-            $_POST['emergencyContactNumber'], $_POST['scholarship'], 
-            $_POST['specialty'],  $_POST['schoolCode'], 
-            $_POST['province'], $_POST['canton'], $_POST['district'],
-            $_POST['address']);
-        echo('Profesional Registrado');
     }
        
 
