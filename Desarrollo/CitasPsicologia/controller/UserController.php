@@ -11,7 +11,6 @@ class UserController
         $this->view = new View();
     }
 
-
     public function showLoginView()
     {
         $this->view->show("loginView.php", null);
