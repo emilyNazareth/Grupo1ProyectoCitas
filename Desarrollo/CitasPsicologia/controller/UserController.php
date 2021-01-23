@@ -1,20 +1,30 @@
 <?php
 
-class UserController {
+/**
+ * 
+ */
+class UserController
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->view = new View();
     }
 
-    public function showLoginView() {
+    public function showLoginView()
+    {
         $this->view->show("loginView.php", null);
     }
 
-    public function showIndexView() {
+    public function showIndexView()
+    {
+        session_unset();
+        session_destroy();
         $this->view->show("indexView.php", null);
     }
 
-    public function logIn() {
+    public function logIn()
+    {
         require 'model/UserModel.php';
 
         $identification = $_POST['identification'];
@@ -28,12 +38,13 @@ class UserController {
             if ($result != null) {
 
 
-                if ($result == 1) {//admi      
-                    $_SESSION['user'][0] = $identification;
+                if ($result == 1) { //admi  
+                    $_SESSION['userAdministrator'] = time()+900;
                     echo  '1';
-                } elseif ($result == 2) {//profesional
+                } elseif ($result == 2) { //profesional
+
+                    $_SESSION['userProfessional'] = time()+900;
                     echo '2';
-                    $_SESSION['user'][0] = $identification;
                 } else {
                     echo '3';
                 }
@@ -43,44 +54,54 @@ class UserController {
         }
     }
 
-    public function showAdministratorMainView() {
+    public function showAdministratorMainView()
+    {
         $this->view->show("AdministratorMainView.php", null);
     }
 
-    public function showSearchProfessionalAdministrator() {
+
+
+    public function registerProfessional()
+    {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
-        $data['professional'] =  $professional->getProfessionals();
-        $this->view->show("SearchProfessionalAdministrator.php", $data);
+
+        $professional->register_professional(
+            $_POST['identification'],
+            $_POST['password'],
+            $_POST['name'],
+            $_POST['firstLastName'],
+            $_POST['secondLastName'],
+            $_POST['personalPhone'],
+            $_POST['roomPhone'],
+            $_POST['birthday'],
+            $_POST['gender'],
+            $_POST['civilStatus'],
+            $_POST['placeNumber'],
+            $_POST['status'],
+            $_POST['emergencyContactName'],
+            $_POST['emergencyContactNumber'],
+            $_POST['scholarship'],
+            $_POST['specialty'],
+            $_POST['schoolCode'],
+            $_POST['province'],
+            $_POST['canton'],
+            $_POST['district'],
+            $_POST['address']
+        );
+        echo ('Profesional Registrado');
     }
 
-    
-    public function registerProfessional() {
-        require 'model/UserModel.php';
-        $professional = UserModel::singleton();
-        
-        $professional->register_professional($_POST['identification'], 
-            $_POST['password'], $_POST['name'], $_POST['firstLastName'], 
-            $_POST['secondLastName'], $_POST['personalPhone'],
-            $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], 
-            $_POST['civilStatus'], $_POST['placeNumber'],               
-            $_POST['status'], $_POST['emergencyContactName'], 
-            $_POST['emergencyContactNumber'], $_POST['scholarship'], 
-            $_POST['specialty'],  $_POST['schoolCode'], 
-            $_POST['province'], $_POST['canton'], $_POST['district'],
-            $_POST['address']);
-        echo('Profesional Registrado');
-    }
-
-    public function searchProfessional() {
+    public function searchProfessional()
+    {
         require 'model/UserModel.php';
         $identification = $_POST['cedula'];
         $name = $_POST['nombre'];
         $lastName = $_POST['apellido'];
         $user = UserModel::singleton();
         $data['users'] = $user->searchProfessional($identification, $name, $lastName);
-        
-         //echo json_encode($data);  probar
+
+        //echo json_encode($data);  probar
         $resultado = "";
         foreach ($data['users'] as $value) {
             $resultado .= "<tr>";
@@ -89,12 +110,9 @@ class UserController {
             $resultado .= '<td>' . $value[2] . '</td>';
             $resultado .= '<td>' . $value[3] . '</td>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
-            $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>'; 
+            $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
             $resultado .= "</tr>";
         }
         echo $resultado;
     }
-    
-       
-
 }
