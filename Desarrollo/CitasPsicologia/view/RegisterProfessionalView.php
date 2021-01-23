@@ -3,11 +3,11 @@ include 'public/header.php';
 ?>
 
 <form id="form-professional-register">
-    
+
     <div class="container text-left">
-        
+
         <div class="row">
-        
+
             <div class="col-sm-6">
                 <p class="title-professional-register">Datos Personales del Profesional</p>
 
@@ -63,8 +63,8 @@ include 'public/header.php';
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="gender">Sexo:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="gender" name="gender" required />
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
                     </select>
                 </div>
 
@@ -72,10 +72,10 @@ include 'public/header.php';
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="civilStatus">Estado civil:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="civilStatus" name="civilStatus" required />
-                        <option value="Casado(a)">Casado(a)</option>
-                        <option value="Divorsiado(a)">Divorciado(a)</option>
-                        <option value="Viudo(a)">Viudo(a)</option>
-                        <option value="Soltero(a)">Soltero(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Divorsiado(a)">Divorciado(a)</option>
+                    <option value="Viudo(a)">Viudo(a)</option>
+                    <option value="Soltero(a)">Soltero(a)</option>
                     </select>
                 </div>
 
@@ -93,8 +93,8 @@ include 'public/header.php';
                 <div class="row professional-register" id="state">
                     <label class="col-sm-4 control-label small" for="status">Estado:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="status" name="status" required />
-                        <option id="active" value="1">Activo</option>
-                        <option id="inactive" value="0">Inactivo</option>
+                    <option id="active" value="1">Activo</option>
+                    <option id="inactive" value="0">Inactivo</option>
                     </select>
                 </div>
 
@@ -161,23 +161,41 @@ include 'public/header.php';
                 </div>
 
             </div>
-        
+
             <div class="col-sm-12 buttons-professional-register">
                 <div class="row">
-                    
+
                     <!--BT ATRAS-->
                     <div class="col-sm-6">
                         <a class="btn btn-success btn-sm" href="?controlador=User&accion=showAdministratorMainView">Atr&aacute;s</a>
                     </div>
 
-                    
+
                     <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-4"></div>
-                        
+
                             <div class="col-sm-6 btn-action">
                                 <!--BT ACEPTAR-->
-                                <input type="button" onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-accept" value="Aceptar"/>
+                             <!--   <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
+                                        onclick="registerProfessional(
+                                                    $('#identification').val(),
+                                                    $('#password').val(), 
+                                                    $('#name').val(), 
+                                                    $('#firstLastName').val(),
+                                                    $('#secondLastName').val(), 
+                                                    '25348790',
+                                                        '25678743', '1995-03-30', 'F',
+                                                        'soltera', 456,
+                                                        1, 'Marvin Melendez',
+                                                        88888888, 'secundaria',
+                                                        'psicologa', 'CPH78',
+                                                        'Cartago', 'Alvarado', 'Pacayas',
+                                                        '800 metros este del BN');
+                                                return false;" 
+                                        class="btn btn-success">Aceptar
+                                </button> -->
+                               <input type="button" onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-accept" value="Aceptar"/>
 
                                 <!--BT CANCELAR-->
                                 <button type="button" onclick="cleanFormRegisterProfessional()" class="btn btn-success btn-sm" id="btn-cancel">Cancelar</button>
@@ -189,16 +207,17 @@ include 'public/header.php';
             </div>
 
         </div>
-        
+
     </div>
 
 </form>
 
+<script src="public/js/Site.js" type="text/javascript"></script>
 <script>
     window.onload = function () {
         $("#canton").prop("disabled", true);
         $("#district").prop("disabled", true);
-        
+
         loadGeographicInfo();
     }
 </script>

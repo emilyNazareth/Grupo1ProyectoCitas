@@ -65,8 +65,11 @@ class UserController
     {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
-
-        $professional->register_professional(
+        $result = $professional->verify_user_identification($_POST['identification']);
+        if ($result[0][0] == 1) {
+            echo ('El profesional ya existe en el sistema, digite otro');
+        } else {
+            $professional->register_professional(
             $_POST['identification'],
             $_POST['password'],
             $_POST['name'],
@@ -90,6 +93,8 @@ class UserController
             $_POST['address']
         );
         echo ('Profesional Registrado');
+        }
+        
     }
 
     public function searchProfessional()
@@ -115,4 +120,5 @@ class UserController
         }
         echo $resultado;
     }
+        
 }

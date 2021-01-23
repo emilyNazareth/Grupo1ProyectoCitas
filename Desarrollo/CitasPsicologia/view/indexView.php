@@ -51,7 +51,6 @@ include 'public/header.php';
             'Cartago', 'Alvarado', 'Pacayas',
             '800 metros este del BN');return false;" 
                     class="btn btn-success">Solicite su cita aquí
-
             </button>-->
             </div>
         </div>

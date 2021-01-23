@@ -92,7 +92,7 @@ function registerProfessional() {
 
             beforeSend: function () {
                 $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
-                location.replace("?controlador=Index&accion=showRegisterProfessionalView");
+                //location.replace("?controlador=Index&accion=showRegisterProfessionalView");
             },
             success: function (response) {
                 $("#resultado").html("<div class='alert alert-success'>"+response+"</div>");

@@ -115,4 +115,13 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
+    
+    public function verify_user_identification($identification){
+        $consulta = $this->db->prepare("call sp_verificar_existencia_usuario(" .
+                $identification . ")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }
