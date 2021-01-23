@@ -17,7 +17,7 @@ include_once 'public/header.php';
                     Administrar Profesional
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                     <a class="dropdown-item" href="?controlador=Index&accion=showInfo">Registrar Profesional</a>
+                    <a class="dropdown-item" href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
                     <!--@Html.ActionLink("Registrar Profesional", "MainProfessionalRegisterAdministrator", "User", null, new { @class = "dropdown-item" })-->
                     <!--@Html.ActionLink("Buscar Profesional", "SearchProfessionalAdministrator", "User", null, new { @class = "dropdown-item" })-->
                     <a class="dropdown-item" href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>

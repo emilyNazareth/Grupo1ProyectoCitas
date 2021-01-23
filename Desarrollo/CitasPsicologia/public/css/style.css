@@ -163,3 +163,35 @@ html {
     padding-top: 2em;
     text-align: center;
 }
+
+.professional-register{
+    color:black !important;
+}
+
+.title-professional-register{
+    color:orange !important;
+    font-weight: bold;
+}
+
+#address{
+    padding-top: 10%;
+}
+
+.buttons-professional-register{
+    margin-top: 2em;
+}
+
+.btn-action{
+    text-align: right;
+    padding-right: 0;
+}
+
+.btn-action #btn-accept #btn-cancel{
+    margin-left: 5em;
+}
+    
+label.error{
+    font-weight: bold;
+    color: red;
+    padding-left: 0.5em;
+}

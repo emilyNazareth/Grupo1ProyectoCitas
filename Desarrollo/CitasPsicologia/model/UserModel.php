@@ -69,7 +69,7 @@ class UserModel
         $address
     ) {
         $consulta = $this->db->prepare("call sp_registrar_profesional("
-            . $identification . "," . $password . ",'" . $name . "','" .
+            . $identification . ",'" . $password . "','" . $name . "','" .
             $firstLastName . "','" . $secondLastName . "','" .
             $personalPhone . "','" . $roomPhone . "','" . $birthday . "','"
             . $gender . "','" . $civilStatus . "'," . $placeNumber . "," .
