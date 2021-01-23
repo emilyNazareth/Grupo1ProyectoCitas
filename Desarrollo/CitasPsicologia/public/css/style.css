@@ -186,7 +186,12 @@ html {
     padding-right: 0;
 }
 
-.btn-action #btn-cancel{
+.btn-action #btn-accept #btn-cancel{
     margin-left: 5em;
 }
     
+label.error{
+    font-weight: bold;
+    color: red;
+    padding-left: 0.5em;
+}
