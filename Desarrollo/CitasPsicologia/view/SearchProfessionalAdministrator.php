@@ -29,8 +29,8 @@ include 'public/header.php';
             <div>
                 <a class="btn btn-success btn-sm" id="consultDate" onclick="searchProfessional()" name="consultDate">Buscar</a>
             </div>
-            <div class="alert-danger justify-content-end">
-                <span id="resultado"></span>
+            <div>
+                <span id="message" style="color:black;" ;></span>
             </div>
         </form>
 </center>
@@ -94,9 +94,9 @@ include 'public/header.php';
 
 <script>
     function searchProfessional() {
-        var letters = /^[*]+$/;
-        
-        $("#resultado").html("");
+        var letters = /^[A-Za-z+À-ú\s]+$/;
+
+        $("#message").html("");
         var cedula = $('#id').val();
         var nombre = $('#name').val()
         var apellido = $('#lastname').val()
@@ -109,31 +109,32 @@ include 'public/header.php';
         if (!apellido) {
             apellido = "";
         }
-<?php
-echo 'if (nombre == "" && cedula == -1 && apellido == "") {';
-echo '$("#resultado").html("*No se especificó ningún tipo de búsqueda");';
 
-echo '}';
-echo '';
-echo 'if (nombre != "") {';
-echo 'if (nombre.match(letters) == null) {';
-echo '$("#resultado").html("*El campo Nombre es inválido");';
+        if (nombre == "" && cedula == -1 && apellido == "") {
+            $("#message").html("*No se especificó ningún tipo de búsqueda");;
+            return;
+        };
 
-echo '}';
-echo '}';
-echo 'if (apellido != "") {';
-echo 'if (apellido.match(letters) == null) {';
-echo '$("#resultado").html("*El campo Apellidos es inválido");';
+        if (nombre != "") {
+            if (nombre.match(letters) == null) {
+                $("#message").html("*El campo Nombre es inválido");;
+                return;
+            };
+        };
 
-echo '}';
-echo '}';
-echo 'if (cedula != -1) {';
-echo 'if (cedula < 0) {';
-echo '$("#resultado").html("*El campo Cédula es inválido");';
+        if (apellido != "") {
+            if (apellido.match(letters) == null) {
+                $("#message").html("*El campo Apellidos es inválido");
+                return;
+            };
+        };
+        if (cedula != -1) {
+            if (cedula < 0) {
+                $("#message").html("*El campo Cédula es inválido");
+                return;
+            };
+        };
 
-echo '}';
-echo '}';
-?>
         var parameters = {
             "cedula": cedula,
             "nombre": nombre,
