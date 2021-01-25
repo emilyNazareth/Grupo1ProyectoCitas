@@ -69,7 +69,7 @@ class UserModel
         $address
     ) {
         $consulta = $this->db->prepare("call sp_registrar_profesional("
-            . $identification . "," . $password . ",'" . $name . "','" .
+            . $identification . ",'" . $password . "','" . $name . "','" .
             $firstLastName . "','" . $secondLastName . "','" .
             $personalPhone . "','" . $roomPhone . "','" . $birthday . "','"
             . $gender . "','" . $civilStatus . "'," . $placeNumber . "," .
@@ -110,6 +110,15 @@ class UserModel
     {
 
         $consulta = $this->db->prepare("call sp_obtener_roles");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    
+    public function verify_user_identification($identification){
+        $consulta = $this->db->prepare("call sp_verificar_existencia_usuario(" .
+                $identification . ")");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();

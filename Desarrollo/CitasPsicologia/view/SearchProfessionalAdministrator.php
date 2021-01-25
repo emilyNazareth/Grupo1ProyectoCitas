@@ -29,8 +29,8 @@ include 'public/header.php';
             <div>
                 <a class="btn btn-success btn-sm" id="consultDate" onclick="searchProfessional()" name="consultDate">Buscar</a>
             </div>
-            <div class="alert-danger justify-content-end">
-                <span id="resultado"></span>
+            <div>
+                <span id="message" style="color:black;" ;></span>
             </div>
         </form>
 </center>
@@ -94,9 +94,9 @@ include 'public/header.php';
 
 <script>
     function searchProfessional() {
-        var letters = /^[*]+$/;
-        
-        $("#resultado").html("");
+        var letters = /^[A-Za-z+À-ú\s]+$/;
+
+        $("#message").html("");
         var cedula = $('#id').val();
         var nombre = $('#name').val()
         var apellido = $('#lastname').val()
@@ -109,29 +109,32 @@ include 'public/header.php';
         if (!apellido) {
             apellido = "";
         }
+
         if (nombre == "" && cedula == -1 && apellido == "") {
-            $("#resultado").html("*No se especificó ningún tipo de búsqueda");
+            $("#message").html("*No se especificó ningún tipo de búsqueda");;
             return;
-        }
+        };
 
         if (nombre != "") {
             if (nombre.match(letters) == null) {
-                $("#resultado").html("*El campo Nombre es inválido");
-                // return;
-            }
-        }
+                $("#message").html("*El campo Nombre es inválido");;
+                return;
+            };
+        };
+
         if (apellido != "") {
             if (apellido.match(letters) == null) {
-                $("#resultado").html("*El campo Apellidos es inválido");
-                //return;
-            }
-        }
+                $("#message").html("*El campo Apellidos es inválido");
+                return;
+            };
+        };
         if (cedula != -1) {
             if (cedula < 0) {
-                $("#resultado").html("*El campo Cédula es inválido");
+                $("#message").html("*El campo Cédula es inválido");
                 return;
-            }
-        }
+            };
+        };
+
         var parameters = {
             "cedula": cedula,
             "nombre": nombre,

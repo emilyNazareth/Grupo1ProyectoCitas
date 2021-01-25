@@ -1,6 +1,5 @@
 <?php
 include 'public/header.php';
-session_start();
 ?>
 
 
@@ -52,7 +51,6 @@ session_start();
             'Cartago', 'Alvarado', 'Pacayas',
             '800 metros este del BN');return false;" 
                     class="btn btn-success">Solicite su cita aquí
-
             </button>-->
             </div>
         </div>
