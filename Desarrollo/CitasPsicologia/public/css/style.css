@@ -100,6 +100,8 @@ html {
     color: white;
     background-color: #f47424;
     margin-right: 15px;
+    margin-left: 30px;
+    margin-top: 50px;
 }
 
 .titles {
@@ -173,9 +175,6 @@ html {
     font-weight: bold;
 }
 
-#address{
-    padding-top: 10%;
-}
 
 .buttons-professional-register{
     margin-top: 2em;
@@ -194,4 +193,8 @@ label.error{
     font-weight: bold;
     color: red;
     padding-left: 0.5em;
+}
+
+.ul.nav-link{
+    margin-top: 50px;
 }

@@ -90,7 +90,7 @@ class UserController
             $_POST['province'],
             $_POST['canton'],
             $_POST['district'],
-            $_POST['address']
+            $_POST['addressProfessional']
         );
         echo ('Profesional Registrado');
         }

@@ -8,13 +8,13 @@ include 'public/header.php';
 
         <div class="row">
 
-            <div class="col-sm-6">
-                <p class="title-professional-register">Datos Personales del Profesional</p>
+            <div class="col-sm-6" style="margin-top: 50px">
+                <p class="title-professional-register" >Datos Personales del Profesional</p>
 
                 <!--IDENTIFICACION-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="identification">N&uacute;mero de identificaci&oacute;n:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="identification" name="identification" required />
+                    <input  onkeypress="return onlyNumbers(event)" class="col-sm-6 form-control form-control-sm"  minlength="9" maxlength="9" type="text" id="identification" name="identification" required />
                 </div>
 
                 <!--CONTRASENA-->
@@ -26,7 +26,7 @@ include 'public/header.php';
                 <!--NOMBRE-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="name">Nombre:</label>
-                    <input onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" type="text" id="name" name="name" required />
+                    <input onkeypress="return soloLetras(event)"  class="col-sm-6 form-control form-control-sm" type="text" id="name" name="name" required />
                 </div>
 
                 <!--PRIMER APELLIDO-->
@@ -44,19 +44,19 @@ include 'public/header.php';
                 <!--TELEFONO PERSONAL-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="personalPhone">Tel&eacute;fono personal:</label>
-                    <input  class="col-sm-6 form-control form-control-sm" type="number" id="personalPhone" name="personalPhone" required />
+                    <input  onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-6 form-control form-control-sm" type="text" id="personalPhone" name="personalPhone" required />
                 </div>
 
                 <!--TELEFONO DE HABITACION-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="roomPhone">Tel&eacutefono de habitaci&oacuten:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="roomPhone" name="roomPhone" />
+                    <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-6 form-control form-control-sm" type="text" id="roomPhone" name="roomPhone" />
                 </div>
 
                 <!--FECHA DE NACIMIENTO-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="birthday">Fecha de nacimiento:</label>
-                    <input type="date" class="col-sm-6 form-control form-control-sm" id="birthday" name="birthday" required />
+                    <input type="date" class="col-sm-6 form-control form-control-sm" id="birthday" name="birthday" required  max="" onclick="getCurrentDate()"/>
                 </div>
 
                 <!--SEXO-->
@@ -81,12 +81,12 @@ include 'public/header.php';
                 <!--NUMERO DE PLAZA-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="placeNumber">N&uacutemero de plaza:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="placeNumber" name="placeNumber" />
+                    <input onkeypress="return onlyNumbers(event)" minlength="2" maxlength="5" class="col-sm-6 form-control form-control-sm" type="text" id="placeNumber" name="placeNumber" />
                 </div>
 
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="margin-top: 50px">
 
                 <!--ESTADO-->
                 <div class="row professional-register" id="state">
@@ -99,14 +99,14 @@ include 'public/header.php';
 
                 <!--CONTACTO EMERGENCIA-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="emergencyContactName">Contacto en caso de emergencia:</label>
+                    <label class="col-sm-4 control-label small" for="emergencyContactName">Nombre contacto en caso de emergencia:</label>
                     <input  onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" type="text" id="emergencyContactName" name="emergencyContactName" required />
                 </div>
 
                 <!--NUM CONTACTO EMERGENCIA-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="emergencyContactNumber">N&uacutemero del contacto:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="emergencyContactNumber" name="emergencyContactNumber" required />
+                    <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-6 form-control form-control-sm" type="text" id="emergencyContactNumber" name="emergencyContactNumber" required />
                 </div>
 
                 <!--ESCOLARIDAD-->
@@ -130,7 +130,7 @@ include 'public/header.php';
                 <!--CODIGO COLEGIO-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="schoolCode">C&oacutedigo de colegio:</label>
-                    <input class="col-sm-6 form-control form-control-sm" type="number" id="schoolCode" name="schoolCode">
+                    <input onkeypress="return onlyNumbers(event)" minlength="2" maxlength="5" class="col-sm-6 form-control form-control-sm" type="text" id="schoolCode" name="schoolCode">
                 </div>
 
                 <!--PROVINCIA-->
@@ -155,8 +155,8 @@ include 'public/header.php';
 
                 <!--DIRECCION-->
                 <div class="row professional-register">
-                    <label class="col-sm-4 control-label small" for="address">Direcci&oacuten:</label>
-                    <textarea onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" id="address" name="address" rows="1" required></textarea>
+                    <label class="col-sm-4 control-label small" for="addressProfessional">Direcci&oacuten:</label>
+                    <textarea  class="col-sm-6 form-control form-control-sm" id="addressProfessional" name="addressProfessional" cols="40" rows="5" required></textarea>
                 </div>
 
             </div>
@@ -175,25 +175,7 @@ include 'public/header.php';
                             <div class="col-sm-4"></div>
 
                             <div class="col-sm-6 btn-action">
-                                <!--BT ACEPTAR-->
-                                <!--   <button type="button"  name="userLoginbtn" id="clientLoginbtn" href="javascript:;"
-                                           onclick="registerProfessional(
-                                                       $('#identification').val(),
-                                                       $('#password').val(), 
-                                                       $('#name').val(), 
-                                                       $('#firstLastName').val(),
-                                                       $('#secondLastName').val(), 
-                                                       '25348790',
-                                                           '25678743', '1995-03-30', 'F',
-                                                           'soltera', 456,
-                                                           1, 'Marvin Melendez',
-                                                           88888888, 'secundaria',
-                                                           'psicologa', 'CPH78',
-                                                           'Cartago', 'Alvarado', 'Pacayas',
-                                                           '800 metros este del BN');
-                                                   return false;" 
-                                           class="btn btn-success">Aceptar
-                                   </button> -->
+                                <!--BT ACEPTAR-->                            
                                 <input type="button" onclick="registerProfessional()" class="btn btn-success btn-sm" id="btn-accept" value="Aceptar"/>
 
                                 <!--BT CANCELAR-->
@@ -222,3 +204,8 @@ window.onload = function () {
 
 
 </script>
+
+<?php
+
+include_once 'public/footer.php';
+?>
