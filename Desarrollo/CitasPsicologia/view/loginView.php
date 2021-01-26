@@ -10,7 +10,7 @@ include 'public/header.php';
     <form id="login-form" class="bg1">
         <h3 class="titles" style="margin-right: 4px;" >Login</h3>
         <div class="form-group">
-            <input type="text" name="identification" id="identification" class="form-control" placeholder="Usuario">
+            <input type="number" name="identification" id="identification" class="form-control" placeholder="Usuario">
         </div>
         <div class="form-group">
             <input type="Password" name="password" id="password" class="form-control" placeholder="Contraseña">
