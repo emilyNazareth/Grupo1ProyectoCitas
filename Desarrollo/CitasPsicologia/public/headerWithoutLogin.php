@@ -29,38 +29,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css" />
     <script src="public/js/script.js" type="text/javascript"></script>
 
-    <?php
-    //Comprobamos si esta definida la sesión 'userAdministrator'.
-
-    if (isset($_SESSION['userAdministrator'])) {
-        if ($_SESSION['userAdministrator'] < time()) {
-            unset($_SESSION['userAdministrator']);
-            echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
-                            window.location.replace('?controlador=User&accion=showLoginView');
-                            </script>";
-        } else {
-            $_SESSION['userAdministrator'] = time() + 900;
-        }
-    } else {
-        //Comprobamos si esta definida la sesión 'userProfessional'.
-        if (isset($_SESSION['userProfessional'])) {
-            if ($_SESSION['userProfessional'] < time()) {
-                unset($_SESSION['userProfessional']);
-                echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
-                            window.location.replace('?controlador=User&accion=showLoginView');
-                            </script>";
-            } else {
-                $_SESSION['userProfessional'] = time() + 900;
-            }
-        } else {
-            echo "<script> alert('Debe logearse');
-        window.location.replace('?controlador=User&accion=showLoginView');
-        </script>";
-        }
-    }
-
-
-    ?>
 
     <!-- For validations -->
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
@@ -84,47 +52,49 @@
             max: jQuery.validator.format("Por favor ingrese máximo {0} caracteres"),
             min: jQuery.validator.format("Por favor ingrese mínimo {0} caracteres")
         });
+
     </script>
     <!-- For validations -->
 
     <script>
         function soloLetras(e) {
-            key = e.keyCode || e.which;
-            tecla = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = [];
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = [];
 
-            tecla_especial = false
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
-                    break;
-                }
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
             }
-
-            if (letras.indexOf(tecla) == -1 && !tecla_especial)
-                return false;
         }
 
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+        }
+        
         function onlyNumbers(e) {
-            key = e.keyCode || e.which;
-            tecla = String.fromCharCode(key).toLowerCase();
-            letras = " 0123456789";
-            especiales = [8, 37, 39, 46];
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " 0123456789";
+        especiales = [8, 37, 39, 46];
 
-            tecla_especial = false
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
-                    break;
-                }
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
             }
-
-            if (letras.indexOf(tecla) == -1 && !tecla_especial)
-                return false;
         }
-    </script>
-    <!-- For validations -->
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+        }
+                      
+        </script>
+        <!-- For validations -->
 
 
 </head>
