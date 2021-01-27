@@ -8,7 +8,7 @@ include 'public/header.php';
 <script src="public/js/script.js"></script>
 <center>
     <form id="login-form" class="bg1">
-        <h3 class="titles" style="margin-right: 4px;" >Login</h3>
+        <h3 class="titles" style="margin-top: 50px" >Login</h3>
         <div class="form-group">
             <input type="number" name="identification" id="identification" class="form-control" placeholder="Usuario">
         </div>
