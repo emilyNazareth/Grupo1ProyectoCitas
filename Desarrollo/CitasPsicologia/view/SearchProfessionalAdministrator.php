@@ -15,7 +15,7 @@ include 'public/header.php';
         <form id="login-form">
             <div class="form-group row">
                 <label for="identificationInput" class="col-sm-7 col-form-label-sm">C&eacutedula</label>
-                <input type="number" placeholder="#0###0###" pattern="\w\d\w \d\w\d" name="id" id="id" class="col-sm-5 form-control form-control-sm">
+                <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" placeholder="#0###0###" pattern="\w\d\w \d\w\d" name="id" id="id" class="col-sm-5 form-control form-control-sm">
             </div>
 
             <div class="form-group row">
