@@ -27,11 +27,12 @@
 
             .navbar1 a {
                 float: left;
-                font-size: 16px;
+                font-size: 15px;
                 color: white;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
+
             }
 
             .dropdown1 {
@@ -40,7 +41,7 @@
             }
 
             .dropdown1 .dropbtn1 {
-                font-size: 16px;  
+                font-size: 15px;  
                 border: none;
                 outline: none;
                 color: white;
@@ -52,6 +53,7 @@
 
             .navbar1 a:hover, .dropdown1:hover .dropbtn1 {
                 background-color: none;
+
             }
 
             .dropdown-content1 {
@@ -90,14 +92,14 @@
 
             }
             .titleAdminSection {
-                margin-top: 2em;
+                margin-top: 5em;
                 height: 400px;
-                background-image: url("../img/FondoSAPSO.png");
+                background-image: url("public/img/FondoSAPSO.png");
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
                 color: white;
-                padding-top: 2em;
+                padding-top: 10em;
                 text-align: center;
             }
             abbr[titleAdminSection]
@@ -106,28 +108,27 @@
     <body class="titleAdminSection">
 
 
-        <div class="navbar1"> 
-            <a href="#reportes">Reportes</a>
-            <div class="dropdown1">
-                <button class="dropbtn1">Administrar Profesional 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content1">
-                    <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
-                    <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
-                </div>
-            </div> 
-            <div class="dropdown1">
-                <button class="dropbtn1">Administrar Cita 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content1">
-                    <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
-                    <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
-                </div>
-            </div> 
-            <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
-
+        <div class="navbar1" style="margin-top: -150px"> 
+                <a href="#reportes">Reportes</a>
+                <div class="dropdown1">
+                    <button class="dropbtn1">Administrar Profesional 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content1">
+                        <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
+                        <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
+                    </div>
+                </div> 
+                <div class="dropdown1">
+                    <button class="dropbtn1">Administrar Cita 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content1">
+                        <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
+                        <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
+                    </div>
+                </div> 
+                <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
         </div>
 
 
