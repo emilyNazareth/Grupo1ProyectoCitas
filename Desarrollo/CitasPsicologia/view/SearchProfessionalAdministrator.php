@@ -4,8 +4,8 @@ include 'public/header.php';
 ?>
 
 <center>
+    <br>
     <h3 class="titles">Profesional</h3>
-
 </center>
 
 <center>
@@ -15,9 +15,9 @@ include 'public/header.php';
         <form id="login-form">
             <div class="form-group row">
                 <label for="identificationInput" class="col-sm-7 col-form-label-sm">C&eacutedula</label>
-
-                <input type="number" name="id" id="id" class="col-sm-5 form-control form-control-sm">
+                <input type="number" placeholder="#0###0###" pattern="\w\d\w \d\w\d" name="id" id="id" class="col-sm-5 form-control form-control-sm">
             </div>
+
             <div class="form-group row">
                 <label for="nameInput" class="col-sm-7 col-form-label-sm">Nombre</label>
                 <input onkeypress="return soloLetras(event)" type="text" name="nameInput" id="name" class="col-sm-5 form-control form-control-sm">
@@ -29,10 +29,13 @@ include 'public/header.php';
             <div>
                 <a class="btn btn-success btn-sm" id="consultDate" onclick="searchProfessional()" name="consultDate">Buscar</a>
             </div>
-            <div>
-                <span id="message" style="color:black;" ;></span>
-            </div>
+            <br>
+
+
         </form>
+        <div class="alert-danger justify-content-end">
+            <span id="message" style="color:black;" ;></span>
+        </div>
 </center>
 <br />
 <div class="row condultFunctionaryTable">
@@ -42,11 +45,11 @@ include 'public/header.php';
     <table id="tbl" class="table table-bordered table-striped table-hover table-sm table-responsive-md">
         <thead>
             <tr>
-                <th scope="col">C&eacutedula</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Borrar</th>
+                <th scope="col">C&eacutedula <i class="fas fa-id-card"></i> </th>
+                <th scope="col">Nombre <i class="fas fa-id-badge"></i> </th>
+                <th scope="col">Apellidos <i class="far fa-id-badge"></i></i></th>
+                <th scope="col">Modificar <i class="fas fa-edit"></i> </th>
+                <th scope="col">Borrar <i class="fas fa-trash-alt"></i> </th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -129,6 +132,12 @@ include 'public/header.php';
             };
         };
         if (cedula != -1) {
+            var cedulaAux = '';
+            cedulaAux = cedula.toString();
+            if (cedulaAux.length < 9 || cedulaAux.length > 9) {
+                $("#message").html("*El campo Cédula debe se de nueve caractéres");
+                return;
+            };
             if (cedula < 0) {
                 $("#message").html("*El campo Cédula es inválido");
                 return;
