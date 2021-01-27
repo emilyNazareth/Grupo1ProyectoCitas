@@ -114,7 +114,20 @@ include 'public/header.php';
         }
 
         if (nombre == "" && cedula == -1 && apellido == "") {
-            $("#message").html("*No se especificó ningún tipo de búsqueda");;
+            $.ajax({
+                url: '?controlador=User&accion=showSearchProfessionalAdministrator',
+                success: function(response) {
+                    var data = response;
+
+                    if (data == 0) {
+                        $("#message").html("*No se encontraron registros");
+                    } else {
+                        $("#tbody").html(data);
+                    }
+
+
+                }
+            });
             return;
         };
 
@@ -156,9 +169,14 @@ include 'public/header.php';
             type: 'post',
             success: function(response) {
                 var data = response;
-                //alert(data);
 
-                $("#tbody").html(data);
+                if (data == 0) {
+                    $("#message").html("*No se encontraron registros");
+                } else {
+                    $("#tbody").html(data);
+                }
+
+
 
 
             }
