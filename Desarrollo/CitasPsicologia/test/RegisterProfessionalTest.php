@@ -1,11 +1,9 @@
 <?php
 
-include 'controller/UserController.php';
-include 'model/UserModel.php';
-
  class RegisterProfessionalTest{
 
     public function testRegisterProfessionalModel(){
+        require 'model/UserModel.php';
         $model=UserModel::singleton();
 
         // call without parameters
@@ -33,6 +31,12 @@ include 'model/UserModel.php';
         
         /* Se realizaron pruebas a nivel de interfaz donde desde el controlador se recibe un mensaje del 
          * estado de la insercion*/
+    }
+    
+    public function testDeleteProfessionalModel() {
+        require 'controller/UserController.php';
+        $con= new UserController();
+        $con->deleteProfessional();
     }
 
  }
