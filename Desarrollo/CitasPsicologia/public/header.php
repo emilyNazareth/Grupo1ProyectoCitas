@@ -10,7 +10,9 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="public/img/icon.jpg" />
 
-
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Jquery  -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -39,7 +41,7 @@
             $_SESSION['userAdministrator'] = time() + 900;
         }
     }
-    
+
     //Comprobamos si esta definida la sesión 'userProfessional'.
     if (isset($_SESSION['userProfessional'])) {
         if ($_SESSION['userProfessional'] < time()) {
@@ -52,10 +54,10 @@
         }
     }
     ?>
-    
+
     <!-- For validations -->
-        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-        <script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script>
         jQuery.extend(jQuery.validator.messages, {
             required: "*",
             remote: "Please fix this field.",
@@ -75,17 +77,10 @@
             max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
             min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
         });
-        </script>
-        <!-- For validations -->
+    </script>
+    <!-- For validations -->
 
 </head>
 
 <body class="title">
     <div id="resultado"></div>
-
-
-
-
-
-
-

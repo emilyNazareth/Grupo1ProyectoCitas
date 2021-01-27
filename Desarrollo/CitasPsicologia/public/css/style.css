@@ -164,34 +164,50 @@ html {
     text-align: center;
 }
 
-.professional-register{
-    color:black !important;
+.professional-register {
+    color: black !important;
 }
 
-.title-professional-register{
-    color:orange !important;
+.title-professional-register {
+    color: orange !important;
     font-weight: bold;
 }
 
-#address{
+#address {
     padding-top: 10%;
 }
 
-.buttons-professional-register{
+.buttons-professional-register {
     margin-top: 2em;
 }
 
-.btn-action{
+.btn-action {
     text-align: right;
     padding-right: 0;
 }
 
-.btn-action #btn-cancel{
+.btn-action #btn-cancel {
     margin-left: 5em;
 }
-    
-label.error{
+
+label.error {
     font-weight: bold;
     color: red;
     padding-left: 0.5em;
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
 }
