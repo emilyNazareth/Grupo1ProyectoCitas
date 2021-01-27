@@ -100,6 +100,8 @@ html {
     color: white;
     background-color: #f47424;
     margin-right: 15px;
+    margin-left: 30px;
+    margin-top: 50px;
 }
 
 .titles {
@@ -173,9 +175,11 @@ html {
     font-weight: bold;
 }
 
+
 #address {
     padding-top: 10%;
 }
+
 
 .buttons-professional-register {
     margin-top: 2em;
@@ -196,18 +200,3 @@ label.error {
     padding-left: 0.5em;
 }
 
-.svg-icon {
-    width: 1em;
-    height: 1em;
-}
-
-.svg-icon path,
-.svg-icon polygon,
-.svg-icon rect {
-    fill: #4691f6;
-}
-
-.svg-icon circle {
-    stroke: #4691f6;
-    stroke-width: 1;
-}
