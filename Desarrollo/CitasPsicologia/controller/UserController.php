@@ -162,4 +162,49 @@ class UserController
     }
         
 
+    public function updateProfessional() {
+        require 'model/UserModel.php';
+        $id = $_POST['cedula'];
+        $contrasena = $_POST['contrasena'];
+        $nombre = $_POST['nombre'];
+        $primer_apellido = $_POST['primerApellido'];
+        $segundo_apellido = $_POST['segundoApellido'];
+        $telefono_personal = $_POST['telPersonal'];
+        $telefono_habitacion = $_POST['telHabitacion'];
+        $estado_civil = $_POST['estadoCivil'];
+        $estado = $_POST['estado'];
+        $contacto_emergencia = $_POST['contactoEmergancia'];
+        $contacto_emergencia_numero = $_POST['numeroContactoEmergancia'];
+        $escolaridad = $_POST['escolaridad'];
+        $especialidad = $_POST['especialidad'];
+        $provincia = $_POST['provincia'];
+        $canton = $_POST['canton'];
+        $distrito = $_POST['distrito'];
+        $direccion = $_POST['direccion'];
+        
+        $user = UserModel::singleton();
+        $result = $user->update_professional( $id,
+            $contrasena,
+            $nombre,
+            $primer_apellido,
+            $segundo_apellido,
+            $telefono_personal,
+            $telefono_habitacion,
+            $estado_civil,
+            $estado,
+            $contacto_emergencia,
+            $contacto_emergencia_numero,
+            $escolaridad,
+            $especialidad,
+            $provincia,
+            $canton,
+            $distrito,
+            $direccion);
+        if ($result == 1) {
+            echo ('El registro ha sido actualizado');
+        } else {
+            echo ('El registro no existe');
+        }
+    }//end updateProfessional
+
 }

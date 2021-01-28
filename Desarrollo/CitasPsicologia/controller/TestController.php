@@ -20,4 +20,9 @@ class TestController {
         $registerProfessionalTest->testDeleteProfessionalModel();
     }
     
+        public function testUpdateProfessional() {
+        require 'test/RegisterProfessionalTest.php';
+        $registerProfessionalTest=new RegisterProfessionalTest();
+        $registerProfessionalTest->testUpdateProfessionalModel();
+    }
 }

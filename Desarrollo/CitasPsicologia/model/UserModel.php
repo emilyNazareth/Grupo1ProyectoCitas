@@ -131,4 +131,50 @@ class UserModel
         $result = $query->fetchAll();
         return $result[0][0];
     }
+
+public function update_professional(
+            $id,
+            $contrasena,
+            $nombre,
+            $primer_apellido,
+            $segundo_apellido,
+            $telefono_personal,
+            $telefono_habitacion,
+            $estado_civil,
+            $estado,
+            $contacto_emergencia,
+            $contacto_emergencia_numero,
+            $escolaridad,
+            $especialidad,
+            $provincia,
+            $canton,
+            $distrito,
+            $direccion) {
+
+        $query = $this->db->prepare("CALL sp_modificar_profesional("
+                . $contrasena . "','
+    " . $nombre . "','
+    " . $primer_apellido . "','
+    " . $segundo_apellido . "','
+    " . $telefono_personal . "','
+    " . $telefono_habitacion . "','
+    " . $estado_civil . "','
+    " . $estado . "','
+    " . $contacto_emergencia . "','
+    " . $contacto_emergencia_numero . "','
+    " . $escolaridad . "','
+    " . $especialidad . "','
+    " . $provincia . "','
+    " . $canton . "','
+    " . $distrito . "','
+    " . $direccion . "')");
+        
+       $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        return $result;
+    }//end function
+
+
 }
