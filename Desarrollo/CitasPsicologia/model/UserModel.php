@@ -124,4 +124,11 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
+    
+    public function delete_professional($id){
+        $query = $this->db->prepare("CALL sp_delete_professional(".$id.")");
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result[0][0];
+    }
 }

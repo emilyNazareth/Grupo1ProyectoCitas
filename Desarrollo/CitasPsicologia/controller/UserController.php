@@ -147,4 +147,19 @@ class UserController
 
         echo $resultado;
     }
+
+    
+    public function deleteProfessional()
+    {
+        require 'model/UserModel.php';
+        $user = UserModel::singleton();
+        $result = $user->delete_professional($_POST['identification']);
+        if ($result==1) {
+            echo ('El registro ha sido eliminado');
+        }else{
+            echo ('El registro no existe');
+        }
+    }
+        
+
 }
