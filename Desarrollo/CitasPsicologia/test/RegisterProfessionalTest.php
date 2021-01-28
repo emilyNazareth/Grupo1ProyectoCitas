@@ -39,4 +39,11 @@
         $con->deleteProfessional();
     }
 
+        public function testUpdateProfessionalModel() {
+            require 'controller/UserController.php';
+        $con= new UserController();
+        $con->updateProfessional();
+
+    }
+
  }
