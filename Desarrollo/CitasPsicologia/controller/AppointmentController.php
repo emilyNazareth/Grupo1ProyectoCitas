@@ -12,7 +12,7 @@ class AppointmentController {
     //PROVIDER
 
     public function showCheckHistory() {
-        $this->view->show("checkHistory.php", null);
+        $this->view->show("checkHistoryView.php", null);
     }
 
 }

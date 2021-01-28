@@ -3,20 +3,22 @@
 include 'public/header.php';
 ?>
 
-<center>
-    <h3 class="titles">Citas</h3>
-    <p class="titles">Seleccione el tipo de b&uacutesqueda</p>
-</center>
 
 <center>
     <form id="search-form" action="/User/SearchAppointmentFunctionary" method="post">
-        <div class="form-group row">
-            <label for="_FunctionaryId" class="col-sm-4 col-form-label-sm" style="color: black">Cedula</label>
-            <input type="text" name="_FunctionaryId" id="_FunctionaryId" class="col-sm-3 form-control form-control-sm" required placeholder="Cédula">
+
+       <div  id="login-form" class="bg1">
+            <h3 class="titles">Citas</h3>
+            <p class="titles">Seleccione el tipo de b&uacutesqueda</p>
+             </div>
+      
+        <div class="form-group row"style="margin-left: 100px">
+            <label for="_FunctionaryId" class="col-sm-4 col-form-label-sm" style="color: black">Cédula</label>
+            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="_FunctionaryId" id="_FunctionaryId" class="col-sm-3 form-control form-control-sm" required placeholder="Cédula">
         </div>
-        <div class="form-group row">
-            <label for="_IdAppointment" class="col-sm-4 col-form-label-sm" style="color: black">Consecutivo</label>
-            <input type="text" name="_IdAppointment" id="_IdAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Consecutivo">
+        <div class="form-group row" style="margin-left: 100px">
+            <label for="_IdAppointment" class="col-sm-4 col-form-label-sm" style="color: black">Código de cita</label>
+            <input type="text" onkeypress="return onlyNumbers(event)"  minlength="5" maxlength="5 name="name="_IdAppointment" id="_IdAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Código de cita">
         </div>
         <div>
             <button class="btn btn-success btn-sm" type="submit">

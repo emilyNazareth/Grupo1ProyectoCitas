@@ -1,6 +1,6 @@
 <?php
 
-include 'public/header.php';
+include 'public/headerWithoutLogin.php';
 ?>
 
 
@@ -8,9 +8,9 @@ include 'public/header.php';
 <script src="public/js/script.js"></script>
 <center>
     <form id="login-form" class="bg1">
-        <h3 class="titles" style="margin-right: 4px;" >Login</h3>
+        <h3 class="titles" style="margin-top: 50px" >Login</h3>
         <div class="form-group">
-            <input type="text" name="identification" id="identification" class="form-control" placeholder="Usuario">
+            <input type="text"  onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="identification" id="identification" class="form-control" placeholder="Usuario">
         </div>
         <div class="form-group">
             <input type="Password" name="password" id="password" class="form-control" placeholder="Contraseña">

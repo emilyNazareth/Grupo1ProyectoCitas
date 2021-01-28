@@ -1,49 +1,154 @@
-<?php
-
-include_once 'public/header.php';
-?>
 
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Citas en linea</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <meta name="description" content="Citas de psicologia" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<nav class="navbar navbar-expand-lg small" style="margin-left: 80px">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">                      
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Administrar Profesional
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
-                    <!--@Html.ActionLink("Registrar Profesional", "MainProfessionalRegisterAdministrator", "User", null, new { @class = "dropdown-item" })-->
-                    <!--@Html.ActionLink("Buscar Profesional", "SearchProfessionalAdministrator", "User", null, new { @class = "dropdown-item" })-->
-                    <a class="dropdown-item" href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
+
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .navbar1 {
+                overflow: hidden;
+                background-color: #f47424;
+            }
+
+            .navbar1 a {
+                float: left;
+                font-size: 15px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+
+            }
+
+            .dropdown1 {
+                float: left;
+                overflow: hidden;
+            }
+
+            .dropdown1 .dropbtn1 {
+                font-size: 15px;  
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+            .navbar1 a:hover, .dropdown1:hover .dropbtn1 {
+                background-color: none;
+
+            }
+
+            .dropdown-content1 {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content1 a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+            .dropdown-content1 a:hover {
+                background-color: #f47424;
+            }
+
+            .dropdown1:hover .dropdown-content1 {
+                display: block;
+            }
+            .text-muted {
+                color: #777;
+            }
+            .container1 {
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: auto;
+
+            }
+            .titleAdminSection {
+                margin-top: 5em;
+                height: 400px;
+                background-image: url("public/img/FondoSAPSO.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: white;
+                padding-top: 10em;
+                text-align: center;
+            }
+            abbr[titleAdminSection]
+        </style>
+    </head>
+    <body class="titleAdminSection">
+
+
+        <div class="navbar1" style="margin-top: -150px"> 
+                <a href="#reportes">Reportes</a>
+                <div class="dropdown1">
+                    <button class="dropbtn1">Administrar Profesional 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content1">
+                        <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
+                        <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
+                    </div>
+                </div> 
+                <div class="dropdown1">
+                    <button class="dropbtn1">Administrar Cita 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content1">
+                        <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
+                        <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
+                    </div>
+                </div> 
+                <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
+        </div>
+
+
+
+
+        <footer id="contactos" class="text-muted" style="margin-top: 1%;">
+            <center>
+                <div id="nameEmail" class="container1">
+                    <h5>Citas de psicología</h5>
+                    <h6>Emily Meléndez</h6>
+                    <h6>Yerlin Leal</h6>
+                    <h6>Luis Hidalgo</h6>
+                    <h6>Alejandro Quesada</h6>
+                    <h6>Curso Gestión Proyectos Fines académicos</h6>         
+                    <h7>2021</h7>
+
+
 
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Administrar Cita
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <!--@Html.ActionLink("Asignar cita", "MainFunctionaryRegisterAdministrator", "Appointment", null, new { @class = "dropdown-item" })-->
-                    <a class="dropdown-item" href="?controlador=Index&accion=showInfo">Asignar cita</a>
-                    <!--@Html.ActionLink("Buscar cita", "ConsultDateAdministrator", "User", null, new { @class = "dropdown-item" })-->
-                    <a class="dropdown-item" href="?controlador=Index&accion=showInfo">Buscar cita</a>
-
-                </div>
-            </li>            
-            <li class="nav-item">
-                <!--@Html.ActionLink("Cerrar Sesión", "LogOut", "User", null, new { @class = "nav-link" })-->
-                 <a class="nav-link" href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<?php
-
-include_once 'public/footer.php';
-?>
+            </center>
+        </footer>
+    </body>
+</html>

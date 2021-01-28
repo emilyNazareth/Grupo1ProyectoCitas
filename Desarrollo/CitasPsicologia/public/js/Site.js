@@ -70,67 +70,127 @@ function activeDistrict() {
     );
 }
 
-function registerProfessional() {
-    
-    if($("#form-professional-register").valid()){
-       var parametros = {"identification": $("#identification").val(),
-        "password": $("#password").val(), "name": $("#name").val(), 
-        "firstLastName": $("#firstLastName").val(), "secondLastName": $("#secondLastName").val(), 
-        "personalPhone": $("#personalPhone").val(), "roomPhone": $("#roomPhone").val(), 
-        "birthday": $("#birthday").val(), "gender": $("#gender").val(), "civilStatus": $("#civilStatus").val(),
-        "placeNumber": $("#placeNumber").val(), "status": $("#status").val(),
-        "emergencyContactName": $("#emergencyContactName").val(),
-        "emergencyContactNumber": $("#emergencyContactNumber").val(),
-        "scholarship": $("#scholarship").val(), "specialty": $("#specialty").val(),
-        "schoolCode": $("#schoolCode").val(), "province": $("#province").val(),
-        "canton": $("#canton").val(), "district": $("#district").val(), "address": $("#address").val()};
-    $.ajax(
-        {
-            data: parametros,
-            url: '?controlador=User&accion=registerProfessional',
-            type: 'post',
 
-            beforeSend: function () {
-                $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
-                //location.replace("?controlador=Index&accion=showRegisterProfessionalView");
-            },
-            success: function (response) {
-                $("#resultado").html("<div class='alert alert-success'>"+response+"</div>");
-            },
-            error: function(e){
-                 $("#resultado").html("<div class='alert alert-danger'>"+e+"</div>");
-            }
+function registerProfessional() {
+    if (isFieldEmpty($("#identification").val()) ||
+            isFieldEmpty($("#password").val()) ||
+            isFieldEmpty($("#name").val()) ||
+            isFieldEmpty($("#firstLastName").val()) ||
+            isFieldEmpty($("#secondLastName").val()) ||
+            isFieldEmpty($("#personalPhone").val()) ||
+            isFieldEmpty($("#roomPhone").val()) ||
+            isFieldEmpty($("#birthday").val()) ||
+            isFieldEmpty($("#gender").val()) ||
+            isFieldEmpty($("#civilStatus").val()) ||
+            isFieldEmpty($("#placeNumber").val()) ||
+            isFieldEmpty($("#status").val()) ||
+            isFieldEmpty($("#emergencyContactName").val()) ||
+            isFieldEmpty($("#emergencyContactNumber").val()) ||
+            isFieldEmpty($("#scholarship").val()) ||
+            isFieldEmpty($("#specialty").val()) ||
+            isFieldEmpty($("#schoolCode").val()) ||
+            isFieldEmpty($("#province").val()) ||
+            isFieldEmpty($("#canton").val()) ||
+            isFieldEmpty($("#district").val()) ||
+            isFieldEmpty($("#addressProfessional").val())) {
+        $("#resultado").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
+    } else {
+        $("#resultado").html("");
+        if ($("#form-professional-register").valid()) {
+            var parametros = {"identification": $("#identification").val(),
+                "password": $("#password").val(), "name": $("#name").val(),
+                "firstLastName": $("#firstLastName").val(), "secondLastName": $("#secondLastName").val(),
+                "personalPhone": $("#personalPhone").val(), "roomPhone": $("#roomPhone").val(),
+                "birthday": $("#birthday").val(), "gender": $("#gender").val(), "civilStatus": $("#civilStatus").val(),
+                "placeNumber": $("#placeNumber").val(), "status": $("#status").val(),
+                "emergencyContactName": $("#emergencyContactName").val(),
+                "emergencyContactNumber": $("#emergencyContactNumber").val(),
+                "scholarship": $("#scholarship").val(), "specialty": $("#specialty").val(),
+                "schoolCode": $("#schoolCode").val(), "province": $("#province").val(),
+                "canton": $("#canton").val(), "district": $("#district").val(),
+                "addressProfessional": $("#addressProfessional").val()};
+
+            $.ajax(
+                    {
+                        data: parametros,
+                        url: '?controlador=User&accion=registerProfessional',
+                        type: 'post',
+
+                        beforeSend: function () {
+                            $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+                        },
+                        success: function (response) {
+                            cleanFormRegisterProfessional();
+                            $("#resultado").html("<div class='alert alert-success'>" + response + "</div>");
+
+                        },
+                        error: function (e) {
+                            $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
+                        }
+                    }
+            );
         }
-    );
-    }else{
-        $("#resultado").html("<div class='alert alert-danger'>* Algunos campos son requeridos</div>");
+
     }
 }
 
-function cleanFormRegisterProfessional(){
-    $("#identification").val(""),
-    $("#password").val(""),
-    $("#name").val(""), 
-    $("#firstLastName").val(""),
-    $("#secondLastName").val(""), 
-    $("#personalPhone").val(""),
-    $("#roomPhone").val(""), 
-    $("#birthday").val(""),
-    $("#gender").val(""),
-    $("#civilStatus").val(""),
-    $("#placeNumber").val(""),
-    $("#status").val(""),
-    $("#emergencyContactName").val(""),
-    $("#emergencyContactNumber").val(""),
-    $("#scholarship").val(""),
-    $("#specialty").val(""),
-    $("#schoolCode").val(""),
-    $("#province").val(""),
-    $("#canton").val(""),
-    $("#district").val(""),
-    $("#address").val("");
+function cleanFormRegisterProfessional() {
+    $("#identification").val("");
+    $("#password").val("");
+    $("#name").val("");
+    $("#firstLastName").val("");
+    $("#secondLastName").val("");
+    $("#personalPhone").val("");
+    $("#roomPhone").val("");
+    $("#birthday").val("");
+    $("#gender").val("");
+    $("#civilStatus").val("");
+    $("#placeNumber").val("");
+    $("#status").val("");
+    $("#emergencyContactName").val("");
+    $("#emergencyContactNumber").val("");
+    $("#scholarship").val("");
+    $("#specialty").val("");
+    $("#schoolCode").val("");
+    $("#province").val("");
+    $("#canton").val("");
+    $("#district").val("");
+    $("#addressProfessional").val("");
     $("#district").prop("disabled", true);
     $("#canton").prop("disabled", true);
     $("#resultado").html("");
 }
 
+function isFieldEmpty(fieldValue) {
+    if (fieldValue.trim() === "") {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+function getCurrentDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; 
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("birthday").setAttribute("max", today);
+}
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}

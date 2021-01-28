@@ -39,11 +39,11 @@ class UserController
 
 
                 if ($result == 1) { //admi  
-                    $_SESSION['userAdministrator'] = time()+900;
+                    $_SESSION['userAdministrator'] = time() + 900;
                     echo  '1';
                 } elseif ($result == 2) { //profesional
 
-                    $_SESSION['userProfessional'] = time()+900;
+                    $_SESSION['userProfessional'] = time() + 900;
                     echo '2';
                 } else {
                     echo '3';
@@ -70,31 +70,30 @@ class UserController
             echo ('El profesional ya existe en el sistema, digite otro');
         } else {
             $professional->register_professional(
-            $_POST['identification'],
-            $_POST['password'],
-            $_POST['name'],
-            $_POST['firstLastName'],
-            $_POST['secondLastName'],
-            $_POST['personalPhone'],
-            $_POST['roomPhone'],
-            $_POST['birthday'],
-            $_POST['gender'],
-            $_POST['civilStatus'],
-            $_POST['placeNumber'],
-            $_POST['status'],
-            $_POST['emergencyContactName'],
-            $_POST['emergencyContactNumber'],
-            $_POST['scholarship'],
-            $_POST['specialty'],
-            $_POST['schoolCode'],
-            $_POST['province'],
-            $_POST['canton'],
-            $_POST['district'],
-            $_POST['address']
-        );
-        echo ('Profesional Registrado');
+                $_POST['identification'],
+                $_POST['password'],
+                $_POST['name'],
+                $_POST['firstLastName'],
+                $_POST['secondLastName'],
+                $_POST['personalPhone'],
+                $_POST['roomPhone'],
+                $_POST['birthday'],
+                $_POST['gender'],
+                $_POST['civilStatus'],
+                $_POST['placeNumber'],
+                $_POST['status'],
+                $_POST['emergencyContactName'],
+                $_POST['emergencyContactNumber'],
+                $_POST['scholarship'],
+                $_POST['specialty'],
+                $_POST['schoolCode'],
+                $_POST['province'],
+                $_POST['canton'],
+                $_POST['district'],
+                $_POST['addressProfessional']
+            );
+            echo ('Profesional Registrado');
         }
-        
     }
 
     public function searchProfessional()
@@ -106,20 +105,49 @@ class UserController
         $user = UserModel::singleton();
         $data['users'] = $user->searchProfessional($identification, $name, $lastName);
 
-        //echo json_encode($data);  probar
         $resultado = "";
-        foreach ($data['users'] as $value) {
-            $resultado .= "<tr>";
-            $resultado .= '<td style="display:none;">' . $value[0] . '</td>';
-            $resultado .= '<td>' . $value[1] . '</td>';
-            $resultado .= '<td>' . $value[2] . '</td>';
-            $resultado .= '<td>' . $value[3] . '</td>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
-            $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
-            $resultado .= "</tr>";
+        if (empty($data['users'])) {
+            $resultado = '0';
+        } else {
+            foreach ($data['users'] as $value) {
+                $resultado .= "<tr>";
+                $resultado .= '<td style="display:none;">' . $value[0] . '</td>';
+                $resultado .= '<td>' . $value[1] . '</td>';
+                $resultado .= '<td>' . $value[2] . '</td>';
+                $resultado .= '<td>' . $value[3] . '</td>';
+                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
+                $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
+                $resultado .= "</tr>";
+            }
         }
+
         echo $resultado;
     }
+    public function showSearchProfessionalAdministrator()
+    {
+        require 'model/UserModel.php';
+        $professional = UserModel::singleton();
+        $data['users'] =  $professional->getProfessionals();
+
+        $resultado = "";
+        if (empty($data['users'])) {
+            $resultado = '0';
+        } else {
+            foreach ($data['users'] as $value) {
+                $resultado .= "<tr>";
+                $resultado .= '<td style="display:none;">' . $value[0] . '</td>';
+                $resultado .= '<td>' . $value[1] . '</td>';
+                $resultado .= '<td>' . $value[2] . '</td>';
+                $resultado .= '<td>' . $value[3] . '</td>';
+                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
+                $resultado .= '<td><button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
+                $resultado .= "</tr>";
+            }
+        }
+
+        echo $resultado;
+    }
+
     
     public function deleteProfessional()
     {
@@ -133,4 +161,5 @@ class UserController
         }
     }
         
+
 }
