@@ -169,7 +169,7 @@ public function update_professional(
     " . $distrito . "','
     " . $direccion . "')");
         
-       $query->execute();
+        $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
 

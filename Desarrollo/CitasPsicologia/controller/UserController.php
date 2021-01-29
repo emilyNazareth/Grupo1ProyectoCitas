@@ -84,7 +84,7 @@ class UserController {
                 $resultado .= '<td>' . $value[1] . '</td>';
                 $resultado .= '<td>' . $value[2] . '</td>';
                 $resultado .= '<td>' . $value[3] . '</td>';
-                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
+                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional(' . $value[1] . ')">Modificar</a></td>';
                 $resultado .= '<td><button onclick="deleteProfessional(' . $value[1] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
                 $resultado .= "</tr>";
             }
@@ -108,7 +108,7 @@ class UserController {
                 $resultado .= '<td>' . $value[1] . '</td>';
                 $resultado .= '<td>' . $value[2] . '</td>';
                 $resultado .= '<td>' . $value[3] . '</td>';
-                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>';
+                $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProffesional(' . $value[1] . ')">Modificar</a></td>';
                 $resultado .= '<td><button onclick="deleteProfessional(' . $value[1] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">Eliminar</button ></td>';
                 $resultado .= "</tr>";
             }
@@ -126,6 +126,13 @@ class UserController {
         } else {
             echo ('El registro no existe');
         }
+    }
+    public function showUpdateProfessional() {
+
+        require 'model/UserModel.php';
+        $professional = UserModel::singleton();
+        $data['professional'] = null;
+        $this->view->show("UpdateProfessionalAdministrator.php", $data);
     }
 
     public function updateProfessional() {

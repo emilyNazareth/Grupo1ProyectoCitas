@@ -64,7 +64,7 @@ include 'public/header.php';
                         <td><?php echo $item['cedula']; ?></td>
                         <td><?php echo $item['nombre']; ?></td>
                         <td><?php echo $item['apellido']; ?></td>
-                        <td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>
+                        <td><a class=" btn btn-success btn-sm" onclick="modifyProffesional(<?php echo $item['cedula']; ?>)">Modificar</a></td>
                         <td>
                             <button onclick="deleteProfessional(<?php echo $item['cedula']; ?>)" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
                                 Eliminar

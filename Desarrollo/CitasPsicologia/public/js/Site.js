@@ -1,29 +1,25 @@
 function loadGeographicInfo() {
-    $.ajax(
-            {
-                dataType: 'json',
-                url: "https://ubicaciones.paginasweb.cr/provincias.json",
-                data: {},
-                success: function (response) {
-                    loadProvinces(response);
-                }
-            }
-    );
+    $.ajax({
+        dataType: 'json',
+        url: "https://ubicaciones.paginasweb.cr/provincias.json",
+        data: {},
+        success: function(response) {
+            loadProvinces(response);
+        }
+    });
 }
 
 function activeCanton() {
-    $.ajax(
-            {
-                dataType: 'json',
-                url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/cantones.json",
-                data: {},
-                success: function (response) {
-                    loadCantons(response);
-                    $("#district").html("");
-                    $("#district").prop("disabled", true);
-                }
-            }
-    );
+    $.ajax({
+        dataType: 'json',
+        url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/cantones.json",
+        data: {},
+        success: function(response) {
+            loadCantons(response);
+            $("#district").html("");
+            $("#district").prop("disabled", true);
+        }
+    });
 }
 
 function loadProvinces(provinces) {
@@ -58,77 +54,84 @@ function loadDistricts(districts) {
 }
 
 function activeDistrict() {
-    $.ajax(
-            {
-                dataType: 'json',
-                url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/canton/" + $("#canton").find(':selected').data('num') + "/distritos.json",
-                data: {},
-                success: function (response) {
-                    loadDistricts(response);
-                }
-            }
-    );
+    $.ajax({
+        dataType: 'json',
+        url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/canton/" + $("#canton").find(':selected').data('num') + "/distritos.json",
+        data: {},
+        success: function(response) {
+            loadDistricts(response);
+        }
+    });
 }
 
 
 function registerProfessional() {
     if (isFieldEmpty($("#identification").val()) ||
-            isFieldEmpty($("#password").val()) ||
-            isFieldEmpty($("#name").val()) ||
-            isFieldEmpty($("#firstLastName").val()) ||
-            isFieldEmpty($("#secondLastName").val()) ||
-            isFieldEmpty($("#personalPhone").val()) ||
-            isFieldEmpty($("#roomPhone").val()) ||
-            isFieldEmpty($("#birthday").val()) ||
-            isFieldEmpty($("#gender").val()) ||
-            isFieldEmpty($("#civilStatus").val()) ||
-            isFieldEmpty($("#placeNumber").val()) ||
-            isFieldEmpty($("#status").val()) ||
-            isFieldEmpty($("#emergencyContactName").val()) ||
-            isFieldEmpty($("#emergencyContactNumber").val()) ||
-            isFieldEmpty($("#scholarship").val()) ||
-            isFieldEmpty($("#specialty").val()) ||
-            isFieldEmpty($("#schoolCode").val()) ||
-            isFieldEmpty($("#province").val()) ||
-            isFieldEmpty($("#canton").val()) ||
-            isFieldEmpty($("#district").val()) ||
-            isFieldEmpty($("#addressProfessional").val())) {
+        isFieldEmpty($("#password").val()) ||
+        isFieldEmpty($("#name").val()) ||
+        isFieldEmpty($("#firstLastName").val()) ||
+        isFieldEmpty($("#secondLastName").val()) ||
+        isFieldEmpty($("#personalPhone").val()) ||
+        isFieldEmpty($("#roomPhone").val()) ||
+        isFieldEmpty($("#birthday").val()) ||
+        isFieldEmpty($("#gender").val()) ||
+        isFieldEmpty($("#civilStatus").val()) ||
+        isFieldEmpty($("#placeNumber").val()) ||
+        isFieldEmpty($("#status").val()) ||
+        isFieldEmpty($("#emergencyContactName").val()) ||
+        isFieldEmpty($("#emergencyContactNumber").val()) ||
+        isFieldEmpty($("#scholarship").val()) ||
+        isFieldEmpty($("#specialty").val()) ||
+        isFieldEmpty($("#schoolCode").val()) ||
+        isFieldEmpty($("#province").val()) ||
+        isFieldEmpty($("#canton").val()) ||
+        isFieldEmpty($("#district").val()) ||
+        isFieldEmpty($("#addressProfessional").val())) {
         $("#resultado").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
     } else {
         $("#resultado").html("");
         if ($("#form-professional-register").valid()) {
-            var parametros = {"identification": $("#identification").val(),
-                "password": $("#password").val(), "name": $("#name").val(),
-                "firstLastName": $("#firstLastName").val(), "secondLastName": $("#secondLastName").val(),
-                "personalPhone": $("#personalPhone").val(), "roomPhone": $("#roomPhone").val(),
-                "birthday": $("#birthday").val(), "gender": $("#gender").val(), "civilStatus": $("#civilStatus").val(),
-                "placeNumber": $("#placeNumber").val(), "status": $("#status").val(),
+            var parametros = {
+                "identification": $("#identification").val(),
+                "password": $("#password").val(),
+                "name": $("#name").val(),
+                "firstLastName": $("#firstLastName").val(),
+                "secondLastName": $("#secondLastName").val(),
+                "personalPhone": $("#personalPhone").val(),
+                "roomPhone": $("#roomPhone").val(),
+                "birthday": $("#birthday").val(),
+                "gender": $("#gender").val(),
+                "civilStatus": $("#civilStatus").val(),
+                "placeNumber": $("#placeNumber").val(),
+                "status": $("#status").val(),
                 "emergencyContactName": $("#emergencyContactName").val(),
                 "emergencyContactNumber": $("#emergencyContactNumber").val(),
-                "scholarship": $("#scholarship").val(), "specialty": $("#specialty").val(),
-                "schoolCode": $("#schoolCode").val(), "province": $("#province").val(),
-                "canton": $("#canton").val(), "district": $("#district").val(),
-                "addressProfessional": $("#addressProfessional").val()};
+                "scholarship": $("#scholarship").val(),
+                "specialty": $("#specialty").val(),
+                "schoolCode": $("#schoolCode").val(),
+                "province": $("#province").val(),
+                "canton": $("#canton").val(),
+                "district": $("#district").val(),
+                "addressProfessional": $("#addressProfessional").val()
+            };
 
-            $.ajax(
-                    {
-                        data: parametros,
-                        url: '?controlador=User&accion=registerProfessional',
-                        type: 'post',
+            $.ajax({
+                data: parametros,
+                url: '?controlador=User&accion=registerProfessional',
+                type: 'post',
 
-                        beforeSend: function () {
-                            $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
-                        },
-                        success: function (response) {
-                            cleanFormRegisterProfessional();
-                            $("#resultado").html("<div class='alert alert-success'>" + response + "</div>");
+                beforeSend: function() {
+                    $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+                },
+                success: function(response) {
+                    cleanFormRegisterProfessional();
+                    $("#resultado").html("<div class='alert alert-success'>" + response + "</div>");
 
-                        },
-                        error: function (e) {
-                            $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
-                        }
-                    }
-            );
+                },
+                error: function(e) {
+                    $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
+                }
+            });
         }
 
     }
@@ -197,7 +200,33 @@ function myFunction() {
 
 function deleteProfessional($identification) {
     console.log($identification);
-    var parametros = {"identification": $identification};
+    var parametros = { "identification": $identification };
+
+    $.ajax({
+        data: parametros,
+        url: '?controlador=User&accion=deleteProfessional',
+        type: 'post',
+
+        beforeSend: function() {
+            $("#message").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+        },
+        success: function(response) {
+            $("#message").html("<div class='alert alert-success'>" + response + "</div>");
+            location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
+        },
+        error: function(e) {
+            $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
+        }
+    });
+
+
+
+}
+
+function modifyProffesional($identification) {
+    alert($identification);
+    location.href = "?controlador=User&accion=showUpdateProfessional";
+    /*var parametros = {"identification": $identification};
 
     $.ajax(
             {
@@ -216,8 +245,125 @@ function deleteProfessional($identification) {
                     $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
                 }
             }
-    );
+    );*/
 
+
+
+}
+
+function modifyInformationProfessional() {
+    var letters = /^[A-Za-z+À-ú\s]+$/;
+
+    var cedula = document.getElementById("Cedula").value;
+    var name = document.getElementById("name").value;
+    var firstLastName = document.getElementById("firstLastName").value;
+    var secondLastName = document.getElementById("secondLastName").value;
+    var personalPhone = document.getElementById("personalPhone").value;
+    var RoomPhone = document.getElementById("RoomPhone").value;
+    var birthday = document.getElementById("birthday").value;
+    var gender = document.getElementById("gender").value;
+    var civilStatus = document.getElementById("civilStatus").value;
+    var placeNumber = document.getElementById("placeNumber").value;
+    var stateValue;
+
+    if (document.getElementById('active').checked) {
+        stateValue = 0;
+    } else {
+        stateValue = 1;
+    }
+
+    var EmergencyContact = document.getElementById("EmergencyContact").value;
+    var contactNumber = document.getElementById("EmergencyContactNumber").value;
+    var scholarship = document.getElementById("scholarship").value;
+    var specialty = document.getElementById("specialty").value;
+    var schoolCode = document.getElementById("schoolCode").value;
+    var province = document.getElementById("province").value;
+    var canton = document.getElementById("canton").value;
+    var district = document.getElementById("district").value;
+    var address = document.getElementById("address").value;
+
+    var process = [];
+    $.each($("#process option:selected"), function() {
+        process.push($(this).val());
+    });
+
+    if (cedula == '' || name == '' || firstLastName == '' || secondLastName == '' ||
+        personalPhone == '' || RoomPhone == '' || birthday == '' || gender == '' || civilStatus == '' || placeNumber == '' ||
+        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' || schoolCode == '' ||
+        province == '' || canton == '' || district == '' || address == '') {
+        $("#resultado").html("*Todos los campos son requeridos");
+
+    } else {
+        if (name.match(letters) == null) {
+            $("#resultado").html("*El campo Nombre es inválido");
+            return;
+        }
+        if (firstLastName.match(letters) == null) {
+            $("#resultado").html("*El campo Primer Apellido es inválido");
+            return;
+        }
+        if (secondLastName.match(letters) == null) {
+            $("#resultado").html("*El campo Segundo Apellido es inválido");
+            return;
+        }
+        if (personalPhone.length < 8 || personalPhone.length > 8) {
+            $("#resultado").html("*El campo Teléfono personal es inválido");
+            return;
+        }
+        if (RoomPhone.length < 8 || RoomPhone.length > 8) {
+            $("#resultado").html("*El campo Teléfono de habitación es inválido");
+            return;
+        }
+        if (contactNumber.length < 8 || contactNumber.length > 8) {
+            $("#resultado").html("*El campo Número de contacto es inválido");
+            return;
+        }
+        if (EmergencyContact.match(letters) == null) {
+            $("#resultado").html("*El campo Contacto Emergencia es inválido");
+            return;
+        }
+        if (specialty.match(letters) == null) {
+            $("#resultado").html("*El campo Especialidad es inválido");
+            return;
+        }
+        var parameters = {
+            "cedula": cedula,
+            "name": name,
+            "firstLastName": firstLastName,
+            "secondLastName": secondLastName,
+            "personalPhone": personalPhone,
+            "RoomPhone": RoomPhone,
+            "birthday": birthday,
+            "gender": gender,
+            "civilStatus": civilStatus,
+            "placeNumber": placeNumber,
+            "Status": stateValue,
+            "process": process,
+            "EmergencyContact": EmergencyContact,
+            "EmergencyContactNumber": contactNumber,
+            "scholarship": scholarship,
+            "specialty": specialty,
+            "schoolCode": schoolCode,
+            "province": province,
+            "canton": canton,
+            "district": district,
+            "address": address
+
+
+        };
+        $.ajax({
+            data: parameters,
+            url: '/User/MainProfessionalUpdateAdministrator',
+            type: 'post',
+            beforeSend: function() {
+                $("#resultado").html("Procesando, espere por favor ...");
+            },
+            success: function(response) {
+                $("#resultado").html("Modificado con éxito");
+
+            }
+        });
+    }
 
 
 }
