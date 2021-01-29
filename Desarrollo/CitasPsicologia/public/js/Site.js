@@ -173,7 +173,7 @@ function isFieldEmpty(fieldValue) {
 function getCurrentDate() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; 
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
     if (dd < 10) {
         dd = '0' + dd
@@ -187,10 +187,37 @@ function getCurrentDate() {
 }
 
 function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
+function deleteProfessional($identification) {
+    console.log($identification);
+    var parametros = {"identification": $identification};
+
+    $.ajax(
+            {
+                data: parametros,
+                url: '?controlador=User&accion=deleteProfessional',
+                type: 'post',
+
+                beforeSend: function () {
+                    $("#message").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+                },
+                success: function (response) {
+                    $("#message").html("<div class='alert alert-success'>" + response + "</div>");
+                    location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
+                },
+                error: function (e) {
+                    $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
+                }
+            }
+    );
+
+
+
 }
