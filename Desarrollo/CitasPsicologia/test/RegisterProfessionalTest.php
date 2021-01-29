@@ -46,4 +46,13 @@
 
     }
 
+            public function testObtainInfoModel() {
+           require 'model/UserModel.php';
+        $model=UserModel::singleton();
+     $resultado=$model->obtain_information_to_modify("305240010");
+        echo 'Test: call without parameters -> ';
+        print_r($resultado); 
+
+    }
+
  }

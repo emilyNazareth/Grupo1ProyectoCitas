@@ -180,4 +180,10 @@ class UserController {
         }
     }//end updateProfessional
 
+        public function obtainInfo() {
+        require 'model/UserModel.php';
+        $user = UserModel::singleton();
+        $result = $user->obtain_information_to_modify($_POST['id']);
+    }
+
 }

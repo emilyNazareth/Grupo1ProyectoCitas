@@ -176,5 +176,12 @@ public function update_professional(
         return $result;
     }//end function
 
+        public function obtain_information_to_modify($id){
+        $consulta = $this->db->prepare("CALL sp_obtener_info_a_modificar(".$id.")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 
 }
