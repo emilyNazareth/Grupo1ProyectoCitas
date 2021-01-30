@@ -164,16 +164,16 @@ class UserController
          require 'model/UserModel.php';
    
         $user = UserModel::singleton();
-        $result = $user->update_professional(
-                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], 
-                $_POST['primerApellido'], $_POST['segundoApellido'], 
-                $_POST['telPersonal'], $_POST['telHabitacion'], 
-                $_POST['estadoCivil'], $_POST['estado'], 
-                $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], 
-                $_POST['escolaridad'], $_POST['especialidad'], 
-                $_POST['provincia'], $_POST['canton'], $_POST['distrito'], 
-                $_POST['direccion']
-        );
+//        $result = $user->update_professional(
+//                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], 
+//                $_POST['primerApellido'], $_POST['segundoApellido'], 
+//                $_POST['telPersonal'], $_POST['telHabitacion'], 
+//                $_POST['estadoCivil'], $_POST['estado'], 
+//                $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], 
+//                $_POST['escolaridad'], $_POST['especialidad'], 
+//                $_POST['provincia'], $_POST['canton'], $_POST['distrito'], 
+//                $_POST['direccion']
+//        );
        
         if ($result == 1) {
             
