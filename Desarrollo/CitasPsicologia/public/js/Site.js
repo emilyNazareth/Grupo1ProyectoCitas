@@ -224,14 +224,12 @@ function deleteProfessional($identification) {
 }
 
 function modifyProfessionalUrl($identification) {
-    //alert($identification);
     window.location.replace("?controlador=User&accion=showUpdateProfessional&Cedula=" + $identification);
 };
 
 
 
 function modifyInformationProfessional() {
-    //var letters = /^[A-Za-z+À-ú\s]+$/;
     $("#result").html("");
     var cedula = document.getElementById("Cedula").value;
     var name = document.getElementById("name").value;
@@ -240,15 +238,11 @@ function modifyInformationProfessional() {
     var secondLastName = document.getElementById("secondLastName").value;
     var personalPhone = document.getElementById("personalPhone").value;
     var RoomPhone = document.getElementById("RoomPhone").value;
-    // var birthday = document.getElementById("birthday").value;
-    //var gender = document.getElementById("gender").value;
     var civilStatus = document.getElementById("civilStatus").value;
-    // var placeNumber = document.getElementById("placeNumber").value;
     var EmergencyContact = document.getElementById("EmergencyContact").value;
     var contactNumber = document.getElementById("EmergencyContactNumber").value;
     var scholarship = document.getElementById("scholarship").value;
     var specialty = document.getElementById("specialty").value;
-    //var schoolCode = document.getElementById("schoolCode").value;
     var province = document.getElementById("province").value;
     var canton = document.getElementById("canton").value;
     var district = document.getElementById("district").value;
@@ -270,17 +264,12 @@ function modifyInformationProfessional() {
         "segundoApellido": secondLastName,
         "telPersonal": personalPhone,
         "telHabitacion": RoomPhone,
-        //"birthday": birthday,
-        //"gender": gender,
         "estadoCivil": civilStatus,
-        //"placeNumber": placeNumber,
         "estado": stateValue,
-        //"process": process,
         "contactoEmergancia": EmergencyContact,
         "numeroContactoEmergancia": contactNumber,
         "escolaridad": scholarship,
         "especialidad": specialty,
-        //"schoolCode": schoolCode,
         "provincia": province,
         "canton": canton,
         "distrito": district,
