@@ -10,6 +10,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <?php
+    //Comprobamos si esta definida la sesión 'userAdministrator'.
+
+    if (isset($_SESSION['userAdministrator'])) {
+        if ($_SESSION['userAdministrator'] < time()) {
+            unset($_SESSION['userAdministrator']);
+            echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
+                            window.location.replace('?controlador=User&accion=showLoginView');
+                            </script>";
+        } else {
+            $_SESSION['userAdministrator'] = time() + 900;
+        }
+    } else {
+        //Comprobamos si esta definida la sesión 'userProfessional'.
+        if (isset($_SESSION['userProfessional'])) {
+            if ($_SESSION['userProfessional'] < time()) {
+                unset($_SESSION['userProfessional']);
+                echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
+                            window.location.replace('?controlador=User&accion=showLoginView');
+                            </script>";
+            } else {
+                $_SESSION['userProfessional'] = time() + 900;
+            }
+        } else {
+            echo "<script> alert('Debe logearse');
+        window.location.replace('?controlador=User&accion=showLoginView');
+        </script>";
+        }
+    }
+
+
+    ?>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
