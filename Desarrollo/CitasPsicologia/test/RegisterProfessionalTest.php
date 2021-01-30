@@ -19,11 +19,7 @@ class RegisterProfessionalTest {
          * estado de la insercion */
     }
 
-    public function testDeleteProfessionalModel() {
-        require 'controller/UserController.php';
-        $con = new UserController();
-        $con->deleteProfessional();
-    }
+
 
     public function testObtainInfoModel() {
         require 'model/UserModel.php';

@@ -15,8 +15,8 @@ class TestController {
     }
 
     public function testDeleteProfessional() {
-        require 'test/RegisterProfessionalTest.php';
-        $registerProfessionalTest = new RegisterProfessionalTest();
+        require 'test/DeleteProfessionalTest.php';
+        $registerProfessionalTest = new DeleteProfessionalTest();
         $registerProfessionalTest->testDeleteProfessionalModel();
     }
 
