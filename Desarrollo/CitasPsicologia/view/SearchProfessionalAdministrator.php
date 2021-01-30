@@ -176,7 +176,7 @@ include 'public/header.php';
                                 type: 'post',
                                 success: function (response) {
                                     var data = response;
-
+                                    //alert(response);
                                     if (data == 0) {
                                         $("#message").html("*No se encontraron registros");
                                     } else {
