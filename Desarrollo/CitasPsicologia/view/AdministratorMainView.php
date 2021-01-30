@@ -1,154 +1,160 @@
-
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Citas en linea</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8" />
-        <meta name="description" content="Citas de psicologia" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+    <title>Citas en linea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="description" content="Citas de psicologia" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-            }
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-            .navbar1 {
-                overflow: hidden;
-                background-color: #f47424;
-            }
+        .navbar1 {
+            overflow: hidden;
+            background-color: #f47424;
+        }
 
-            .navbar1 a {
-                float: left;
-                font-size: 15px;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
+        .navbar1 a {
+            float: left;
+            font-size: 15px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
 
-            }
+        }
 
-            .dropdown1 {
-                float: left;
-                overflow: hidden;
-            }
+        .dropdown1 {
+            float: left;
+            overflow: hidden;
+        }
 
-            .dropdown1 .dropbtn1 {
-                font-size: 15px;  
-                border: none;
-                outline: none;
-                color: white;
-                padding: 14px 16px;
-                background-color: inherit;
-                font-family: inherit;
-                margin: 0;
-            }
+        .dropdown1 .dropbtn1 {
+            font-size: 15px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
 
-            .navbar1 a:hover, .dropdown1:hover .dropbtn1 {
-                background-color: none;
+        .navbar1 a:hover,
+        .dropdown1:hover .dropbtn1 {
+            background-color: none;
 
-            }
+        }
 
-            .dropdown-content1 {
-                display: none;
-                position: absolute;
-                background-color: #f9f9f9;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-            }
+        .dropdown-content1 {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
 
-            .dropdown-content1 a {
-                float: none;
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left;
-            }
+        .dropdown-content1 a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
 
-            .dropdown-content1 a:hover {
-                background-color: #f47424;
-            }
+        .dropdown-content1 a:hover {
+            background-color: #f47424;
+        }
 
-            .dropdown1:hover .dropdown-content1 {
-                display: block;
-            }
-            .text-muted {
-                color: #777;
-            }
-            .container1 {
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
+        .dropdown1:hover .dropdown-content1 {
+            display: block;
+        }
 
-            }
-            .titleAdminSection {
-                margin-top: 5em;
-                height: 400px;
-                background-image: url("public/img/FondoSAPSO.png");
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                color: white;
-                padding-top: 10em;
-                text-align: center;
-            }
-            abbr[titleAdminSection]
-        </style>
-    </head>
-    <body class="titleAdminSection">
+        .text-muted {
+            color: #777;
+        }
+
+        .container1 {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+
+        }
+
+        .titleAdminSection {
+            margin-top: 5em;
+            height: 400px;
+            background-image: url("public/img/FondoSAPSO.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            padding-top: 10em;
+            text-align: center;
+        }
+
+        abbr[titleAdminSection]
+    </style>
+</head>
+
+<body class="titleAdminSection">
 
 
-        <div class="navbar1" style="margin-top: -150px"> 
-                <a href="#reportes">Reportes</a>
-                <div class="dropdown1">
-                    <button class="dropbtn1">Administrar Profesional 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content1">
-                        <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
-                        <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
-                    </div>
-                </div> 
-                <div class="dropdown1">
-                    <button class="dropbtn1">Administrar Cita 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content1">
-                        <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
-                        <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
-                    </div>
-                </div> 
-                <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
+    <div class="navbar1" style="margin-top: -150px">
+        <a href="#reportes">Reportes</a>
+        <div class="dropdown1">
+            <button class="dropbtn1">Administrar Profesional
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content1">
+                <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
+                <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
+            </div>
         </div>
+        <div class="dropdown1">
+            <button class="dropbtn1">Administrar Cita
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content1">
+                <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
+                <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
+            </div>
+        </div>
+        <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
+    </div>
 
 
 
 
-        <footer id="contactos" class="text-muted" style="margin-top: 1%;">
-            <center>
-                <div id="nameEmail" class="container1">
-                    <h5>Citas de psicología</h5>
-                    <h6>Emily Meléndez</h6>
-                    <h6>Yerlin Leal</h6>
-                    <h6>Luis Hidalgo</h6>
-                    <h6>Alejandro Quesada</h6>
-                    <h6>Curso Gestión Proyectos Fines académicos</h6>         
-                    <h7>2021</h7>
+    <footer id="contactos" class="text-muted" style="margin-top: 1%;">
+        <center>
+            <div id="nameEmail" class="container1">
+                <h5>Citas de psicología</h5>
+                <h6>Emily Meléndez</h6>
+                <h6>Yerlin Leal</h6>
+                <h6>Luis Hidalgo</h6>
+                <h6>Alejandro Quesada</h6>
+                <h6>Curso Gestión Proyectos Fines académicos</h6>
+                <h7>2021</h7>
 
 
 
-                </div>
-            </center>
-        </footer>
-    </body>
+            </div>
+        </center>
+    </footer>
+</body>
+
 </html>

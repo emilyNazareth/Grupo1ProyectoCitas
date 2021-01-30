@@ -149,27 +149,29 @@ public function update_professional(
             $provincia,
             $canton,
             $distrito,
-            $direccion) {
-
-        $query = $this->db->prepare("CALL sp_modificar_profesional("
+            $direccion
+            ) {
+     
+               
+        $query = $this->db->prepare("CALL sp_modificar_profesional('".$id."','"
                 . $contrasena . "','
     " . $nombre . "','
     " . $primer_apellido . "','
     " . $segundo_apellido . "','
     " . $telefono_personal . "','
     " . $telefono_habitacion . "','
-    " . $estado_civil . "','
-    " . $estado . "','
-    " . $contacto_emergencia . "','
-    " . $contacto_emergencia_numero . "','
+    " . $estado_civil . "',
+    " . $estado . ",'
+    " . $contacto_emergencia . "',
+    " . $contacto_emergencia_numero . ",'
     " . $escolaridad . "','
     " . $especialidad . "','
     " . $provincia . "','
     " . $canton . "','
     " . $distrito . "','
-    " . $direccion . "')");
+    " . $direccion . "');");
         
-       $query->execute();
+        $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
 
