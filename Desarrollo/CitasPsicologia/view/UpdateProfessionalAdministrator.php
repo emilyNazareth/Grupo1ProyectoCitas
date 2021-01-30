@@ -6,12 +6,12 @@ include 'public/header.php';
 <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 <?php
 if (empty($vars['professional'])) {
-?>
+    ?>
 
     <?php
 } else {
     foreach ($vars['professional'] as $item) {
-    ?>
+        ?>
         <form asp-controller="Administrator" asp-action="MainProfessionalRegisterAdministrator" method="post">
             <div class="row align-items-start">
                 <div class="col">
@@ -23,39 +23,29 @@ if (empty($vars['professional'])) {
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="name">Nombre:</label>
-                        <input required class="col-sm-4 form-control form-control-sm" type="text" id="name" name="name" value=<?php echo $item['tc_nombre']; ?>>
+                        <input onkeypress="return onlyLetters(event)"  required class="col-sm-4 form-control form-control-sm" type="text" id="name" name="name" value=<?php echo $item['tc_nombre']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="pass">Contraseña:</label>
-                        <input required class="col-sm-4 form-control form-control-sm" type="text" id="pass" name="pass" value=<?php echo $item['tc_contrasena']; ?>>
+                        <input   required class="col-sm-4 form-control form-control-sm" type="text" id="pass" name="pass" value=<?php echo $item['tc_contrasena']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="firstLastName">Primer Apellido:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="text" id="firstLastName" name="firstLastName" value=<?php echo $item['tc_primer_apellido']; ?>>
+                        <input onkeypress="return onlyLetters(event)"  class="col-sm-4 form-control form-control-sm" type="text" id="firstLastName" name="firstLastName" value=<?php echo $item['tc_primer_apellido']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="secondLastName">Segundo Apellido:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="text" id="secondLastName" name="secondLastName" value=<?php echo $item['tc_segundo_apellido']; ?>>
+                        <input  onkeypress="return onlyLetters(event)"  class="col-sm-4 form-control form-control-sm" type="text" id="secondLastName" name="secondLastName" value=<?php echo $item['tc_segundo_apellido']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="personalPhone">Teléfono Personal:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="number" id="personalPhone" name="personalPhone" value=<?php echo $item['tc_telefono_personal']; ?>>
+                        <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-4 form-control form-control-sm" type="text" id="personalPhone" name="personalPhone" value=<?php echo $item['tc_telefono_personal']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="RoomPhone">Teléfono de habitación:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="number" id="RoomPhone" name="RoomPhone" value=<?php echo $item['tc_telefono_habitacion']; ?>>
+                        <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8"  class="col-sm-4 form-control form-control-sm" type="text" id="RoomPhone" name="RoomPhone" value=<?php echo $item['tc_telefono_habitacion']; ?>>
                     </div>
-                    <!--div class="row professional-register">
-                        <label class="col-sm-6 control-label small" for="birthday">Fecha de nacimiento</label>
-                        <input type="datetime" class="col-sm-4 form-control form-control-sm" id="birthday" name="birthday" value=<?//php echo $item['tf_fecha_nacimiento']; ?>>
-                    </div-->
-                    <!--div class="row professional-register">
-                        <label class="col-sm-6 control-label small" for="gender">Sexo</label>
-                        <select class="col-sm-5 custom-select custom-select-sm" id="gender" name="gender" >
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                        </select>
-                    </div-->
+
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="civilStatus">Estado civil:</label>
                         <select class="col-sm-4 custom-select custom-select-sm" id="civilStatus" name="civilStatus" value=<?php echo $item['tc_estado_civil']; ?>>
@@ -66,16 +56,10 @@ if (empty($vars['professional'])) {
                         </select>
 
                     </div>
-                    <!--div class="row professional-register">
-                        <label class="col-sm-6 control-label small" for="placeNumber">Número de plaza</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="number" id="placeNumber" name="placeNumber" value="<?php echo $item['tn_numero_plaza']; ?>">
-                    </div-->
-
-
 
                     <?php
                     if ($item['tn_estado'] == 0) {
-                    ?>
+                        ?>
                         <div class="professional-register" id="state">
                             <label>Estado</label>
                             <br />
@@ -84,13 +68,13 @@ if (empty($vars['professional'])) {
                             <br />
                             <input id="inactive" type="radio" for="status" name="status" value="Inactive">Inactivo
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
 
                     <?php
                     if ($item['tn_estado'] == 1) {
-                    ?>
+                        ?>
                         <div class="professional-register" id="state">
                             <label>Estado</label>
                             <br />
@@ -99,7 +83,7 @@ if (empty($vars['professional'])) {
                             <br />
                             <input id="inactive" type="radio" for="status" name="status" checked value="Inactive">Inactivo
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
 
@@ -107,12 +91,12 @@ if (empty($vars['professional'])) {
                 <div class="col">
                     <br />
                     <div class="row professional-register">
-                        <label class="col-sm-6 control-label small" for="EmergencyContact">Contacto en caso de emergencia:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="text" id="EmergencyContact" name="EmergencyContact" value=<?php echo $item['tc_contacto_emergencia']; ?>>
+                        <label class="col-sm-6 control-label small" for="EmergencyContact">Nombre contacto en caso de emergencia:</label>
+                        <input onkeypress="return onlyLetters(event)" class="col-sm-4 form-control form-control-sm" type="text" id="EmergencyContact" name="EmergencyContact" value=<?php echo $item['tc_contacto_emergencia']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="EmergencyContactNumber">Número del contacto:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="number" id="EmergencyContactNumber" name="EmergencyContactNumber" value=<?php echo $item['tn_contacto_emergencia']; ?>>
+                        <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8"  class="col-sm-4 form-control form-control-sm" type="text" id="EmergencyContactNumber" name="EmergencyContactNumber" value=<?php echo $item['tn_contacto_emergencia']; ?>>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="scholarship">Escolaridad:</label>
@@ -122,17 +106,13 @@ if (empty($vars['professional'])) {
                             <option value="Licenciatura">Licenciatura</option>
                             <option value="Maestr&iacutea">Maestr&iacutea</option>
                             <option value="Doctorado">Doctorado</option>
-                            <!--option value="Bachillerato"<?//php if($item['tc_escolaridad'] == 'Bachillerato'): ?> selected="selected"<?php// endif; ?>>Bachillerato</option-->
+                            <!--option value="Bachillerato"<?//php if($item['tc_escolaridad'] == 'Bachillerato'): ?> selected="selected"<?php // endif;  ?>>Bachillerato</option-->
                         </select>
                     </div>
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="specialty">Especialidad:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="text" id="specialty" name="specialty" value=<?php echo $item['tc_especialidad']; ?>>
-                    </div>
-                    <!--div class="row professional-register">
-                        <label class="col-sm-6 control-label small" for="schoolCode">Código de colegio:</label>
-                        <input class="col-sm-4 form-control form-control-sm" type="number" id="schoolCode" name="schoolCode" value=<?//php echo $item['tn_codigo_colegio']; ?>>
-                    </div-->
+                        <input onkeypress="return onlyLetters(event)" class="col-sm-4 form-control form-control-sm" type="text" id="specialty" name="specialty" value=<?php echo $item['tc_especialidad']; ?>>
+                    </div>                  
                     <div class="row professional-register">
                         <label class="col-sm-6 control-label small" for="province">Provincia:</label>
                         <input class="col-sm-4 form-control form-control-sm" type="text" id="province" name="province" value=<?php echo $item['tc_provincia']; ?>>
@@ -157,18 +137,17 @@ if (empty($vars['professional'])) {
             <div class="row">
                 <div class="col justify-content-lg-start">
 
-                   <!-- @Html.ActionLink("Atr\u00E1s", "SearchProfessionalAdministrator", "User", null, new { @class = "btn btn-success btn-sm" })  -->
-                  
+
                     <a href="?controlador=Index&accion=showSearchProfessionalAdministrator" class="btn btn-success btn-sm" style="margin-left: 100px;">Atrás</a>
                 </div>
                 <div class="col justify-content-end">
                     <a onclick="modifyInformationProfessional()" class="btn btn-success btn-sm" style="margin-left: 100px;">Aceptar</a>
-                    
+
                 </div>
             </div>
         </form>
 
-<?php
+        <?php
     }
 }
 ?>

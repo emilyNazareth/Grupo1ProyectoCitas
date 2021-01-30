@@ -19,11 +19,11 @@ include 'public/header.php';
 
         <div class="form-group row">
             <label for="nameInput" class="col-sm-7 col-form-label-sm">Nombre</label>
-            <input onkeypress="return soloLetras(event)" type="text" name="nameInput" id="name" class="col-sm-5 form-control form-control-sm">
+            <input onkeypress="return onlyLetters(event)" type="text" name="nameInput" id="name" class="col-sm-5 form-control form-control-sm">
         </div>
         <div class="form-group row">
             <label for="lastnameInput" class="col-sm-7 col-form-label-sm">Apellidos</label>
-            <input onkeypress="return soloLetras(event)" type="text" name="lastnameInput" id="lastname" class="col-sm-5 form-control form-control-sm">
+            <input onkeypress="return onlyLetters(event)" type="text" name="lastnameInput" id="lastname" class="col-sm-5 form-control form-control-sm">
         </div>
         <div>
             <a class="btn btn-success btn-sm" id="consultDate" onclick="searchProfessional()" name="consultDate">Buscar</a>

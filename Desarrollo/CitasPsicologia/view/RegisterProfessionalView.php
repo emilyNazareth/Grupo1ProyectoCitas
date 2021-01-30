@@ -26,19 +26,19 @@ include 'public/header.php';
                 <!--NOMBRE-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="name">Nombre:</label>
-                    <input onkeypress="return soloLetras(event)"  class="col-sm-6 form-control form-control-sm" type="text" id="name" name="name" required />
+                    <input onkeypress="return onlyLetters(event)"  class="col-sm-6 form-control form-control-sm" type="text" id="name" name="name" required />
                 </div>
 
                 <!--PRIMER APELLIDO-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="firstLastName">Primer apellido:</label>
-                    <input onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" type="text" id="firstLastName" name="firstLastName" required />
+                    <input onkeypress="return onlyLetters(event)" class="col-sm-6 form-control form-control-sm" type="text" id="firstLastName" name="firstLastName" required />
                 </div>
 
                 <!--SEGUNDO APELLIDO-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="secondLastName">Segundo apellido:</label>
-                    <input onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" type="text" id="secondLastName" name="secondLastName" required />
+                    <input onkeypress="return onlyLetters(event)" class="col-sm-6 form-control form-control-sm" type="text" id="secondLastName" name="secondLastName" required />
                 </div>
 
                 <!--TELEFONO PERSONAL-->
@@ -100,7 +100,7 @@ include 'public/header.php';
                 <!--CONTACTO EMERGENCIA-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="emergencyContactName">Nombre contacto en caso de emergencia:</label>
-                    <input  onkeypress="return soloLetras(event)" class="col-sm-6 form-control form-control-sm" type="text" id="emergencyContactName" name="emergencyContactName" required />
+                    <input  onkeypress="return onlyLetters(event)" class="col-sm-6 form-control form-control-sm" type="text" id="emergencyContactName" name="emergencyContactName" required />
                 </div>
 
                 <!--NUM CONTACTO EMERGENCIA-->
@@ -124,7 +124,7 @@ include 'public/header.php';
                 <!--ESPECIALIDAD-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="specialty">Especialidad:</label>
-                    <input  onkeypress="return soloLetras(event)"class="col-sm-6 form-control form-control-sm" type="text" id="specialty" name="specialty">
+                    <input  onkeypress="return onlyLetters(event)"class="col-sm-6 form-control form-control-sm" type="text" id="specialty" name="specialty">
                 </div>
 
                 <!--CODIGO COLEGIO-->

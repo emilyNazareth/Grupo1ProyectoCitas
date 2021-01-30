@@ -161,68 +161,25 @@ class UserController
 
     public function updateProfessional()
     {
-        require 'model/UserModel.php';
-        $id = $_POST['cedula'];
-        $contrasena = $_POST['contrasena'];
-        $nombre = $_POST['nombre'];
-        $primer_apellido = $_POST['primerApellido'];
-        $segundo_apellido = $_POST['segundoApellido'];
-        $telefono_personal = $_POST['telPersonal'];
-        $telefono_habitacion = $_POST['telHabitacion'];
-        $estado_civil = $_POST['estadoCivil'];
-        $estado = $_POST['estado'];
-        $contacto_emergencia = $_POST['contactoEmergancia'];
-        $contacto_emergencia_numero = $_POST['numeroContactoEmergancia'];
-        $escolaridad = $_POST['escolaridad'];
-        $especialidad = $_POST['especialidad'];
-        $provincia = $_POST['provincia'];
-        $canton = $_POST['canton'];
-        $distrito = $_POST['distrito'];
-        $direccion = $_POST['direccion'];
-
-
-        /*$id = 301230456;
-        $contrasena = '123';
-        $nombre = 'Emily2';
-        $primer_apellido = "Melendez";
-        $segundo_apellido = "Castro";
-        $telefono_personal = '25348790';
-        $telefono_habitacion = '25678743';
-        $estado_civil = "Casada";
-        $estado = 1;
-        $contacto_emergencia = "85236988";
-        $contacto_emergencia_numero = 8695254;
-        $escolaridad = 'Bachillerato';
-        $especialidad = "psicologa";
-        $provincia = "Alvarado";
-        $canton = "Alvarado";
-        $distrito = "Alvarado";
-        $direccion = "Alvarado";
-*/
+         require 'model/UserModel.php';
+   
         $user = UserModel::singleton();
-        $result = $user->update_professional(
-            $id,
-            $contrasena,
-            $nombre,
-            $primer_apellido,
-            $segundo_apellido,
-            $telefono_personal,
-            $telefono_habitacion,
-            $estado_civil,
-            $estado,
-            $contacto_emergencia,
-            $contacto_emergencia_numero,
-            $escolaridad,
-            $especialidad,
-            $provincia,
-            $canton,
-            $distrito,
-            $direccion
-        );
+//        $result = $user->update_professional(
+//                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], 
+//                $_POST['primerApellido'], $_POST['segundoApellido'], 
+//                $_POST['telPersonal'], $_POST['telHabitacion'], 
+//                $_POST['estadoCivil'], $_POST['estado'], 
+//                $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], 
+//                $_POST['escolaridad'], $_POST['especialidad'], 
+//                $_POST['provincia'], $_POST['canton'], $_POST['distrito'], 
+//                $_POST['direccion']
+//        );
+       
         if ($result == 1) {
+            
         } else {
 
-            echo ('El registro ha sido actualizado');
+            echo ('El registro ha sido actualizado');           
         }
     } //end updateProfessional
 

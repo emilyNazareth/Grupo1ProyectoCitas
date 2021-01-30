@@ -88,39 +88,39 @@
     <!-- For validations -->
 
     <script>
-        function soloLetras(e) {
+        function onlyLetters(e) {
             key = e.keyCode || e.which;
-            tecla = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = [];
+            keys = String.fromCharCode(key).toLowerCase();
+            letters = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            specials = [];
 
-            tecla_especial = false
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
+            specialKey = false
+            for (var i in specials) {
+                if (key == specials[i]) {
+                    specialKey = true;
                     break;
                 }
             }
 
-            if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            if (letters.indexOf(keys) == -1 && !specialKey)
                 return false;
         }
 
         function onlyNumbers(e) {
             key = e.keyCode || e.which;
-            tecla = String.fromCharCode(key).toLowerCase();
-            letras = " 0123456789";
-            especiales = [8, 37, 39, 46];
+            keys = String.fromCharCode(key).toLowerCase();
+            letters = " 0123456789";
+            specials = [8, 37, 39, 46];
 
-            tecla_especial = false
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
+            specialKey = false
+            for (var i in specials) {
+                if (key == specials[i]) {
+                    specialKey = true;
                     break;
                 }
             }
 
-            if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            if (letters.indexOf(keys) == -1 && !specialKey)
                 return false;
         }
     </script>
