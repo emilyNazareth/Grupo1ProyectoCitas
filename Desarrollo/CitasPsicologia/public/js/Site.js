@@ -223,147 +223,128 @@ function deleteProfessional($identification) {
 
 }
 
-function modifyProffesional($identification) {
-    alert($identification);
-    location.href = "?controlador=User&accion=showUpdateProfessional";
-    /*var parametros = {"identification": $identification};
-
-    $.ajax(
-            {
-                data: parametros,
-                url: '?controlador=User&accion=deleteProfessional',
-                type: 'post',
-
-                beforeSend: function () {
-                    $("#message").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
-                },
-                success: function (response) {
-                    $("#message").html("<div class='alert alert-success'>" + response + "</div>");
-                    location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
-                },
-                error: function (e) {
-                    $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
-                }
-            }
-    );*/
+function modifyProfessionalUrl($identification) {
+    //alert($identification);
+    window.location.replace("?controlador=User&accion=showUpdateProfessional&Cedula=" + $identification);
+};
 
 
-
-}
 
 function modifyInformationProfessional() {
     var letters = /^[A-Za-z+À-ú\s]+$/;
-
+    $("#result").html("");
     var cedula = document.getElementById("Cedula").value;
     var name = document.getElementById("name").value;
+    var password = document.getElementById("pass").value;
     var firstLastName = document.getElementById("firstLastName").value;
     var secondLastName = document.getElementById("secondLastName").value;
     var personalPhone = document.getElementById("personalPhone").value;
     var RoomPhone = document.getElementById("RoomPhone").value;
-    var birthday = document.getElementById("birthday").value;
-    var gender = document.getElementById("gender").value;
+    // var birthday = document.getElementById("birthday").value;
+    //var gender = document.getElementById("gender").value;
     var civilStatus = document.getElementById("civilStatus").value;
-    var placeNumber = document.getElementById("placeNumber").value;
-    var stateValue;
-
-    if (document.getElementById('active').checked) {
-        stateValue = 0;
-    } else {
-        stateValue = 1;
-    }
-
+    // var placeNumber = document.getElementById("placeNumber").value;
     var EmergencyContact = document.getElementById("EmergencyContact").value;
     var contactNumber = document.getElementById("EmergencyContactNumber").value;
     var scholarship = document.getElementById("scholarship").value;
     var specialty = document.getElementById("specialty").value;
-    var schoolCode = document.getElementById("schoolCode").value;
+    //var schoolCode = document.getElementById("schoolCode").value;
     var province = document.getElementById("province").value;
     var canton = document.getElementById("canton").value;
     var district = document.getElementById("district").value;
     var address = document.getElementById("address").value;
 
-    var process = [];
-    $.each($("#process option:selected"), function() {
-        process.push($(this).val());
-    });
-
+    var stateValue;
     if (cedula == '' || name == '' || firstLastName == '' || secondLastName == '' ||
-        personalPhone == '' || RoomPhone == '' || birthday == '' || gender == '' || civilStatus == '' || placeNumber == '' ||
-        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' || schoolCode == '' ||
+        personalPhone == '' || RoomPhone == '' || /*birthday == '' || gender == '' ||*/ civilStatus == '' || /*placeNumber == '' ||*/
+        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' || /*schoolCode == '' ||*/
         province == '' || canton == '' || district == '' || address == '') {
-        $("#resultado").html("*Todos los campos son requeridos");
+        $("#result").html("*Todos los campos son requeridos");
 
     } else {
         if (name.match(letters) == null) {
-            $("#resultado").html("*El campo Nombre es inválido");
+            $("#result").html("*El campo Nombre es inválido");
             return;
         }
         if (firstLastName.match(letters) == null) {
-            $("#resultado").html("*El campo Primer Apellido es inválido");
+            $("#result").html("*El campo Primer Apellido es inválido");
             return;
         }
         if (secondLastName.match(letters) == null) {
-            $("#resultado").html("*El campo Segundo Apellido es inválido");
+            $("#result").html("*El campo Segundo Apellido es inválido");
             return;
         }
+
         if (personalPhone.length < 8 || personalPhone.length > 8) {
-            $("#resultado").html("*El campo Teléfono personal es inválido");
+            $("#result").html("*El campo Teléfono personal es inválido");
             return;
         }
+
         if (RoomPhone.length < 8 || RoomPhone.length > 8) {
-            $("#resultado").html("*El campo Teléfono de habitación es inválido");
+            $("#result").html("*El campo Teléfono de habitación es inválido");
             return;
         }
+
         if (contactNumber.length < 8 || contactNumber.length > 8) {
-            $("#resultado").html("*El campo Número de contacto es inválido");
+            $("#result").html("*El campo Número de contacto es inválido");
             return;
         }
         if (EmergencyContact.match(letters) == null) {
-            $("#resultado").html("*El campo Contacto Emergencia es inválido");
+            $("#result").html("*El campo Contacto Emergencia es inválido");
             return;
         }
         if (specialty.match(letters) == null) {
-            $("#resultado").html("*El campo Especialidad es inválido");
+            $("#result").html("*El campo Especialidad es inválido");
             return;
         }
+        if (document.getElementById('active').checked) {
+            stateValue = 0;
+        } else {
+            stateValue = 1;
+        }
+
+
+
+
         var parameters = {
             "cedula": cedula,
-            "name": name,
-            "firstLastName": firstLastName,
-            "secondLastName": secondLastName,
-            "personalPhone": personalPhone,
-            "RoomPhone": RoomPhone,
-            "birthday": birthday,
-            "gender": gender,
-            "civilStatus": civilStatus,
-            "placeNumber": placeNumber,
-            "Status": stateValue,
-            "process": process,
-            "EmergencyContact": EmergencyContact,
-            "EmergencyContactNumber": contactNumber,
-            "scholarship": scholarship,
-            "specialty": specialty,
-            "schoolCode": schoolCode,
-            "province": province,
+            "contrasena": password,
+            "nombre": name,
+            "primerApellido": firstLastName,
+            "segundoApellido": secondLastName,
+            "telPersonal": personalPhone,
+            "telHabitacion": RoomPhone,
+            //"birthday": birthday,
+            //"gender": gender,
+            "estadoCivil": civilStatus,
+            //"placeNumber": placeNumber,
+            "estado": stateValue,
+            //"process": process,
+            "contactoEmergancia": EmergencyContact,
+            "numeroContactoEmergancia": contactNumber,
+            "escolaridad": scholarship,
+            "especialidad": specialty,
+            //"schoolCode": schoolCode,
+            "provincia": province,
             "canton": canton,
-            "district": district,
-            "address": address
+            "distrito": district,
+            "direccion": address
+
 
 
         };
+
         $.ajax({
             data: parameters,
-            url: '/User/MainProfessionalUpdateAdministrator',
+            url: '?controlador=User&accion=updateProfessional',
             type: 'post',
             beforeSend: function() {
-                $("#resultado").html("Procesando, espere por favor ...");
+                $("#result").html("Procesando, espere por favor ...");
             },
             success: function(response) {
-                $("#resultado").html("Modificado con éxito");
+                $("#result").html(response);
 
             }
         });
     }
-
-
 }
