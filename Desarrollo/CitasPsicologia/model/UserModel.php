@@ -149,27 +149,18 @@ public function update_professional(
             $provincia,
             $canton,
             $distrito,
-            $direccion) {
+            $direccion
+            ) {
+     
+               
+        $query = $this->db->prepare("call sp_modificar_profesional(".
+        TRIM($id).",'". TRIM($contrasena) . "','" . TRIM($nombre) . "','" .TRIM($primer_apellido) . "','" 
+        . TRIM($segundo_apellido) . "','" . TRIM($telefono_personal) . "','" . TRIM($telefono_habitacion ). "','" 
+        . TRIM($estado_civil) . "'," . TRIM($estado) . ",'" .TRIM($contacto_emergencia) . "'," 
+        . TRIM($contacto_emergencia_numero) . ",'" . TRIM($escolaridad) . "','" . TRIM($especialidad) . "','" 
+        . TRIM($provincia) . "','" . TRIM($canton) . "','" . TRIM($distrito) . "','" . TRIM($direccion) . "');");
 
-        $query = $this->db->prepare("CALL sp_modificar_profesional("
-                . $contrasena . "','
-    " . $nombre . "','
-    " . $primer_apellido . "','
-    " . $segundo_apellido . "','
-    " . $telefono_personal . "','
-    " . $telefono_habitacion . "','
-    " . $estado_civil . "','
-    " . $estado . "','
-    " . $contacto_emergencia . "','
-    " . $contacto_emergencia_numero . "','
-    " . $escolaridad . "','
-    " . $especialidad . "','
-    " . $provincia . "','
-    " . $canton . "','
-    " . $distrito . "','
-    " . $direccion . "')");
-        
-       $query->execute();
+        $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
 
