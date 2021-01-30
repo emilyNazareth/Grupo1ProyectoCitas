@@ -231,7 +231,7 @@ function modifyProfessionalUrl($identification) {
 
 
 function modifyInformationProfessional() {
-    var letters = /^[A-Za-z+À-ú\s]+$/;
+    //var letters = /^[A-Za-z+À-ú\s]+$/;
     $("#result").html("");
     var cedula = document.getElementById("Cedula").value;
     var name = document.getElementById("name").value;
@@ -255,96 +255,51 @@ function modifyInformationProfessional() {
     var address = document.getElementById("address").value;
 
     var stateValue;
-    if (cedula == '' || name == '' || firstLastName == '' || secondLastName == '' ||
-        personalPhone == '' || RoomPhone == '' || /*birthday == '' || gender == '' ||*/ civilStatus == '' || /*placeNumber == '' ||*/
-        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' || /*schoolCode == '' ||*/
-        province == '' || canton == '' || district == '' || address == '') {
-        $("#result").html("*Todos los campos son requeridos");
-
+    if (document.getElementById('active').checked) {
+        stateValue = 0;
     } else {
-        if (name.match(letters) == null) {
-            $("#result").html("*El campo Nombre es inválido");
-            return;
-        }
-        if (firstLastName.match(letters) == null) {
-            $("#result").html("*El campo Primer Apellido es inválido");
-            return;
-        }
-        if (secondLastName.match(letters) == null) {
-            $("#result").html("*El campo Segundo Apellido es inválido");
-            return;
-        }
-
-        if (personalPhone.length < 8 || personalPhone.length > 8) {
-            $("#result").html("*El campo Teléfono personal es inválido");
-            return;
-        }
-
-        if (RoomPhone.length < 8 || RoomPhone.length > 8) {
-            $("#result").html("*El campo Teléfono de habitación es inválido");
-            return;
-        }
-
-        if (contactNumber.length < 8 || contactNumber.length > 8) {
-            $("#result").html("*El campo Número de contacto es inválido");
-            return;
-        }
-        if (EmergencyContact.match(letters) == null) {
-            $("#result").html("*El campo Contacto Emergencia es inválido");
-            return;
-        }
-        if (specialty.match(letters) == null) {
-            $("#result").html("*El campo Especialidad es inválido");
-            return;
-        }
-        if (document.getElementById('active').checked) {
-            stateValue = 0;
-        } else {
-            stateValue = 1;
-        }
-
-
-
-
-        var parameters = {
-            "cedula": cedula,
-            "contrasena": password,
-            "nombre": name,
-            "primerApellido": firstLastName,
-            "segundoApellido": secondLastName,
-            "telPersonal": personalPhone,
-            "telHabitacion": RoomPhone,
-            //"birthday": birthday,
-            //"gender": gender,
-            "estadoCivil": civilStatus,
-            //"placeNumber": placeNumber,
-            "estado": stateValue,
-            //"process": process,
-            "contactoEmergancia": EmergencyContact,
-            "numeroContactoEmergancia": contactNumber,
-            "escolaridad": scholarship,
-            "especialidad": specialty,
-            //"schoolCode": schoolCode,
-            "provincia": province,
-            "canton": canton,
-            "distrito": district,
-            "direccion": address
-
-
-
-        };
-
-        $.ajax({
-            data: parameters,
-            url: '?controlador=User&accion=updateProfessional',
-            type: 'post',
-            beforeSend: function() {
-                $("#result").html("Procesando, espere por favor ...");
-            },
-            success: function(response) {
-                $("#result").html(response);
-
-            }
-        });
+        stateValue = 1;
     }
+
+
+    var parameters = {
+        "cedula": cedula,
+        "contrasena": password,
+        "nombre": name,
+        "primerApellido": firstLastName,
+        "segundoApellido": secondLastName,
+        "telPersonal": personalPhone,
+        "telHabitacion": RoomPhone,
+        //"birthday": birthday,
+        //"gender": gender,
+        "estadoCivil": civilStatus,
+        //"placeNumber": placeNumber,
+        "estado": stateValue,
+        //"process": process,
+        "contactoEmergancia": EmergencyContact,
+        "numeroContactoEmergancia": contactNumber,
+        "escolaridad": scholarship,
+        "especialidad": specialty,
+        //"schoolCode": schoolCode,
+        "provincia": province,
+        "canton": canton,
+        "distrito": district,
+        "direccion": address
+
+
+
+    };
+
+    $.ajax({
+        data: parameters,
+        url: '?controlador=User&accion=updateProfessional',
+        type: 'post',
+        beforeSend: function() {
+            $("#result").html("Procesando, espere por favor ...");
+        },
+        success: function(response) {
+            $("#result").html(response);
+
+        }
+    });
 }
