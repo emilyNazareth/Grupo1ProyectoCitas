@@ -255,40 +255,47 @@ function modifyInformationProfessional() {
         stateValue = 1;
     }
 
+    if (cedula == '' || name == '' || firstLastName == '' || secondLastName == '' ||
+        personalPhone == '' || RoomPhone == '' || civilStatus == '' ||
+        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' ||
+        province == '' || canton == '' || district == '' || address == '') {
+        $("#result").html("*Todos los campos son requeridos");
+    } else {
+        var parameters = {
+            "cedula": cedula,
+            "contrasena": password,
+            "nombre": name,
+            "primerApellido": firstLastName,
+            "segundoApellido": secondLastName,
+            "telPersonal": personalPhone,
+            "telHabitacion": RoomPhone,
+            "estadoCivil": civilStatus,
+            "estado": stateValue,
+            "contactoEmergancia": EmergencyContact,
+            "numeroContactoEmergancia": contactNumber,
+            "escolaridad": scholarship,
+            "especialidad": specialty,
+            "provincia": province,
+            "canton": canton,
+            "distrito": district,
+            "direccion": address
 
-    var parameters = {
-        "cedula": cedula,
-        "contrasena": password,
-        "nombre": name,
-        "primerApellido": firstLastName,
-        "segundoApellido": secondLastName,
-        "telPersonal": personalPhone,
-        "telHabitacion": RoomPhone,
-        "estadoCivil": civilStatus,
-        "estado": stateValue,
-        "contactoEmergancia": EmergencyContact,
-        "numeroContactoEmergancia": contactNumber,
-        "escolaridad": scholarship,
-        "especialidad": specialty,
-        "provincia": province,
-        "canton": canton,
-        "distrito": district,
-        "direccion": address
 
 
+        };
 
-    };
+        $.ajax({
+            data: parameters,
+            url: '?controlador=User&accion=updateProfessional',
+            type: 'post',
+            beforeSend: function() {
+                $("#result").html("Procesando, espere por favor ...");
+            },
+            success: function(response) {
+                $("#result").html(response);
 
-    $.ajax({
-        data: parameters,
-        url: '?controlador=User&accion=updateProfessional',
-        type: 'post',
-        beforeSend: function() {
-            $("#result").html("Procesando, espere por favor ...");
-        },
-        success: function(response) {
-            $("#result").html(response);
+            }
+        });
+    }
 
-        }
-    });
 }
