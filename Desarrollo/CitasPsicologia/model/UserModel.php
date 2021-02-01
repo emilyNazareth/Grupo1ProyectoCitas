@@ -115,20 +115,68 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
-    
-    public function verify_user_identification($identification){
+
+    public function verify_user_identification($identification)
+    {
         $consulta = $this->db->prepare("call sp_verificar_existencia_usuario(" .
-                $identification . ")");
+            $identification . ")");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
         return $resultado;
     }
-    
-    public function delete_professional($id){
-        $query = $this->db->prepare("CALL sp_delete_professional(".$id.")");
+
+    public function delete_professional($id)
+    {
+        $query = $this->db->prepare("CALL sp_delete_professional(" . $id . ")");
         $query->execute();
         $result = $query->fetchAll();
         return $result[0][0];
+    }
+
+    public function update_professional(
+        $id,
+        $contrasena,
+        $nombre,
+        $primer_apellido,
+        $segundo_apellido,
+        $telefono_personal,
+        $telefono_habitacion,
+        $estado_civil,
+        $estado,
+        $contacto_emergencia,
+        $contacto_emergencia_numero,
+        $escolaridad,
+        $especialidad,
+        $provincia,
+        $canton,
+        $distrito,
+        $direccion
+    ) {
+        $query = $this->db->prepare("CALL sp_modificar_profesional("
+            . $id . "," . $contrasena . ",'" . $nombre . "','" . $primer_apellido
+            . "','" . $segundo_apellido . "','" . $telefono_personal . "','"
+            . $telefono_habitacion . "','" . $estado_civil . "'," . $estado . ",'"
+            . $contacto_emergencia . "'," . $contacto_emergencia_numero . ",'"
+            . $escolaridad . "','" . $especialidad . "','" . $provincia . "','"
+            . $canton . "','" . $distrito . "','" . $direccion . "')");
+
+            
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        return $result;
+    }
+
+    //end function
+
+    public function obtain_information_to_modify($id)
+    {
+        $consulta = $this->db->prepare("CALL sp_obtener_info_a_modificar(" . $id . ")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
     }
 }

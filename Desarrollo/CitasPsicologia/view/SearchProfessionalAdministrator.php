@@ -1,5 +1,4 @@
 <?php
-
 include 'public/header.php';
 ?>
 
@@ -20,11 +19,11 @@ include 'public/header.php';
 
             <div class="form-group row">
                 <label for="nameInput" class="col-sm-7 col-form-label-sm">Nombre</label>
-                <input onkeypress="return soloLetras(event)" type="text" name="nameInput" id="name" class="col-sm-5 form-control form-control-sm">
+                <input onkeypress="return onlyLetters(event)" type="text" name="nameInput" id="name" class="col-sm-5 form-control form-control-sm">
             </div>
             <div class="form-group row">
                 <label for="lastnameInput" class="col-sm-7 col-form-label-sm">Apellidos</label>
-                <input onkeypress="return soloLetras(event)" type="text" name="lastnameInput" id="lastname" class="col-sm-5 form-control form-control-sm">
+                <input onkeypress="return onlyLetters(event)" type="text" name="lastnameInput" id="lastname" class="col-sm-5 form-control form-control-sm">
             </div>
             <div>
                 <a class="btn btn-success btn-sm" id="consultDate" onclick="searchProfessional()" name="consultDate">Buscar</a>
@@ -34,7 +33,7 @@ include 'public/header.php';
 
         </form>
         <div class="alert-danger justify-content-end">
-            <span id="message" style="color:black;" ;></span>
+            <span id="message" style="color:black;"></span>
         </div>
 </center>
 <br />
@@ -53,7 +52,6 @@ include 'public/header.php';
             </tr>
         </thead>
         <tbody id="tbody">
-
             <?php
             if (empty($vars['professional'])) {
             ?>
@@ -61,15 +59,14 @@ include 'public/header.php';
                 <?php
             } else {
                 foreach ($vars['professional'] as $item) {
-
                 ?>
                     <tr>
                         <td><?php echo $item['cedula']; ?></td>
                         <td><?php echo $item['nombre']; ?></td>
                         <td><?php echo $item['apellido']; ?></td>
-                        <td><a class=" btn btn-success btn-sm" onclick="modifyProffesional()">Modificar</a></td>
+                        <td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(<?php echo $item['cedula']; ?>)">Modificar</a></td>
                         <td>
-                            <button onclick="deleteProffesional()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
+                            <button onclick="deleteProfessional(<?php echo $item['cedula']; ?>)" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
                                 Eliminar
                             </button>
                         </td>
@@ -80,6 +77,7 @@ include 'public/header.php';
             }
             ?>
 
+
         </tbody>
     </table>
     <div class="" style="margin-left:50px">
@@ -89,12 +87,10 @@ include 'public/header.php';
     <br />
     <div style="padding:50px" class="row justify-content-end">
 
-        <!--    <a class="btn btn-success" href="?controlador=User&accion=showIndexView">Atrás</a> -->
         <a class="btn btn-success btn-sm" href="?controlador=User&accion=showAdministratorMainView">Atras</a>
-        <!--  <a class="dropdown-item" href="?controlador=Index&accion=showSearchProfessionalAdministrator">Atras</a> -->
     </div>
 </div>
-
+<script src="public/js/Site.js" type="text/javascript"></script>
 <script>
     function searchProfessional() {
         var letters = /^[A-Za-z+À-ú\s]+$/;
@@ -168,8 +164,7 @@ include 'public/header.php';
             url: '?controlador=User&accion=searchProfessional',
             type: 'post',
             success: function(response) {
-                var data = response;
-
+                var data = response;;
                 if (data == 0) {
                     $("#message").html("*No se encontraron registros");
                 } else {
@@ -185,6 +180,5 @@ include 'public/header.php';
 </script>
 
 <?php
-
 include_once 'public/footer.php';
 ?>
