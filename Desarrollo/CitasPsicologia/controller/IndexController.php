@@ -22,4 +22,15 @@ class IndexController {
         $this->view->show("RegisterProfessionalView.php", null);
     }
 
+        public function showMainFunctionaryRegisterAdministrator() {
+        $this->view->show("MainFunctionaryRegisterAdministrator.php", null);
+    }
+        public function showScheduleDatesAdministrator() {
+        $this->view->show("ScheduleDatesAdministrator.php", null);
+    }
+    
+            public function showDateConfirmationHome() {
+        $this->view->show("DateConfirmationHome.php", null);
+    }
+
 }
