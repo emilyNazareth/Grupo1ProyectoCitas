@@ -304,7 +304,7 @@ function modifyInformationProfessional() {
 
 function searchAppointmentByFilter($identification, $consecutive, $initialDate,
         $finalDate, $professional, $gender) {
-    var parametros = {"identification": $identification,
+    var parameters = {"identification": $identification,
         "consecutive": $consecutive,
         "initialDate": $initialDate,
         "finalDate": $finalDate,
@@ -312,25 +312,24 @@ function searchAppointmentByFilter($identification, $consecutive, $initialDate,
         "gender": $gender};
 
     $.ajax({
-        data: parametros,
+        data: parameters,
         url: '?controlador=Appointment&accion=searchAppointment',
         type: 'post',
-
-        beforeSend: function () {
-        },
         success: function (response) {
             var data = response;
 
-            if (data === 0) {
-                $("#message").html("*No se encontraron registros");
+            console.log(data);
+            if (data == 0) {
+                $("#result").html("<div class='alert alert-danger'>*No se encontraron registros</div>");
+                $("#tbody").html('');
             } else {
+                $("#result").html("");
                 $("#tbody").html(data);
             }
-            
-            
-        },
-        error: function (e) {
-            $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
+
+
+
+
         }
     });
 
@@ -338,10 +337,10 @@ function searchAppointmentByFilter($identification, $consecutive, $initialDate,
 
 }
 
-function alertInputInicialDate(){
-    if(!$("#finalDate").prop('disabled') && $("#finalDate").val() != ""){
-        $("#btn-accept").prop('disabled', false);  
-    }else{
+function alertInputInicialDate() {
+    if (!$("#finalDate").prop('disabled') && $("#finalDate").val() != "") {
+        $("#btn-accept").prop('disabled', false);
+    } else {
         $("#btn-accept").prop('disabled', true);
         $("#resultado").html("<div class='alert alert-warning'>Es necesario seleccionar una fecha final para realizar la búsqueda</div>");
     }
@@ -350,7 +349,7 @@ function alertInputInicialDate(){
     $("#finalDate").prop('disabled', false);
 }
 
-function alertInputFinalDate(){
+function alertInputFinalDate() {
     $("#resultado").html("<div class='alert alert-warning'>Final</div>");
     $("#btn-accept").prop('disabled', false);
     $("#resultado").html("");
@@ -364,12 +363,12 @@ function cleanFormConsultAppointment() {
     $("#finalDate").val("");
     $("#professional").val("");
     $("#consecutive").val("");
-    
+
     $("#resultado").html("");
-    
+
     $("#btn-accept").prop('disabled', false);
     $("#finalDate").prop('disabled', true);
-    
+
     $("#finalDate").prop('min', "");
     $("#initialDate").prop('max', "");
 }

@@ -72,33 +72,25 @@ class AppointmentController
     public function showConsultAppointmentAdministratorView() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();       
-        $appointments['searchedAppointments'] = $appointment->get_appointments();
         $appointments['professionals'] = $appointment->get_all_professionals();
         $this->view->show("SearchAppointmentAdministratorView.php", $appointments);
     }
 
     public function searchAppointment() {
-        $resultConsult = '';
-        $resultado = "";
-        if (empty($_POST['initialDate']) and empty($_POST['finalDate']) and
-                empty($_POST['professional']) and empty($_POST['consecutive'])
-                and empty($_POST['identification']) and empty($_POST['gender'])) {
-
-            $resultConsult = $this->getAppointments();
-            $resultado = $this->createTableAppointments($resultConsult);
-            echo $resultado;
+        $resultado = "";       
+        $resultConsult = $this->getAppointmentsByFilter(
+                $_POST['identification'], $_POST['consecutive'], 
+                $_POST['initialDate'], $_POST['finalDate'], 
+                $_POST['professional'], $_POST['gender']);
+        if (empty($resultConsult)) {
+            $resultado = '0';
+           
         } else {
-            $resultConsult = $this->getAppointmentsByFilter(
-                    $_POST['identification'], $_POST['consecutive'], 
-                    $_POST['initialDate'], $_POST['finalDate'], 
-                    $_POST['professional'], $_POST['gender']);
-            if (empty($resultConsult)) {
-                $resultado = '0';
-            } else {
-                $resultado = $this->createTableAppointments($resultConsult);
-                echo $resultado;
-            }
+            $resultado = $this->createTableAppointments($resultConsult);
+           
         }
+         echo $resultado;
+        
     }
 
     public function getAppointments() {
