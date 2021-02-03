@@ -49,12 +49,7 @@ html {
     margin-top: 3px;
 }
 
-.professional-register {
-    margin-bottom: 3px;
-    margin-top: 3px;
-}
-
-.scheduleDatesFilter {
+.professional-register, .scheduleDatesFilter {
     margin-bottom: 3px;
     margin-top: 3px;
 }
@@ -166,7 +161,7 @@ html {
     text-align: center;
 }
 
-.professional-register {
+.control-label {
     color: black !important;
 }
 
