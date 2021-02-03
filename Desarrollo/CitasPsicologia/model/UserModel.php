@@ -179,4 +179,7 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
+    
+    
+
 }
