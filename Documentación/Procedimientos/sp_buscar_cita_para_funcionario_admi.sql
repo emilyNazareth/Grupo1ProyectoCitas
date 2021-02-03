@@ -21,13 +21,13 @@ begin
 		 cita C,
 		 usuario_rol UR	
 	 WHERE
-		/* join tables */
+		
 		C.fk_id_funcionario = U.pk_cedula_usuario
         AND U.pk_cedula_usuario = UR.fk_id_usuario
         AND UR.fk_id_rol = 3
         AND U.tn_borrado = 0
         AND C.tc_borrado = 0
-        /* filters */
+       
         AND (id_funcionario_ = '' OR U.pk_cedula_usuario = id_funcionario_)
         AND (id_cita_ = '' OR C.pk_id_cita = id_cita_)
         AND (fecha_inicial_ = '' OR  C.tf_fecha >= fecha_inicial_)
