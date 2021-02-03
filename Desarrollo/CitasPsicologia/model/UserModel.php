@@ -181,6 +181,7 @@ class UserModel
     }
 
 
+
     //search_functionary_by_identification
     public function search_functionary_by_identification($identification)
     {
@@ -190,4 +191,5 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
+
 }

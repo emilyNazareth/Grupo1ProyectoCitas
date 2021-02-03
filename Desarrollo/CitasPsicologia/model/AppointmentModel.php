@@ -7,13 +7,11 @@ class AppointmentModel {
 
     protected $db;
     private static $instance = null;
-    protected $providerID = null;
 
     // constructor
     private function __construct() {
         require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
-        $this->providerID = 1;
     }
 
     public static function singleton() {
@@ -66,8 +64,7 @@ class AppointmentModel {
         $office,
         $dateAdmission
 ) {
-
-    $consulta = $this->db->prepare("call sp_registrar_funcionario("
+       $consulta = $this->db->prepare("call sp_registrar_funcionario("
         . $identification . ",'" . $name . "','" . $firstLastName . "','" .
         $secondLastName . "','" . $personalPhone . "','" .
         $roomPhone . "','" . $birthday . "','" . $gender . "','"
@@ -81,6 +78,41 @@ class AppointmentModel {
     $resultado = $consulta->fetchAll();
     $consulta->closeCursor();
     return $resultado;
+
 }
+
+
+    public function get_appointments() {
+        $consulta = $this->db->prepare("CALL  `sp_obtener_citas_admi`();");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+
+        return $resultado;
+    }
+
+    public function get_appointments_by_filter($identification, $consecutive, $initialDate, $finalDate, $professional, $gender) {
+        $consulta = $this->db->prepare("call "
+                . "sp_buscar_cita_para_funcionario_admi('"
+                . $identification . "','" . $consecutive . "','" . $initialDate .
+                "','" . $finalDate . "','" . $professional . "','" .
+                $gender . "')");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+
+        return $resultado;
+    }
+
+    public function get_all_professionals() {
+        $consulta = $this->db->prepare("CALL  sp_obtener_todos_los_profesionales()");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+
+   
 
 }

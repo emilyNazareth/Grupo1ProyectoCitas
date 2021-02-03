@@ -162,7 +162,7 @@
             </button>
             <div class="dropdown-content1">
                 <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
-                <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
+                <a href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView">Buscar Cita</a>
             </div>
         </div>
         <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
