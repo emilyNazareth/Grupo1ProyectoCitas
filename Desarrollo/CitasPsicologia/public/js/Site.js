@@ -358,5 +358,3 @@ function cleanFormConsultAppointment() {
     $("#finalDate").prop('min', "");
     $("#initialDate").prop('max', "");
 }
-
-
