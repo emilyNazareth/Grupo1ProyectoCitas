@@ -40,7 +40,7 @@ include 'public/header.php';
             <div class="form-group row scheduleDatesFilter">
 
                 <label class="col-sm-4 control-label small offset-sm-1" style="color: black" for="finalDate">Fecha Final</label>
-                <input type="date" class="col-sm-4 form-control form-control-sm" id="finalDate" name="finalDate" disabled="true" onchange='alertInputFinalDate()' />
+                <input type="date" class="col-sm-4 form-control form-control-sm" id="finalDate" name="finalDate" onchange='alertInputFinalDate()' />
             </div>
             
             <!--PROFESIONAL-->
@@ -76,10 +76,10 @@ include 'public/header.php';
         
         <!--BT BUSCAR-->
         <input type="button" onclick="searchAppointmentByFilter($('#identification').val(), $('#consecutive').val(),
-            $('#initialDate').val(), $('#finalDate').val(), $('#professional').val(), $('#gender').val())" class="btn btn-success btn-sm" id="btn-accept" value="Buscar"/>       
+            $('#initialDate').val(), $('#finalDate').val(), $('#professional').val(), $('#gender').val())" class="btn btn-success btn-sm" id="btn-accept" style="margin-inline: 3em" value="Buscar"/>       
     
         <!--BT CANCELAR-->
-        <button type="button" onclick="cleanFormConsultAppointment()" class="btn btn-success btn-sm" id="btn-cancel">Cancelar</button>
+        <button type="button" onclick="cleanFormConsultAppointment()" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Cancelar</button>
 
     </div>
 

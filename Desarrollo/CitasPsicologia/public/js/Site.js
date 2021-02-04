@@ -339,21 +339,10 @@ function searchAppointmentByFilter($identification, $consecutive, $initialDate,
 }
 
 function alertInputInicialDate(){
-    if(!$("#finalDate").prop('disabled') && $("#finalDate").val() != ""){
-        $("#btn-accept").prop('disabled', false);  
-    }else{
-        $("#btn-accept").prop('disabled', true);
-        $("#resultado").html("<div class='alert alert-warning'>Es necesario seleccionar una fecha final para realizar la búsqueda</div>");
-    }
-
     $("#finalDate").prop('min', $("#initialDate").val());
-    $("#finalDate").prop('disabled', false);
 }
 
 function alertInputFinalDate(){
-    $("#resultado").html("<div class='alert alert-warning'>Final</div>");
-    $("#btn-accept").prop('disabled', false);
-    $("#resultado").html("");
     $("#initialDate").prop('max', $("#finalDate").val());
 }
 
@@ -366,9 +355,6 @@ function cleanFormConsultAppointment() {
     $("#consecutive").val("");
     
     $("#resultado").html("");
-    
-    $("#btn-accept").prop('disabled', false);
-    $("#finalDate").prop('disabled', true);
     
     $("#finalDate").prop('min', "");
     $("#initialDate").prop('max', "");
