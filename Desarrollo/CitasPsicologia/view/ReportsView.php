@@ -7,6 +7,7 @@ include 'public/headerWithoutLogin.php';
         <canvas id="AppointmentQuantity"></canvas>
     </div>
     <div class="col">
+    <h7 style="color: gray;">Citas agendadas esta semana</h7>
         <canvas id="ProcessPercentage"></canvas>
     </div>
 </div>
@@ -92,16 +93,16 @@ include_once 'public/footer.php';
                             data: {
                                 labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                                 datasets: [{
-                                        label: 'Porcentaje por tipo de proceso',
-                                        data: [response.lunes, response.martes,
-                                            response.miercoles, response.jueves,
-                                            response.viernes, response.sabado],
+                                        label:[ 'Citas agendadas esta semana'],
                                         backgroundColor: ['rgba( 230, 207, 113, 1)',
                                             'rgba( 113, 230, 186, 1)',
                                             'rgba( 113, 154, 230, 1)',
                                             'rgba( 33, 199, 108, 1)',
                                             'rgba(  0, 135, 255, 1)'
-                                        ]
+                                        ],
+                                        data: [response.lunes, response.martes,
+                                            response.miercoles, response.jueves,
+                                            response.viernes, response.sabado],
                                     }]
                             },
                             options: {
