@@ -146,7 +146,7 @@
 
 
     <div class="navbar1" style="margin-top: -150px">
-        <a href="#reportes">Reportes</a>
+        <a href="?controlador=Appointment&accion=showReportsView">Reportes</a>
         <div class="dropdown1">
             <button class="dropbtn1">Administrar Profesional
                 <i class="fa fa-caret-down"></i>
