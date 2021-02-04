@@ -146,7 +146,7 @@
 
 
     <div class="navbar1" style="margin-top: -150px">
-        <a href="#reportes">Reportes</a>
+        <a href="?controlador=Appointment&accion=showReportsView">Reportes</a>
         <div class="dropdown1">
             <button class="dropbtn1">Administrar Profesional
                 <i class="fa fa-caret-down"></i>
@@ -162,7 +162,7 @@
             </button>
             <div class="dropdown-content1">
                 <a href="?controlador=Index&accion=showInfo">Agendar Cita</a>
-                <a href="?controlador=Index&accion=showInfo">Buscar Cita</a>
+                <a href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView">Buscar Cita</a>
             </div>
         </div>
         <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
