@@ -91,5 +91,12 @@ class AppointmentModel {
         $consulta->closeCursor();
         return $resultado;
     }
+    public function get_appointments_quantity_week() {
+        $consulta = $this->db->prepare("CALL  sp_obtener_cantidad_de_citas_por_semana()");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 
 }

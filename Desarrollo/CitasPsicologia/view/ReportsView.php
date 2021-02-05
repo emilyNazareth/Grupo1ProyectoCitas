@@ -7,6 +7,7 @@ include 'public/headerWithoutLogin.php';
         <canvas id="AppointmentQuantity"></canvas>
     </div>
     <div class="col">
+    <h7 style="color: gray;">Citas agendadas esta semana</h7>
         <canvas id="ProcessPercentage"></canvas>
     </div>
 </div>
@@ -32,7 +33,7 @@ include_once 'public/footer.php';
                     type: 'post',
                     dataType: 'json',
                     success: function (response) {
-                        console.log(response.enero);
+                        //console.log(response.enero);
                         var appointmentChart = document.getElementById('AppointmentQuantity').getContext('2d');
                         var chart = new Chart(appointmentChart, {
 
@@ -82,24 +83,26 @@ include_once 'public/footer.php';
         );
         $.ajax(
                 {
-                    url: '?controlador=Appointment&accion=loadDataInGraphReportsView',
+                    url: '?controlador=Appointment&accion=loadDataInGraphReportsViewTwo',
                     type: 'post',
-                    success: function (response) {
-                        //GRAFICO PROCESOS
+                    dataType: 'json',
+                    success: function (response) {          
                         var processChart = document.getElementById('ProcessPercentage').getContext('2d');
                         var myDoughnutChart = new Chart(processChart, {
                             type: 'doughnut',
                             data: {
-                                labels: ['Clínico', 'Incidente', 'Armas', 'Charlas', 'Capitulo V'],
+                                labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                                 datasets: [{
-                                        label: 'Porcentaje por tipo de proceso',
-                                        data: [1, 2, 3, 4, 5, 6],
+                                        label:[ 'Citas agendadas esta semana'],
                                         backgroundColor: ['rgba( 230, 207, 113, 1)',
                                             'rgba( 113, 230, 186, 1)',
                                             'rgba( 113, 154, 230, 1)',
                                             'rgba( 33, 199, 108, 1)',
                                             'rgba(  0, 135, 255, 1)'
-                                        ]
+                                        ],
+                                        data: [response.lunes, response.martes,
+                                            response.miercoles, response.jueves,
+                                            response.viernes, response.sabado],
                                     }]
                             },
                             options: {

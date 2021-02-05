@@ -98,7 +98,7 @@ class UserModel
     //getProfessionals
     public function getProfessionals()
     {
-        $consulta = $this->db->prepare("CALL  `sp_obtener_profesionales`();");
+        $consulta = $this->db->prepare("CALL  sp_obtener_profesionales();");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
