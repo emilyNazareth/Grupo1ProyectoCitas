@@ -5,13 +5,24 @@ include 'public/header.php';
 
 <font color="Black">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
-</head>
-<center><h3 class="titles">Agenda</h3></center>
+<center>
+    <br>
+    <h3 class="titles">Agenda</h3>
+</center>
 
 <div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-header" id="instructions">
+                Observaciones
+            </div>
+            <div class="card-body">
+                <textarea class="form-control form-control-sm" id="observations" rows="4"></textarea>
+            </div>
+
+        </div>
+    </div>
+
 
 
     <div class="col-sm-10">
@@ -20,19 +31,19 @@ include 'public/header.php';
 
             <div class="col-sm">
                 <div class="form-group row scheduleDatesFilter">
-                    <label class="col-sm-4 col-form-label-sm" for="professional">Profesional</label>
-                    <select onChange=" profesionalSchedule();" class="col-sm-4 custom-select custom-select-sm" id="ProfessionalId" name="ProfessionalId">
-                        @foreach (CitasSAPSO.Models.UserModels professional in ViewBag.professional)
-                        {
-                        <option value="@professional.Cedula">@professional.Name</option>
-                        }
-                    </select>
-
+                    <label class="col-sm-4 control-label small offset-sm-1" style="color: black" for="professionals">Profesional</label>
+                    <select  class="col-sm-4 custom-select custom-select-sm" name= "professionals" id="professionals">
+                        <option value="">Seleccione una opción</option>
+                        <?php
+                    foreach ($vars['professionals'] as $res) {
+                        ?>
+                        <option value="<?php echo $res['consecutivo']; ?>"><?php echo $res['nombre']; ?></option> 
+                        <?php
+                    }
+                        ?>
+                    </select> 
                 </div>
             </div>
-
-
-
 
 
             <div class="col-sm ">
@@ -54,13 +65,6 @@ include 'public/header.php';
 
         </div>
 
-
-
-
-        <input type="number" id="FunctionaryId" name="FunctionaryId" value="@functionary.Cedula" hidden />
-        <input type="text" id="Patient" name="Patient" value="paciente" hidden />
-        <input type="text" id="State" name="State" value="Apartada" hidden />
-
         <div class="col-sm-11 scheduleDatesTable">
             <div id='calendar'></div>
         </div>
@@ -81,6 +85,121 @@ include 'public/header.php';
     </div>
 </div>
 
+<table class="table table-bordered table-striped table-hover table-sm table-responsive-xl">
+    <thead>
+        <tr>
+            <th scope="col">Hora</th>
+            <th scope="col">Lunes</th>
+            <th scope="col">Martes</th>
+            <th scope="col">Miercoles</th>
+            <th scope="col">Jueves</th>
+            <th scope="col">Viernes</th>
+            <th scope="col">Sábado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">8:00</th>
+            <td><div id="L8am"></div></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">9:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">10:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">11:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">12:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">13:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">14:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">15:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">16:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">17:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">18:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
 <script>
     
        function goBack() {
@@ -99,27 +218,7 @@ include 'public/header.php';
         function cleanEvents() {
             events = [];
         }
-        function profesionalSchedule() {
-            var profesinal = $('#ProfessionalId').val();
-            var parameters = { "professionalId": profesinal };
-            $.ajax(
-                {
-                    data: parameters,
-                    url: '/User/GetProfesionalScheldule',
-                    type: 'post',
-                    async: false,
-                    beforeSend: function () {
-                        $("#messageSpanId").html("Procesando, espere por favor ...");
-                    },
-                    success: function (response) {
-                        response = JSON.parse(response)
-                        generedEvents(response);
-                    }
-                }
-            );
-        }
-        profesionalSchedule();
-
+ 
 
         function generedEvents(data) {
             cleanEvents();
@@ -176,21 +275,14 @@ include 'public/header.php';
             var FunctionaryId = document.getElementById("FunctionaryId").value;
             var fecha = document.getElementById("date").value;
             var Hour = document.getElementById("Hour").value;
-            var ProfessionalId = document.getElementById("ProfessionalId").value;
+            var ProfessionalId = document.getElementById("professionals").value;
             var Patient = document.getElementById("Patient").value;
             var State = document.getElementById("State").value;
-            var SubprocessId = document.getElementById("SubprocessId").value;
-            //var Assistance = document.getElementById("Assistance").value;
-            //var SubActivityId = document.getElementById("SubActivityId").value;
+            var Observation = document.getElementById("observations").value; // faltan dos y subPro no va
+            var Justification = document.getElementById("").value;
 
             if (Hour == "") {
                 alert("ingrese la hora por favor");
-                return 0;
-            }
-
-
-            if (SubprocessId == -1) {
-                alert("no hay subproceso");
                 return 0;
             }
 
@@ -206,26 +298,25 @@ include 'public/header.php';
                 "Hour": Hour,
                 "Professional": { "Cedula": ProfessionalId },
                 "Patient": Patient,
-                "State": State,
-                "SubProcess": { "ID": SubprocessId },
-                "Assistance": { "ID": 1 },
-                "SubActivity": { "ID": 1 }
+                "State": State
             };
 
 
             $.ajax(
                 {
                     data: parameters,
-                    url: '/Appointment/UpdateAppointment',
+                    url: '?controlador=Appointment&accion=registerAppointment',
                     type: 'post',
                     success: function (response) {
-                        location.href = "/Appointment/DateConfirmationHome";
+                        location.href = "?controlador=Index&accion=showDateConfirmationHome";
                     }
                 }
             );
         }
     </script>
 
+
 <?php
 include_once 'public/footer.php';
 ?>
+

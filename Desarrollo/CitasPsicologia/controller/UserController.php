@@ -200,18 +200,16 @@ class UserController
         $result['professional'] = $user->obtain_information_to_modify($identification);
         $this->view->show("UpdateProfessionalAdministrator.php", $result);
     }
-    public function getProfessionals()
-    {
+     public function getProfessionals() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
-        $data['users'] = $professional->getProfessionals();
-
-        $this->view->show("nose.php", $data);//pasar a la vista de la cita
+        $data['professionals'] = $professional->getProfessionals();
+        
+        $this->view->show("ScheduleDatesAdministrator.php", $data); //pasar a la vista de la cita
     }
 
-    public function saveFunctionarySession()
-    {
-       /* $_SESSION['functionary'] = [
+    public function saveFunctionarySession() {
+        $_SESSION['functionary'] = [
             'identification' => $_POST['identification'],
             'name' => $_POST['name'],
             'firstLastName' => $_POST['firstLastName'],
@@ -234,39 +232,39 @@ class UserController
             'area' => $_POST['area'],
             'office' => $_POST['office'],
             'dateAdmission' => $_POST['dateAdmission'],
-            'assistance' => $_POST['assistance']];*/
-            $_SESSION['functionary'] = [
-                'identification' => 102340567,
-                'name' => 'Erick',
-                'firstLastName' => "Ramirez",
-                'secondLastName' => "Alvarado",
-                'personalPhone' => "85858585",
-                'roomPhone' => "89898989",
-                'birthday' => "1999-12-06",
-                'gender' => 'M',
-                'scholarship' => "Tecnico",
-                'province' => "Cartago",
-                'canton' => "Turri",
-                'district' => "La Suiza",
-                'civilStatus' => "Viudo(a)",
-                'address' => "absd",
-                'officePhone' =>"87878787",
-                'email' => "beto@gmail.com",
-                'idPlaca' => "321",
-                'portingExpirationDate' => "2022-12-06",
-                'place' => "alguna",
-                'area' => "Omicidios",
-                'office' => "central",
-                'dateAdmission' => "2019-12-06"];
-        
+            'assistance' => $_POST['assistance']];
+        /* $_SESSION['functionary'] = [
+          'identification' => 102340567,
+          'name' => 'Erick',
+          'firstLastName' => "Ramirez",
+          'secondLastName' => "Alvarado",
+          'personalPhone' => "85858585",
+          'roomPhone' => "89898989",
+          'birthday' => "1999-12-06",
+          'gender' => 'M',
+          'scholarship' => "Tecnico",
+          'province' => "Cartago",
+          'canton' => "Turri",
+          'district' => "La Suiza",
+          'civilStatus' => "Viudo(a)",
+          'address' => "absd",
+          'officePhone' =>"87878787",
+          'email' => "beto@gmail.com",
+          'idPlaca' => "321",
+          'portingExpirationDate' => "2022-12-06",
+          'place' => "alguna",
+          'area' => "Omicidios",
+          'office' => "central",
+          'dateAdmission' => "2019-12-06"]; */
+
         echo ('Funcionario Registrado');
     }
 
-    public function searchFunctionaryByIdentification()
-    {
+    public function searchFunctionaryByIdentification() {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->search_functionary_by_identification($_POST['identification']);
-        json_encode($result);
+       echo json_encode($result);
+        
     }
 }
