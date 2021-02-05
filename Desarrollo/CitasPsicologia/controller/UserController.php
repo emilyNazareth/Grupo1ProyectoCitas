@@ -3,28 +3,23 @@
 /**
  * 
  */
-class UserController
-{
+class UserController {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->view = new View();
     }
 
-    public function showLoginView()
-    {
+    public function showLoginView() {
         $this->view->show("loginView.php", null);
     }
 
-    public function showIndexView()
-    {
+    public function showIndexView() {
         session_unset();
         session_destroy();
         $this->view->show("indexView.php", null);
     }
 
-    public function logIn()
-    {
+    public function logIn() {
         require 'model/UserModel.php';
 
         $identification = $_POST['identification'];
@@ -53,13 +48,11 @@ class UserController
         }
     }
 
-    public function showAdministratorMainView()
-    {
+    public function showAdministratorMainView() {
         $this->view->show("AdministratorMainView.php", null);
     }
 
-    public function registerProfessional()
-    {
+    public function registerProfessional() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $result = $professional->verify_user_identification($_POST['identification']);
@@ -67,34 +60,13 @@ class UserController
             echo ('El profesional ya existe en el sistema, digite otro');
         } else {
             $professional->register_professional(
-                $_POST['identification'],
-                $_POST['password'],
-                $_POST['name'],
-                $_POST['firstLastName'],
-                $_POST['secondLastName'],
-                $_POST['personalPhone'],
-                $_POST['roomPhone'],
-                $_POST['birthday'],
-                $_POST['gender'],
-                $_POST['civilStatus'],
-                $_POST['placeNumber'],
-                $_POST['status'],
-                $_POST['emergencyContactName'],
-                $_POST['emergencyContactNumber'],
-                $_POST['scholarship'],
-                $_POST['specialty'],
-                $_POST['schoolCode'],
-                $_POST['province'],
-                $_POST['canton'],
-                $_POST['district'],
-                $_POST['addressProfessional']
+                    $_POST['identification'], $_POST['password'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName'], $_POST['personalPhone'], $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], $_POST['civilStatus'], $_POST['placeNumber'], $_POST['status'], $_POST['emergencyContactName'], $_POST['emergencyContactNumber'], $_POST['scholarship'], $_POST['specialty'], $_POST['schoolCode'], $_POST['province'], $_POST['canton'], $_POST['district'], $_POST['addressProfessional']
             );
             echo ('Profesional Registrado');
         }
     }
 
-    public function searchProfessional()
-    {
+    public function searchProfessional() {
         require 'model/UserModel.php';
         $identification = $_POST['cedula'];
         $name = $_POST['nombre'];
@@ -121,8 +93,7 @@ class UserController
         echo $resultado;
     }
 
-    public function showSearchProfessionalAdministrator()
-    {
+    public function showSearchProfessionalAdministrator() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['users'] = $professional->getProfessionals();
@@ -146,8 +117,7 @@ class UserController
         echo $resultado;
     }
 
-    public function deleteProfessional()
-    {
+    public function deleteProfessional() {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->delete_professional($_POST['identification']);
@@ -158,41 +128,25 @@ class UserController
         }
     }
 
-
-    public function updateProfessional()
-    {
+    public function updateProfessional() {
         require 'model/UserModel.php';
 
         $user = UserModel::singleton();
         $result = $user->update_professional(
-            $_POST['cedula'],
-            $_POST['contrasena'],
-            $_POST['nombre'],
-            $_POST['primerApellido'],
-            $_POST['segundoApellido'],
-            $_POST['telPersonal'],
-            $_POST['telHabitacion'],
-            $_POST['estadoCivil'],
-            $_POST['estado'],
-            $_POST['contactoEmergancia'],
-            $_POST['numeroContactoEmergancia'],
-            $_POST['escolaridad'],
-            $_POST['especialidad'],
-            $_POST['provincia'],
-            $_POST['canton'],
-            $_POST['distrito'],
-            $_POST['direccion']
+                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['telPersonal'], $_POST['telHabitacion'], $_POST['estadoCivil'], $_POST['estado'], $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], $_POST['escolaridad'], $_POST['especialidad'], $_POST['provincia'], $_POST['canton'], $_POST['distrito'], $_POST['direccion']
         );
 
         if ($result == 1) {
+            
         } else {
 
             echo ('El registro ha sido actualizado');
         }
-    } //end updateProfessional
+    }
 
-    public function showUpdateProfessional()
-    {
+//end updateProfessional
+
+    public function showUpdateProfessional() {
 
         require 'model/UserModel.php';
         $user = UserModel::singleton();
@@ -200,73 +154,72 @@ class UserController
         $result['professional'] = $user->obtain_information_to_modify($identification);
         $this->view->show("UpdateProfessionalAdministrator.php", $result);
     }
-    public function getProfessionals()
-    {
+
+    public function getProfessionals() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['users'] = $professional->getProfessionals();
 
-        $this->view->show("nose.php", $data);//pasar a la vista de la cita
+        $this->view->show("nose.php", $data); //pasar a la vista de la cita
     }
 
-    public function saveFunctionarySession()
-    {
-       /* $_SESSION['functionary'] = [
-            'identification' => $_POST['identification'],
-            'name' => $_POST['name'],
-            'firstLastName' => $_POST['firstLastName'],
-            'secondLastName' => $_POST['secondLastName'],
-            'personalPhone' => $_POST['personalPhone'],
-            'roomPhone' => $_POST['roomPhone'],
-            'birthday' => $_POST['birthday'],
-            'gender' => $_POST['gender'],
-            'scholarship' => $_POST['scholarship'],
-            'province' => $_POST['province'],
-            'canton' => $_POST['canton'],
-            'district' => $_POST['district'],
-            'civilStatus' => $_POST['civilStatus'],
-            'address' => $_POST['address'],
-            'officePhone' => $_POST['officePhone'],
-            'email' => $_POST['email'],
-            'idPlaca' => $_POST['idPlaca'],
-            'portingExpirationDate' => $_POST['portingExpirationDate'],
-            'place' => $_POST['place'],
-            'area' => $_POST['area'],
-            'office' => $_POST['office'],
-            'dateAdmission' => $_POST['dateAdmission'],
-            'assistance' => $_POST['assistance']];*/
-            $_SESSION['functionary'] = [
-                'identification' => 102340567,
-                'name' => 'Erick',
-                'firstLastName' => "Ramirez",
-                'secondLastName' => "Alvarado",
-                'personalPhone' => "85858585",
-                'roomPhone' => "89898989",
-                'birthday' => "1999-12-06",
-                'gender' => 'M',
-                'scholarship' => "Tecnico",
-                'province' => "Cartago",
-                'canton' => "Turri",
-                'district' => "La Suiza",
-                'civilStatus' => "Viudo(a)",
-                'address' => "absd",
-                'officePhone' =>"87878787",
-                'email' => "beto@gmail.com",
-                'idPlaca' => "321",
-                'portingExpirationDate' => "2022-12-06",
-                'place' => "alguna",
-                'area' => "Omicidios",
-                'office' => "central",
-                'dateAdmission' => "2019-12-06"];
-        
+    public function saveFunctionarySession() {
+        /* $_SESSION['functionary'] = [
+          'identification' => $_POST['identification'],
+          'name' => $_POST['name'],
+          'firstLastName' => $_POST['firstLastName'],
+          'secondLastName' => $_POST['secondLastName'],
+          'personalPhone' => $_POST['personalPhone'],
+          'roomPhone' => $_POST['roomPhone'],
+          'birthday' => $_POST['birthday'],
+          'gender' => $_POST['gender'],
+          'scholarship' => $_POST['scholarship'],
+          'province' => $_POST['province'],
+          'canton' => $_POST['canton'],
+          'district' => $_POST['district'],
+          'civilStatus' => $_POST['civilStatus'],
+          'address' => $_POST['address'],
+          'officePhone' => $_POST['officePhone'],
+          'email' => $_POST['email'],
+          'idPlaca' => $_POST['idPlaca'],
+          'portingExpirationDate' => $_POST['portingExpirationDate'],
+          'place' => $_POST['place'],
+          'area' => $_POST['area'],
+          'office' => $_POST['office'],
+          'dateAdmission' => $_POST['dateAdmission'],
+          'assistance' => $_POST['assistance']]; */
+        $_SESSION['functionary'] = [
+            'identification' => 302900456,
+            'name' => 'Test mismo cedu',
+            'firstLastName' => "Ramirez",
+            'secondLastName' => "Alvarado",
+            'personalPhone' => "85858585",
+            'roomPhone' => "89898989",
+            'birthday' => "1999-12-06",
+            'gender' => 'M',
+            'scholarship' => "Tecnico",
+            'province' => "Cartago",
+            'canton' => "Turri",
+            'district' => "La Suiza",
+            'civilStatus' => "Viudo(a)",
+            'address' => "absd",
+            'officePhone' => "87878787",
+            'email' => "beto@gmail.com",
+            'idPlaca' => "321",
+            'portingExpirationDate' => "2022-12-06",
+            'place' => "nada",
+            'area' => "robos",
+            'office' => "central",
+            'dateAdmission' => "2019-12-06"];
+
         echo ('Funcionario Registrado');
     }
 
-    public function searchFunctionaryByIdentification()
-    {
+    public function searchFunctionaryByIdentification() {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->search_functionary_by_identification($_POST['identification']);
         json_encode($result);
     }
+
 }

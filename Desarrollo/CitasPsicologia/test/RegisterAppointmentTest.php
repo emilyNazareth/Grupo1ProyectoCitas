@@ -1,22 +1,28 @@
 <?php
 
-class RegisterProfessionalTest {
+include 'controller/UserController.php';
+include  'model/AppointmentModel.php';
 
-    public function testRegisterProfessionalModel() {
-        require 'model/UserModel.php';
-        $model = UserModel::singleton();
+class RegisterAppointmentTest {
 
-        // call without parameters
-        $resultado = $model->register_professional("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-        echo 'Test: call without parameters -> ';
+    public function testRegisterAppointmentModel() {       
+        $model = AppointmentModel::singleton();
+
+        $resultado =  $model->register_appointment( 302900456, "2021-12-06", 
+                "9:30pm", "300000888", 'Test mismo cedu', "pendiente", 
+                "test BE emi", "test BE emi");            
         print_r($resultado);
-//        $resultado1 = $model->register_professional(123400, 123, "Yer", "Leal", "Achí", '25348790', '25678743', '1995-03-30', 'F', 'soltera', 456, 1, 'A', 88888888, 'secundaria', 'psicologa', 'CPH78', 'Cartago', 'Alvarado', 'Pacayas', '800 metros este del BN');
-        echo 'Test: call with existing id -> ';
-//        print_r($resultado1); // No ingresa usuario con id existente en BD
-
-//      sp_registrar_cita(108490188, '2021-05-01', '10', 304850984, 'test', 'Pendiente', 'ninguna', 'nada');
     }
 
-
+    public function testRegisterFunctionaryModel() {
+        $model = AppointmentModel::singleton();
+        $resultado = $model->register_functionary(
+                302900456, 'Test mismo cedu', "Ramirez", "Alvarado",
+                "85858585", "89898989", "1999-12-06", 'M', "Tecnico",
+                "Cartago", "Turri", "La Suiza", "Viudo(a)", "absd", "87878787",
+                "beto@gmail.com", "321", "2022-12-06", "nada", "robos",
+                "central", "2019-12-06");        
+        print_r($resultado);
+    }
 
 }

@@ -32,4 +32,11 @@ class TestController {
         $registerProfessionalTest->testObtainInfoModel();
     }
 
+    public function testRegisterAppointment() {
+        require 'test/RegisterAppointmentTest.php';
+        $registerProfessionalTest = new RegisterAppointmentTest();
+        $registerProfessionalTest->testRegisterFunctionaryModel();
+        $registerProfessionalTest->testRegisterAppointmentModel();
+    }
+
 }

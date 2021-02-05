@@ -30,7 +30,7 @@ class AppointmentController {
                   $_POST['status'],
                   $_POST['observation'],
                   $_POST['justification'] */
-                $_SESSION['functionary']['identification'], "2021-12-06", "2:30pm", "300000888", $_SESSION['functionary']['name'], "pendiente", "abc", "jus"
+                $_SESSION['functionary']['identification'], "2021-12-06", "9:30pm", "300000888", $_SESSION['functionary']['name'], "pendiente", "test BE emi", "test BE emi"
         );
         echo ('Cita registrada');
     }
