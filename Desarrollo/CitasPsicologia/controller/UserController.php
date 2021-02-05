@@ -3,28 +3,23 @@
 /**
  * 
  */
-class UserController
-{
+class UserController {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->view = new View();
     }
 
-    public function showLoginView()
-    {
+    public function showLoginView() {
         $this->view->show("loginView.php", null);
     }
 
-    public function showIndexView()
-    {
+    public function showIndexView() {
         session_unset();
         session_destroy();
         $this->view->show("indexView.php", null);
     }
 
-    public function logIn()
-    {
+    public function logIn() {
         require 'model/UserModel.php';
 
         $identification = $_POST['identification'];
@@ -53,13 +48,11 @@ class UserController
         }
     }
 
-    public function showAdministratorMainView()
-    {
+    public function showAdministratorMainView() {
         $this->view->show("AdministratorMainView.php", null);
     }
 
-    public function registerProfessional()
-    {
+    public function registerProfessional() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $result = $professional->verify_user_identification($_POST['identification']);
@@ -67,34 +60,13 @@ class UserController
             echo ('El profesional ya existe en el sistema, digite otro');
         } else {
             $professional->register_professional(
-                $_POST['identification'],
-                $_POST['password'],
-                $_POST['name'],
-                $_POST['firstLastName'],
-                $_POST['secondLastName'],
-                $_POST['personalPhone'],
-                $_POST['roomPhone'],
-                $_POST['birthday'],
-                $_POST['gender'],
-                $_POST['civilStatus'],
-                $_POST['placeNumber'],
-                $_POST['status'],
-                $_POST['emergencyContactName'],
-                $_POST['emergencyContactNumber'],
-                $_POST['scholarship'],
-                $_POST['specialty'],
-                $_POST['schoolCode'],
-                $_POST['province'],
-                $_POST['canton'],
-                $_POST['district'],
-                $_POST['addressProfessional']
+                    $_POST['identification'], $_POST['password'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName'], $_POST['personalPhone'], $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], $_POST['civilStatus'], $_POST['placeNumber'], $_POST['status'], $_POST['emergencyContactName'], $_POST['emergencyContactNumber'], $_POST['scholarship'], $_POST['specialty'], $_POST['schoolCode'], $_POST['province'], $_POST['canton'], $_POST['district'], $_POST['addressProfessional']
             );
             echo ('Profesional Registrado');
         }
     }
 
-    public function searchProfessional()
-    {
+    public function searchProfessional() {
         require 'model/UserModel.php';
         $identification = $_POST['cedula'];
         $name = $_POST['nombre'];
@@ -121,8 +93,7 @@ class UserController
         echo $resultado;
     }
 
-    public function showSearchProfessionalAdministrator()
-    {
+    public function showSearchProfessionalAdministrator() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['users'] = $professional->getProfessionals();
@@ -146,8 +117,7 @@ class UserController
         echo $resultado;
     }
 
-    public function deleteProfessional()
-    {
+    public function deleteProfessional() {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->delete_professional($_POST['identification']);
@@ -158,41 +128,25 @@ class UserController
         }
     }
 
-
-    public function updateProfessional()
-    {
+    public function updateProfessional() {
         require 'model/UserModel.php';
 
         $user = UserModel::singleton();
         $result = $user->update_professional(
-            $_POST['cedula'],
-            $_POST['contrasena'],
-            $_POST['nombre'],
-            $_POST['primerApellido'],
-            $_POST['segundoApellido'],
-            $_POST['telPersonal'],
-            $_POST['telHabitacion'],
-            $_POST['estadoCivil'],
-            $_POST['estado'],
-            $_POST['contactoEmergancia'],
-            $_POST['numeroContactoEmergancia'],
-            $_POST['escolaridad'],
-            $_POST['especialidad'],
-            $_POST['provincia'],
-            $_POST['canton'],
-            $_POST['distrito'],
-            $_POST['direccion']
+                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['telPersonal'], $_POST['telHabitacion'], $_POST['estadoCivil'], $_POST['estado'], $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], $_POST['escolaridad'], $_POST['especialidad'], $_POST['provincia'], $_POST['canton'], $_POST['distrito'], $_POST['direccion']
         );
 
         if ($result == 1) {
+            
         } else {
 
             echo ('El registro ha sido actualizado');
         }
-    } //end updateProfessional
+    }
 
-    public function showUpdateProfessional()
-    {
+//end updateProfessional
+
+    public function showUpdateProfessional() {
 
         require 'model/UserModel.php';
         $user = UserModel::singleton();
@@ -200,6 +154,7 @@ class UserController
         $result['professional'] = $user->obtain_information_to_modify($identification);
         $this->view->show("UpdateProfessionalAdministrator.php", $result);
     }
+
      public function getProfessionals() {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
@@ -257,6 +212,7 @@ class UserController
           'office' => "central",
           'dateAdmission' => "2019-12-06"]; */
 
+
         echo ('Funcionario Registrado');
     }
 
@@ -267,4 +223,5 @@ class UserController
        echo json_encode($result);
         
     }
+
 }

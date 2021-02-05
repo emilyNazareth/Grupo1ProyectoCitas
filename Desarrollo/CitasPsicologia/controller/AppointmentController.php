@@ -55,6 +55,7 @@ class AppointmentController
                   $_POST['status'],
                   $_POST['observation'],
                   $_POST['justification'] */
+
             $_SESSION['functionary']['identification'],
             "2021-02-05",
             "2:30pm",
@@ -63,6 +64,7 @@ class AppointmentController
             "pendiente",
             "abc",
             "jus"
+
         );
         echo ('Cita registrada');
     }
