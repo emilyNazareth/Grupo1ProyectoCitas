@@ -186,8 +186,7 @@ class UserController {
             'place' => $_POST['place'],
             'area' => $_POST['area'],
             'office' => $_POST['office'],
-            'dateAdmission' => $_POST['dateAdmission'],
-            'assistance' => $_POST['assistance']];
+            'dateAdmission' => $_POST['dateAdmission']];
         /* $_SESSION['functionary'] = [
           'identification' => 102340567,
           'name' => 'Erick',
@@ -211,7 +210,6 @@ class UserController {
           'area' => "Omicidios",
           'office' => "central",
           'dateAdmission' => "2019-12-06"]; */
-
 
         echo ('Funcionario Registrado');
     }

@@ -22,12 +22,12 @@ class AppointmentModel {
     }
 
     public function register_appointment(
-    $idFunctionary, $date, $hour, $idProfessional, $patient, $status, $observation, $justification
+            $idFunctionary, $date, $hour, $idProfessional, $patient, $observation
     ) {
         $consulta = $this->db->prepare("call sp_registrar_cita("
-                . $idFunctionary . ",'" . $date . "','" . $hour . "','" .
-                $idProfessional . "','" . $patient . "','" .
-                $status . "','" . $observation . "','" . $justification . "')");
+                . $idFunctionary . ",'" . $date . "','" . $hour . "'," .
+                $idProfessional . ",'" . $patient . "','" .
+                $observation . "')");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
@@ -36,7 +36,7 @@ class AppointmentModel {
     }
 
     public function register_functionary(
-    $identification, $name, $firstLastName, $secondLastName, $personalPhone, $roomPhone, $birthday, $gender, $scholarship, $province, $canton, $district, $civilStatus, $address, $officePhone, $email, $idPlaca, $portingExpirationDate, $place, $area, $office, $dateAdmission
+            $identification, $name, $firstLastName, $secondLastName, $personalPhone, $roomPhone, $birthday, $gender, $scholarship, $province, $canton, $district, $civilStatus, $address, $officePhone, $email, $idPlaca, $portingExpirationDate, $place, $area, $office, $dateAdmission
     ) {
         $consulta = $this->db->prepare("call sp_registrar_funcionario("
                 . $identification . ",'" . $name . "','" . $firstLastName . "','" .
