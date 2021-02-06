@@ -46,7 +46,7 @@ include 'public/header.php';
                 </div>
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="birthday">Fecha de nacimineto</label>
-                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-6 form-control form-control-sm" id="birthday" name="birthday" required min="1930-01-01" max="2005-01-01" required/>
+                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-6 form-control form-control-sm" id="birthday" name="birthday" required  max="" onclick="getCurrentDate()"/>
                 </div>
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="gender">Sexo</label>
@@ -70,7 +70,7 @@ include 'public/header.php';
                 <!--PROVINCIA-->
                 <div class="row professional-register">
                     <label class="col-sm-4 control-label small" for="province">Provincia:</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="province" name="province" required onchange="activeCanton(); return false; " required>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="province" name="province" required onchange="activeCanton(); return false;" required>
                         <option disabled selected value>Seleccione...</option>
                     </select>
                 </div>
@@ -102,7 +102,7 @@ include 'public/header.php';
 
             </div>
 
-            <div class="col">
+            <div class="col-sm-6" style="margin-top: 50px">
                 <p class="titles">Datos Laborales</p>
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="area">Área</label>
@@ -134,8 +134,9 @@ include 'public/header.php';
                 </div>
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="admissionDate">Fecha de ingreso</label>
-                    <input type="date" class="col-sm-4 form-control form-control-sm" id="admissionDate" name="admissionDate" required  max="" onclick="getCurrentDate()" required/>
+                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-4 form-control form-control-sm" id="admissionDate" name="admissionDate" required  max="" onclick="getCurrentDate()"/>
                 </div>
+
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="officePhone">Teléfono Oficina:</label>
                     <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-4 form-control form-control-sm" type="text" id="oficePhone" name="oficePhone" required>
@@ -156,13 +157,18 @@ include 'public/header.php';
                 </div>
                 <br />
 
-                <div class="row justify-content-end">
+                <div class="row">  
+                    <div class="col-sm " style="margin-top: 2em">
+                        <!--BT BUSCAR-->
+                        <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView" style="margin-inline: 3em">Atras</a>
 
-
-                    <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView">Atras</a>
-                    <a type="submit" class="btn btn-success btn-sm" onclick="sendInformation()">Siguiente</a>
-
+                        <!--BT CANCELAR-->
+                        <button type="button" onclick="sendInformation()" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Siguiente</button>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>
@@ -171,12 +177,12 @@ include 'public/header.php';
 
 <script src="public/js/Site.js" type="text/javascript"></script>
 <script>
-                        window.onload = function () {
-                            $("#canton").prop("disabled", true);
-                            $("#district").prop("disabled", true);
+                            window.onload = function () {
+                                $("#canton").prop("disabled", true);
+                                $("#district").prop("disabled", true);
 
-                            loadGeographicInfo();
-                        }
+                                loadGeographicInfo();
+                            }
 
 
 </script>
@@ -235,80 +241,78 @@ include 'public/header.php';
 
 
     function sendInformation() {
-        
-           if (isFieldEmpty($("#cedula").val()) ||
-            isFieldEmpty($("#name").val()) ||
-            isFieldEmpty($("#firstLastName").val()) ||
-            isFieldEmpty($("#secondLastName").val()) ||
-            isFieldEmpty($("#personalPhone").val()) ||
-            isFieldEmpty($("#housePhone").val()) ||
-            isFieldEmpty($("#birthday").val()) ||
-            isFieldEmpty($("#gender").val()) ||
-            isFieldEmpty($("#scholarship").val()) ||
-            isFieldEmpty($("#province").val()) ||
-            isFieldEmpty($("#canton").val()) ||
-            isFieldEmpty($("#district").val()) ||
-            
-            isFieldEmpty($("#civilStatus").val()) ||
-            isFieldEmpty($("#address").val()) ||
-            isFieldEmpty($("#area").val()) ||
-            isFieldEmpty($("#office").val()) ||
-            isFieldEmpty($("#place").val()) ||
-            isFieldEmpty($("#admissionDate").val()) ||
-            isFieldEmpty($("#oficePhone").val()) ||
-            isFieldEmpty($("#mail").val()) ||
-            isFieldEmpty($("#idPlaca").val()) ||
-            
-            isFieldEmpty($("#PortationExpirationDay").val())) {
-        $("#resultado").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
-    } else {
-        $("#resultado").html("");
-        if ($("#form-professional-register").valid()) {
 
-        var parametros = {
-            "identification": $("#cedula").val(),
-            "name": $("#name").val(),
-            "firstLastName": $("#firstLastName").val(),
-            "secondLastName": $("#secondLastName").val(),
-            "personalPhone": $("#personalPhone").val(),
-            "roomPhone": $("#housePhone").val(),
-            "birthday": $("#birthday").val(),
-            "gender": $("#gender").val(),
-            "scholarship": $("#scholarship").val(),
-            "province": $("#province").val(),
-            "canton": $("#canton").val(),
-            "district": $("#district").val(),
-            "civilStatus": $("#civilStatus").val(),
-            "address": $("#address").val(),
-            "area": $("#area").val(),
-            "office": $("#office").val(),
-            "place": $("#place").val(),
-            "dateAdmission": $("#admissionDate").val(),
-            "officePhone": $("#oficePhone").val(),
-            "email": $("#mail").val(),
-            "idPlaca": $("#idPlaca").val(),
-            "portingExpirationDate": $("#PortationExpirationDay").val()
-        };
+        if (isFieldEmpty($("#cedula").val()) ||
+                isFieldEmpty($("#name").val()) ||
+                isFieldEmpty($("#firstLastName").val()) ||
+                isFieldEmpty($("#secondLastName").val()) ||
+                isFieldEmpty($("#personalPhone").val()) ||
+                isFieldEmpty($("#housePhone").val()) ||
+                isFieldEmpty($("#birthday").val()) ||
+                isFieldEmpty($("#gender").val()) ||
+                isFieldEmpty($("#scholarship").val()) ||
+                isFieldEmpty($("#province").val()) ||
+                isFieldEmpty($("#canton").val()) ||
+                isFieldEmpty($("#district").val()) ||
+                isFieldEmpty($("#civilStatus").val()) ||
+                isFieldEmpty($("#address").val()) ||
+                isFieldEmpty($("#area").val()) ||
+                isFieldEmpty($("#office").val()) ||
+                isFieldEmpty($("#place").val()) ||
+                isFieldEmpty($("#admissionDate").val()) ||
+                isFieldEmpty($("#oficePhone").val()) ||
+                isFieldEmpty($("#mail").val()) ||
+                isFieldEmpty($("#idPlaca").val()) ||
+                isFieldEmpty($("#PortationExpirationDay").val())) {
+            $("#resultado").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
+        } else {
+            $("#resultado").html("");
 
-        $.ajax({
-            data: parametros,
-            url: '?controlador=User&accion=saveFunctionarySession',
-            type: 'post',
-           
-            beforeSend: function () {
-                $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
-            },
-            success: function (response) {
-                //if (response == 1) {
+
+            var parametros = {
+                "identification": $("#cedula").val(),
+                "name": $("#name").val(),
+                "firstLastName": $("#firstLastName").val(),
+                "secondLastName": $("#secondLastName").val(),
+                "personalPhone": $("#personalPhone").val(),
+                "roomPhone": $("#housePhone").val(),
+                "birthday": $("#birthday").val(),
+                "gender": $("#gender").val(),
+                "scholarship": $("#scholarship").val(),
+                "province": $("#province").val(),
+                "canton": $("#canton").val(),
+                "district": $("#district").val(),
+                "civilStatus": $("#civilStatus").val(),
+                "address": $("#address").val(),
+                "area": $("#area").val(),
+                "office": $("#office").val(),
+                "place": $("#place").val(),
+                "dateAdmission": $("#admissionDate").val(),
+                "officePhone": $("#oficePhone").val(),
+                "email": $("#mail").val(),
+                "idPlaca": $("#idPlaca").val(),
+                "portingExpirationDate": $("#PortationExpirationDay").val()
+            };
+
+            $.ajax({
+                data: parametros,
+                url: '?controlador=User&accion=saveFunctionarySession',
+                type: 'post',
+
+                beforeSend: function () {
+                    $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+                },
+                success: function (response) {
+                    //if (response == 1) {
                     $("#messageSpanId").html("Administrador");
                     window.location.replace("?controlador=User&accion=getProfessionals");
-                } 
+                }
 
-            
 
-        });
-    }
-    }
+
+            });
+
+        }
     }//end sendInformation
 
 </script>
