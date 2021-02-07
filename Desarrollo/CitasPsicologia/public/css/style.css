@@ -54,6 +54,11 @@ html {
     margin-top: 3px;
 }
 
+.appointment-detail {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
 #idInput {
     margin-top: 30px;
 }
@@ -170,13 +175,30 @@ html {
     font-weight: bold;
 }
 
+.title-appointment-detail {
+    color: orange !important;
+    font-weight: bold;
+    margin-top: 2em;
+    font-size: 25px;
+}
+
+.appointment-detail-input:disabled{
+    color: black;
+    background-color: white;
+}
+
+select.appointment-detail-select:disabled{
+    background: none;
+    color: black;
+    background-color: white;
+}
 
 #address {
     padding-top: 10%;
 }
 
 
-.buttons-professional-register {
+.buttons-professional-register, .buttons-appointment-ditail {
     margin-top: 2em;
 }
 

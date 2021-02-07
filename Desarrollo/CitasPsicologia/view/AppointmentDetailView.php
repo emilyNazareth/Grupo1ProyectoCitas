@@ -1,100 +1,155 @@
 <?php
+include 'public/header.php';
+?>
 
-/* 
+<form id="form-professional-register">
 
-@*@{
-    ViewData["Title"] = "AppointmentDetail";
-}*@
+    <center>
+        <p class="title-appointment-detail" >Detalles de Cita</p>
+    </center>
 
-@model  CitasSAPSO.Models.AppointmentModels
-<h3 class="text-center text-info titles">Detalles de la cita</h3>
-                       
-<form>
-    <div class="row align-items-start">
-        @if (ViewBag.appointment != null)
-        {
-            foreach (CitasSAPSO.Models.AppointmentModels appointment in ViewBag.appointment)
-            {
-                <div class="col">
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="consecutive">Consecutivo:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Id" type="number" readonly id="consecutive" name="consecutive">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="identification">Numero de identificacion:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.Cedula" type="text" readonly id="cedula" name="cedula">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="name">Nombre:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.Name" type="text" readonly id="identification" name="name">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="firstLastName">Primer Apellido:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.FirstLastName" type="text" readonly id="firstLastName" name="firstLastName">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="secondLastName">Segundo Apellido:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.SecondLastName" type="text" readonly id="secondLastName" name="secondLastName">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="gender">Sexo</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.Gender" type="text" readonly id="gender" name="gender">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="place">Puesto</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.NamePlace" type="text" readonly id="place" name="place">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="area">Área</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.NameArea" type="text" readonly id="area" name="area">
-                    </div>
+    <div class="container text-left">
 
+        <div class="row">
+            <div class="col-sm-6" style="margin-top: 20px">
+
+                <!--CONSECUTIVO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Consecutivo:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--NOMBRE-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Nombre:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--PRIMER APELLIDO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Primer apellido:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
                 </div>
 
-                <div class="col">
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="office">Oficina</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.NameOffice" type="text" readonly id="office" name="office">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="phone">Teléfono</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.PersonalPhone" type="text" readonly id="phone" name="phone">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="email">Correo electrónico:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Functionary.Mail" type="text" readonly id="mail" name="mail">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="date">Fecha de cita:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Date" type="text" readonly id="date" name="date">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="hour">Hora:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Hour" type="text" readonly id="hour" name="hour">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="registerDate">Fecha de registro:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Date" type="text" readonly id="registerDate" name="registerDate">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="psychologist">Psicólogo asignado:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.Professional.Name" type="text" readonly id="psychologist" name="psychologist">
-                    </div>
-                    <div class="row functionary-register">
-                        <label class="col-sm-6 control-label small" for="activity">Actividad:</label>
-                        <input class="col-sm-4 form-control form-control-sm" value="@appointment.State" type="text" readonly id="activity" name="activity">
-                    </div>
+                <!--SEGUNDO APELLIDO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Segundo apellido:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
                 </div>
-            }
-        }              
-    
-    </div>
-</form>
-<a class="btn btn-success btn-sm" href="javascript:history.back()">Atrás</a>
+                
+                <!--IDENTIFICACION-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">C&eacute;dula:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--SEXO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Sexo:</label>
+                    <select class="col-sm-6 custom-select custom-select-sm appointment-detail-select" id="" disabled />
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    </select>
+                </div>
+                
+                <!--PUESTO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Puesto:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--ÁREA-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">&Aacute;rea:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--OFICINA-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Oficina:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
 
+            </div>
 
-
+            <div class="col-sm-6" style="margin-top: 20px">
+                <!--TELEFONO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Tel&eacute;fono:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--CORREO ELECTRONICO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Correo electr&oacute;nico:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--PROCESO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Proceso:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--FECHA INICIAL-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small" style="color: black" for="initialDate">Fecha inicial:</label>
+                    <input type="date" class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" onchange='alertInputInicialDate()' disabled />
+                </div>
+                
+                <!--FECHA FINAL-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small" style="color: black" for="finalDate">Fecha Final:</label>
+                    <input type="date" class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" onchange='alertInputFinalDate()' disabled />
+                </div>
+                
+                <!--HORA INICIO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Hora Inicio:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--HORA FIN-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Hora Fin:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                
+                
+                <!--PSICOLOGO ASIGNADO-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Psic&oacute;logo asignado:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+                <!--ACTIVIDAD-->
+                <div class="row appointment-detail">
+                    <label class="col-sm-4 control-label small">Actividad:</label>
+                    <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
+                </div>
+                
+            </div>
             
 
- */
+            <div class="col-sm-12 buttons-appointment-ditail">
+                <div class="row">
+                    <!--BT ATRAS-->
+                    <div class="col-sm-6">
+                        <a class="btn btn-success btn-sm" href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView">Atr&aacute;s</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
 
+</form>
+
+<script src="public/js/Site.js" type="text/javascript"></script>
+
+<?php
+
+include_once 'public/footer.php';
+?>
