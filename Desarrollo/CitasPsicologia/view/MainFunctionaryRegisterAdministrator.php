@@ -16,7 +16,7 @@ include 'public/header.php';
             <div class="col-sm-6" style="margin-top: 50px">
                 <p class="titles">Datos Personales</p>
                 <div class="row functionary-register">
-                    <label class="col-sm-4 control-label small" for="identification">Numero de identificación:</label>
+                    <label class="col-sm-4 control-label small" for="identification">Número de identificación:</label>
                     <input  onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" placeholder="#0###0###"class="col-sm-6 form-control form-control-sm" type="text" id="cedula" name="cedula" required>
                     <div class="col-sm-2">
                         <a class="btn btn-success" id="cleanPlace" name="cleanPlace" onclick="searchFunctionary()"><i class='bx bx-search' ></i></a>
@@ -45,18 +45,18 @@ include 'public/header.php';
                     <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-6 form-control form-control-sm" type="text" id="housePhone" name="roomPhone" required>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-4 control-label small" for="birthday">Fecha de nacimineto</label>
+                    <label class="col-sm-4 control-label small" for="birthday">Fecha de nacimiento:</label>
                     <input type="date" placeholder="dd-mm-yyyy" class="col-sm-6 form-control form-control-sm" id="birthday" name="birthday" required  max="" onclick="getCurrentDate()"/>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-4 control-label small" for="gender">Sexo</label>
+                    <label class="col-sm-4 control-label small" for="gender">Sexo:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="gender" name="gender" required>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
                     </select>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-4 control-label small" for="scholarship">Escolaridad</label>
+                    <label class="col-sm-4 control-label small" for="scholarship">Escolaridad:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="scholarship" name="scholarship" required>
                         <option value="Primaria">Primaria</option>
                         <option value="Secundaria">Secundaria</option>
@@ -105,7 +105,7 @@ include 'public/header.php';
             <div class="col-sm-6" style="margin-top: 50px">
                 <p class="titles">Datos Laborales</p>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="area">Área</label>
+                    <label class="col-sm-6 control-label small" for="area">Área:</label>
                     <select class="col-sm-5 custom-select custom-select-sm" id="area" name="areaID" required>
                         <option value="Dirección general">Dirección general</option>
                         <option value="Unidad Regional">Unidad Regional</option>
@@ -113,7 +113,7 @@ include 'public/header.php';
                     </select>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="office">Oficina</label>
+                    <label class="col-sm-6 control-label small" for="office">Oficina:</label>
 
                     <select class="col-sm-5 custom-select custom-select-sm" id="office" name="officeID" required>
                         <option value="Oficina central">Oficina central</option>
@@ -123,7 +123,7 @@ include 'public/header.php';
 
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="place">Puesto</label>
+                    <label class="col-sm-6 control-label small" for="place">Puesto:</label>
 
                     <select class="col-sm-5 custom-select custom-select-sm" id="place" name="placeID" required>
                         <option value="Jefe">Jefe</option>
@@ -133,34 +133,34 @@ include 'public/header.php';
                     </select>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="admissionDate">Fecha de ingreso</label>
-                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-4 form-control form-control-sm" id="admissionDate" name="admissionDate" required  max="" onclick="getCurrentDate()"/>
+                    <label class="col-sm-6 control-label small" for="admissionDate">Fecha de ingreso:</label>
+                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-5 form-control form-control-sm" id="admissionDate" name="admissionDate" required  max="" onclick="getCurrentDate()"/>
                 </div>
 
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="officePhone">Teléfono Oficina:</label>
-                    <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-4 form-control form-control-sm" type="text" id="oficePhone" name="oficePhone" required>
+                    <input onkeypress="return onlyNumbers(event)" minlength="8" maxlength="8" class="col-sm-5 form-control form-control-sm" type="text" id="oficePhone" name="oficePhone" required>
                 </div>
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="email">Correo electrónico:</label>
-                    <input class="col-sm-4 form-control form-control-sm" type="email" id="mail" name="mail" required>
+                    <input class="col-sm-5 form-control form-control-sm" type="email" id="mail" name="mail" required>
                 </div>
                 <p class="titles">Aplica si el puesto lo amerita</p>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="idPlaca">Id placa</label>
-                    <input class="col-sm-4 form-control form-control-sm" type="text" id="idPlaca" name="idPlaca" required>
+                    <label class="col-sm-6 control-label small" for="idPlaca">Id placa:</label>
+                    <input class="col-sm-5 form-control form-control-sm" type="text" id="idPlaca" name="idPlaca" required>
 
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-6 control-label small" for="expDate">Fecha de vecimiento portación de armas</label>
-                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-4 form-control form-control-sm" id="PortationExpirationDay" name="PortationExpirationDay" required/>
+                    <label class="col-sm-6 control-label small" for="expDate">Fecha de vencimiento portación de armas:</label>
+                    <input type="date" placeholder="dd-mm-yyyy" class="col-sm-5 form-control form-control-sm" id="PortationExpirationDay" name="PortationExpirationDay" required/>
                 </div>
                 <br />
 
                 <div class="row">  
                     <div class="col-sm " style="margin-top: 2em">
                         <!--BT BUSCAR-->
-                        <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView" style="margin-inline: 3em">Atras</a>
+                        <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView" style="margin-inline: 3em">Atrás</a>
 
                         <!--BT CANCELAR-->
                         <button type="button" onclick="sendInformation()" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Siguiente</button>
@@ -208,7 +208,6 @@ include 'public/header.php';
                     },
                     success: function (response) {
 
-                        alert(response);
                         data = JSON.parse(response);
                         console.log(data);
                         $('#name').val(data[0].tc_nombre);
