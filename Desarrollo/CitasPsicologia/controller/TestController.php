@@ -40,9 +40,15 @@ class TestController {
     }
     public function testSearchAppointment() {
         require 'test/SearchAppointmentTest.php';
-        $searchProfessionalTest = new RegisterAppointmentTest();
+        $searchProfessionalTest = new SearchAppointmentTest();
         $searchProfessionalTest->testSearchAppointmentModel();
         $searchProfessionalTest->testSearchAppointmentModelTwo();
+    }
+    public function testReports() {
+        require 'test/ReportsTest.php';
+        $reportTest = new ReportsTest();
+        $reportTest->testReportModel();
+        
     }
 
 }
