@@ -196,7 +196,6 @@ class AppointmentController
         $thursday = 0;
         $friday = 0;
         $saturday = 0;
-        //print_r( $appointmentsQuantity);
         foreach ($appointmentsQuantity as $value) {
             
             if ($value['dia'] == 'Monday') {

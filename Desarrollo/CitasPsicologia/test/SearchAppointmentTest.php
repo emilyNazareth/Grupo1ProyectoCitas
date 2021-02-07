@@ -2,7 +2,7 @@
 
 include  'model/AppointmentModel.php';
 
-class RegisterAppointmentTest {
+class SearchAppointmentTest {
 
     public function testSearchAppointmentModel() {       
         $model = AppointmentModel::singleton();
