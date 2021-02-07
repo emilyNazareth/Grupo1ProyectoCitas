@@ -38,5 +38,11 @@ class TestController {
         $registerProfessionalTest->testRegisterFunctionaryModel();
         $registerProfessionalTest->testRegisterAppointmentModel();
     }
+    public function testSearchAppointment() {
+        require 'test/SearchAppointmentTest.php';
+        $searchProfessionalTest = new RegisterAppointmentTest();
+        $searchProfessionalTest->testSearchAppointmentModel();
+        $searchProfessionalTest->testSearchAppointmentModelTwo();
+    }
 
 }
