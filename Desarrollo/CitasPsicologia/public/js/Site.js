@@ -359,3 +359,7 @@ function cleanFormConsultAppointment() {
     $("#finalDate").prop('min', "");
     $("#initialDate").prop('max', "");
 }
+
+function AppointmentDetail($val) {
+    window.location.replace("?controlador=Appointment&accion=showAppointmentDetail&consecutivo=" + $val);
+}

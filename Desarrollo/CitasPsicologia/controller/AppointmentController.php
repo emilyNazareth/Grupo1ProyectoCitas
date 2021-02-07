@@ -121,7 +121,7 @@ class AppointmentController
             $resultado .= '<td>' . $value[5] . '</td>';
             $resultado .= '<td>' . $value[6] . '</td>';
             $resultado .= '<td>' . $value[7] . '</td>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Ver Detalle</a></td>';
+            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="AppointmentDetail(' . $value[0] . ')">Ver Detalle</a></td>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
                     <button onclick="deleteProfessional(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
@@ -229,4 +229,11 @@ class AppointmentController
         );
      echo json_encode($msj);
     }
+    
+    public function showAppointmentDetail() {
+        $consecutivo = $_GET["consecutivo"];
+        
+        $this->view->show("AppointmentDetailView.php", null);
+    }
+    
 }

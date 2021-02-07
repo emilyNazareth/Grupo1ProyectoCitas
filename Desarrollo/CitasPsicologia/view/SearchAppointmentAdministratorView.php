@@ -38,7 +38,6 @@ include 'public/header.php';
 
             <!--FECHA FINAL-->
             <div class="form-group row scheduleDatesFilter">
-
                 <label class="col-sm-4 control-label small offset-sm-1" style="color: black" for="finalDate">Fecha Final</label>
                 <input type="date" class="col-sm-4 form-control form-control-sm" id="finalDate" name="finalDate" onchange='alertInputFinalDate()' />
             </div>
