@@ -98,7 +98,7 @@ class UserModel
     //getProfessionals
     public function getProfessionals()
     {
-        $consulta = $this->db->prepare("CALL  `sp_obtener_profesionales`();");
+        $consulta = $this->db->prepare("CALL  sp_obtener_profesionales();");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
@@ -179,4 +179,17 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+
+
+    //search_functionary_by_identification
+    public function search_functionary_by_identification($identification)
+    {
+        $consulta = $this->db->prepare("CALL sp_buscar_funcionario_cedula(" . $identification . ")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
 }

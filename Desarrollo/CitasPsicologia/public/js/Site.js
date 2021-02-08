@@ -3,7 +3,7 @@ function loadGeographicInfo() {
         dataType: 'json',
         url: "https://ubicaciones.paginasweb.cr/provincias.json",
         data: {},
-        success: function(response) {
+        success: function (response) {
             loadProvinces(response);
         }
     });
@@ -14,7 +14,7 @@ function activeCanton() {
         dataType: 'json',
         url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/cantones.json",
         data: {},
-        success: function(response) {
+        success: function (response) {
             loadCantons(response);
             $("#district").html("");
             $("#district").prop("disabled", true);
@@ -58,7 +58,7 @@ function activeDistrict() {
         dataType: 'json',
         url: "https://ubicaciones.paginasweb.cr/provincia/" + $("#province").find(':selected').data('num') + "/canton/" + $("#canton").find(':selected').data('num') + "/distritos.json",
         data: {},
-        success: function(response) {
+        success: function (response) {
             loadDistricts(response);
         }
     });
@@ -67,26 +67,26 @@ function activeDistrict() {
 
 function registerProfessional() {
     if (isFieldEmpty($("#identification").val()) ||
-        isFieldEmpty($("#password").val()) ||
-        isFieldEmpty($("#name").val()) ||
-        isFieldEmpty($("#firstLastName").val()) ||
-        isFieldEmpty($("#secondLastName").val()) ||
-        isFieldEmpty($("#personalPhone").val()) ||
-        isFieldEmpty($("#roomPhone").val()) ||
-        isFieldEmpty($("#birthday").val()) ||
-        isFieldEmpty($("#gender").val()) ||
-        isFieldEmpty($("#civilStatus").val()) ||
-        isFieldEmpty($("#placeNumber").val()) ||
-        isFieldEmpty($("#status").val()) ||
-        isFieldEmpty($("#emergencyContactName").val()) ||
-        isFieldEmpty($("#emergencyContactNumber").val()) ||
-        isFieldEmpty($("#scholarship").val()) ||
-        isFieldEmpty($("#specialty").val()) ||
-        isFieldEmpty($("#schoolCode").val()) ||
-        isFieldEmpty($("#province").val()) ||
-        isFieldEmpty($("#canton").val()) ||
-        isFieldEmpty($("#district").val()) ||
-        isFieldEmpty($("#addressProfessional").val())) {
+            isFieldEmpty($("#password").val()) ||
+            isFieldEmpty($("#name").val()) ||
+            isFieldEmpty($("#firstLastName").val()) ||
+            isFieldEmpty($("#secondLastName").val()) ||
+            isFieldEmpty($("#personalPhone").val()) ||
+            isFieldEmpty($("#roomPhone").val()) ||
+            isFieldEmpty($("#birthday").val()) ||
+            isFieldEmpty($("#gender").val()) ||
+            isFieldEmpty($("#civilStatus").val()) ||
+            isFieldEmpty($("#placeNumber").val()) ||
+            isFieldEmpty($("#status").val()) ||
+            isFieldEmpty($("#emergencyContactName").val()) ||
+            isFieldEmpty($("#emergencyContactNumber").val()) ||
+            isFieldEmpty($("#scholarship").val()) ||
+            isFieldEmpty($("#specialty").val()) ||
+            isFieldEmpty($("#schoolCode").val()) ||
+            isFieldEmpty($("#province").val()) ||
+            isFieldEmpty($("#canton").val()) ||
+            isFieldEmpty($("#district").val()) ||
+            isFieldEmpty($("#addressProfessional").val())) {
         $("#resultado").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
     } else {
         $("#resultado").html("");
@@ -120,15 +120,15 @@ function registerProfessional() {
                 url: '?controlador=User&accion=registerProfessional',
                 type: 'post',
 
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
                 },
-                success: function(response) {
+                success: function (response) {
                     cleanFormRegisterProfessional();
                     $("#resultado").html("<div class='alert alert-success'>" + response + "</div>");
 
                 },
-                error: function(e) {
+                error: function (e) {
                     $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
                 }
             });
@@ -187,6 +187,7 @@ function getCurrentDate() {
 
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("birthday").setAttribute("max", today);
+    document.getElementById("admissionDate").setAttribute("max", today);
 }
 
 function myFunction() {
@@ -199,22 +200,21 @@ function myFunction() {
 }
 
 function deleteProfessional($identification) {
-    console.log($identification);
-    var parametros = { "identification": $identification };
+    var parametros = {"identification": $identification};
 
     $.ajax({
         data: parametros,
         url: '?controlador=User&accion=deleteProfessional',
         type: 'post',
 
-        beforeSend: function() {
+        beforeSend: function () {
             $("#message").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
         },
-        success: function(response) {
+        success: function (response) {
             $("#message").html("<div class='alert alert-success'>" + response + "</div>");
             location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
         },
-        error: function(e) {
+        error: function (e) {
             $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
         }
     });
@@ -225,7 +225,8 @@ function deleteProfessional($identification) {
 
 function modifyProfessionalUrl($identification) {
     window.location.replace("?controlador=User&accion=showUpdateProfessional&Cedula=" + $identification);
-};
+}
+;
 
 
 
@@ -256,9 +257,9 @@ function modifyInformationProfessional() {
     }
 
     if (cedula == '' || name == '' || firstLastName == '' || secondLastName == '' ||
-        personalPhone == '' || RoomPhone == '' || civilStatus == '' ||
-        EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' ||
-        province == '' || canton == '' || district == '' || address == '') {
+            personalPhone == '' || RoomPhone == '' || civilStatus == '' ||
+            EmergencyContact == '' || contactNumber == '' || scholarship == '' || specialty == '' ||
+            province == '' || canton == '' || district == '' || address == '') {
         $("#result").html("*Todos los campos son requeridos");
     } else {
         if ($("#form-professional-update").valid()) {
@@ -287,10 +288,10 @@ function modifyInformationProfessional() {
                 data: parameters,
                 url: '?controlador=User&accion=updateProfessional',
                 type: 'post',
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#result").html("Procesando, espere por favor ...");
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#result").html(response);
 
                 }
@@ -299,4 +300,66 @@ function modifyInformationProfessional() {
 
     }
 
+}
+
+
+function searchAppointmentByFilter($identification, $consecutive, $initialDate,
+        $finalDate, $professional, $gender) {
+    var parameters = {"identification": $identification,
+        "consecutive": $consecutive,
+        "initialDate": $initialDate,
+        "finalDate": $finalDate,
+        "professional": $professional,
+        "gender": $gender};
+
+    $.ajax({
+        data: parameters,
+        url: '?controlador=Appointment&accion=searchAppointment',
+        type: 'post',
+        success: function (response) {
+            var data = response;
+
+            console.log(data);
+            if (data == 0) {
+                $("#result").html("<div class='alert alert-danger'>*No se encontraron registros</div>");
+                $("#tbody").html('');
+            } else {
+                $("#result").html("");
+                $("#tbody").html(data);
+            }
+
+
+
+
+        }
+    });
+
+
+
+}
+
+function alertInputInicialDate(){
+    $("#finalDate").prop('min', $("#initialDate").val());
+}
+
+function alertInputFinalDate(){
+    $("#initialDate").prop('max', $("#finalDate").val());
+}
+
+function cleanFormConsultAppointment() {
+    $("#identification").val("");
+    $("#initialDate").val("");
+    $("#gender").val("");
+    $("#finalDate").val("");
+    $("#professional").val("");
+    $("#consecutive").val("");
+
+    $("#resultado").html("");
+    
+    $("#finalDate").prop('min', "");
+    $("#initialDate").prop('max', "");
+}
+
+function AppointmentDetail($val) {
+    window.location.replace("?controlador=Appointment&accion=showAppointmentDetail&consecutivo=" + $val);
 }

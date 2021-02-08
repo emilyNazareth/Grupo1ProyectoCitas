@@ -87,7 +87,7 @@ include 'public/header.php';
     <br />
     <div style="padding:50px" class="row justify-content-end">
 
-        <a class="btn btn-success btn-sm" href="?controlador=User&accion=showAdministratorMainView">Atras</a>
+        <a class="btn btn-success btn-sm" href="?controlador=User&accion=showAdministratorMainView">Atr&aacutes</a>
     </div>
 </div>
 <script src="public/js/Site.js" type="text/javascript"></script>
