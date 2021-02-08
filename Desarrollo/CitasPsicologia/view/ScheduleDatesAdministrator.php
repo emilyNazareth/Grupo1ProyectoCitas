@@ -97,12 +97,19 @@ include 'public/header.php';
 
 
         if (Hour2 == "") {
-            alert("ingrese la hora por favor");
+            
+            $("#resultado").html("<div class='alert alert-danger'>* Ingrese la hora por favor</div>");
             return 0;
         }
 
-        if (ProfessionalId == -1) {
-            alert("no hay profesionales");
+        if (ProfessionalId == "") {
+            
+            $("#resultado").html("<div class='alert alert-danger'>* No hay profesional seleccionado</div>");
+            return 0;
+        }
+         if (fecha == "") {
+            
+            $("#resultado").html("<div class='alert alert-danger'>* Ingrese una fecha</div>");
             return 0;
         }
         var parameters =
