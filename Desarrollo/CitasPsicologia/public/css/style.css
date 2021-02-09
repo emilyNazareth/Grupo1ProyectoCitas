@@ -20,9 +20,10 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("img/FondoSAPSO.png");
+    background-image: url("img/FondoSAPSOrecortado.png");
     background-color: transparent;
     height: 100%;
+    
 }
 
 #btnGetDate {
@@ -157,7 +158,7 @@ html {
 .title {
     margin-top: 2em;
     height: 400px;
-    background-image: url("../img/FondoSAPSO.png");
+    background-image: url("../img/FondoSAPSOrecortado.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

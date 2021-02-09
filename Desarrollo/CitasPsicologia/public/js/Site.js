@@ -211,8 +211,12 @@ function deleteProfessional($identification) {
             $("#message").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
         },
         success: function (response) {
+
             $("#message").html("<div class='alert alert-success'>" + response + "</div>");
-            location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
+
+            timerId = setInterval(function () {
+                location.href = "?controlador=Index&accion=showSearchProfessionalAdministrator";
+            }, 2000);
         },
         error: function (e) {
             $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
@@ -338,11 +342,11 @@ function searchAppointmentByFilter($identification, $consecutive, $initialDate,
 
 }
 
-function alertInputInicialDate(){
+function alertInputInicialDate() {
     $("#finalDate").prop('min', $("#initialDate").val());
 }
 
-function alertInputFinalDate(){
+function alertInputFinalDate() {
     $("#initialDate").prop('max', $("#finalDate").val());
 }
 
@@ -355,7 +359,7 @@ function cleanFormConsultAppointment() {
     $("#consecutive").val("");
 
     $("#resultado").html("");
-    
+
     $("#finalDate").prop('min', "");
     $("#initialDate").prop('max', "");
 }

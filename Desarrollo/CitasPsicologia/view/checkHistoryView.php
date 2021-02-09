@@ -5,16 +5,16 @@ include 'public/headerWithoutLogin.php';
 
 
 <center>
-    <form id="search-form" action="/User/SearchAppointmentFunctionary" method="post">
+    <form id="search-form" action="/User/SearchAppointmentFunctionary" method="post" style="margin-top: 100px">
 
-       <div  id="login-form" class="bg1">
+        <div  id="login-form" class="bg1">
             <h3 class="titles">Citas</h3>
             <p class="titles">Seleccione el tipo de b&uacutesqueda</p>
-             </div>
-      
+        </div>
+
         <div class="form-group row"style="margin-left: 100px">
             <label for="_FunctionaryId" class="col-sm-4 col-form-label-sm" style="color: black">Cédula</label>
-            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="_FunctionaryId" id="_FunctionaryId" class="col-sm-3 form-control form-control-sm" required placeholder="Cédula">
+            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="_FunctionaryId" id="_FunctionaryId" class="col-sm-3 form-control form-control-sm" required  placeholder="#0###0###">
         </div>
         <div class="form-group row" style="margin-left: 100px">
             <label for="_IdAppointment" class="col-sm-4 col-form-label-sm" style="color: black">Código de cita</label>

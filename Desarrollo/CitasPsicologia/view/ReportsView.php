@@ -2,7 +2,7 @@
 include 'public/headerWithoutLogin.php';
 ?>
 
-<div class="row" style="margin-top: 20px">
+<div class="row" style="margin-top: 100px">
     <div class="col">
         <canvas id="AppointmentQuantity"></canvas>
     </div>

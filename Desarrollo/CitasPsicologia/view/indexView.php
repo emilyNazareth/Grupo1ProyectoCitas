@@ -4,8 +4,8 @@ include 'public/headerWithoutLogin.php';
 
 
 
-<div class="row">
-    <div class="col-4" style="margin-left: 30px">
+<div class="row"s style="margin-top:  100px">
+    <div class="col-4" style="margin-left: 50px">
         <div class="row homeOptions">
             <a class="btn btn-success col-md-5 btn-block" href="?controlador=User&accion=showLoginView">Iniciar Sesión</a>
         </div>
