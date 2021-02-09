@@ -98,10 +98,10 @@
 
 
     </head>
-    <div id="headerWithoutLogin" class="card-header">
-        <br>
-        <br>                
-    </div>
-    <body class="title">
 
+    <body class="title">
+        <div id="headerWithoutLogin" class="card-header">
+            <br>
+            <br>                
+        </div>
         <div id="resultado"></div>

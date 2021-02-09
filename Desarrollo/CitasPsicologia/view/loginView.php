@@ -7,7 +7,7 @@ include 'public/headerWithoutLogin.php';
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="public/js/script.js"></script>
 <center>
-    <form id="login-form" class="bg1" >
+    <form id="login-form" class="bg1" style="margin-top: 200px" >
         <h3 class="titles" style="margin-top: 50px" >Login</h3>
         <div class="form-group">
             <input type="text"  onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="identification" id="identification" class="form-control" placeholder="Usuario">
