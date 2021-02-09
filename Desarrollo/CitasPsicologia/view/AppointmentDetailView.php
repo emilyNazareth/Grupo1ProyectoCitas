@@ -15,7 +15,7 @@ include 'public/header.php';
 
                 <!--CONSECUTIVO-->
                 <div class="row appointment-detail">
-                    <label class="col-sm-4 control-label small">Consecutivo:</label>
+                    <label class="col-sm-4 control-label small">Código de Cita:</label>
                     <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" disabled />
                 </div>
                 
