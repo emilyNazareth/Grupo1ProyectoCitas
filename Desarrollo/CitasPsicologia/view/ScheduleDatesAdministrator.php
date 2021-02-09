@@ -15,7 +15,7 @@ include 'public/header.php';
                 Observaciones
             </div>
             <div class="card-body">
-                <textarea class="form-control form-control-sm" id="observations" rows="4"></textarea>
+                <textarea class="form-control form-control-sm" id="observations" rows="4" cols="4" style="resize: none;"></textarea>
             </div>
 
         </div>
@@ -46,7 +46,7 @@ include 'public/header.php';
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="date">Fecha: </label>
-                    <input type="date" onChange="updateCalendar();" class="col-sm-6 form-control form-control-sm" id="date" />
+                    <input type="date" onclick="getCurrentDate()" class="col-sm-6 form-control form-control-sm" id="date" required  min=""/>
 
                 </div>
             </div>

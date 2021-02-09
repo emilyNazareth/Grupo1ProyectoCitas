@@ -188,6 +188,7 @@ function getCurrentDate() {
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("birthday").setAttribute("max", today);
     document.getElementById("admissionDate").setAttribute("max", today);
+document.getElementById("date").setAttribute("min", today);
 }
 
 function myFunction() {
