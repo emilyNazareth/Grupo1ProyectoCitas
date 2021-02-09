@@ -3,7 +3,7 @@ include 'public/header.php';
 ?>
 
 <center>
-    <h3 class="titles">Citas</h3>
+    <h3 class="titles" style="margin-top: 50px;">Citas</h3>
     <p class="titles"> Seleccione el tipo de b&uacutesqueda</p>
 </center>
 
@@ -19,7 +19,7 @@ include 'public/header.php';
             <!--IDENTIFICACION-->
             <div class="form-group row scheduleDatesFilter">
                 <label class="col-sm-4 control-label small offset-sm-2" style="color: black" for="identification">C&eacutedula</label>
-                <input onkeypress="return onlyNumbers(event)" type="text" class="col-sm-4 form-control form-control-sm"  id="identification" name="identification" maxlength="9" />
+                <input onkeypress="return onlyNumbers(event)" type="text" class="col-sm-4 form-control form-control-sm"  id="identification" placeholder="#0###0###" name="identification" maxlength="9" />
             </div>
 
             <!--SEXO-->
@@ -59,7 +59,7 @@ include 'public/header.php';
 
             <!--CONSECUTIVO-->
             <div class="form-group row scheduleDatesFilter">
-                <label class="col-sm-4 control-label small offset-sm-1" style="color: black" for="consecutive">Consecutivo</label>
+                <label class="col-sm-4 control-label small offset-sm-1" style="color: black" for="consecutive">Código de Cita</label>
                 <input type="number" class="col-sm-4 form-control form-control-sm" id="consecutive" name="consecutive" />
             </div>
 
@@ -92,7 +92,7 @@ include 'public/header.php';
     <table id="tableID" class="table table-bordered table-striped table-hover table-sm table-responsive-md" style="margin: 2em">
         <thead>
             <tr>
-                <th scope="col">Consecutivo</th>
+                <th scope="col">Código de Cita</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Primer Apellido</th>
                 <th scope="col">Segundo Apellido</th>
