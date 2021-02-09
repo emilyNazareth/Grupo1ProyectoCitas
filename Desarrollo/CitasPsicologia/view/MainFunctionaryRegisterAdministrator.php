@@ -68,23 +68,23 @@ include 'public/header.php';
                     </select>
                 </div>
                 <!--PROVINCIA-->
-                <div class="row professional-register">
+                <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="province">Provincia:</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="province" name="province" required onchange="activeCanton(); return false;" required>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="province" name="province" required>
                         <option disabled selected value>Seleccione...</option>
                     </select>
                 </div>
 
                 <!--CANTON-->
-                <div class="row professional-register">
+                <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="canton">Cant&oacuten:</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="canton" name="canton" required onchange="activeDistrict(); return false;" required></select>
+                    <input class="col-sm-6 form-control form-control-sm" id="canton" name="canton" required>
                 </div>
 
                 <!--DISTRITO-->
-                <div class="row professional-register">
+                <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="district">Distrito:</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="district" name="district" required></select>
+                    <input class="col-sm-6 form-control form-control-sm" id="district" name="district" required>
                 </div>
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="civilStatus">Estado civil:</label>
@@ -96,8 +96,8 @@ include 'public/header.php';
                     </select>
                 </div>
                 <div class="row functionary-register">
-                    <label class="col-sm-4 control-label small" for="address">Dirección:</label>
-                    <textarea class="col-sm-6 form-control form-control-sm" id="address" name="address"></textarea>
+                    <label class="col-sm-4 control-label small" for="addressProfessional">Dirección:</label>
+                    <textarea class="col-sm-6 form-control form-control-sm" id="addressProfessional" name="addressProfessional"  cols="40" rows="5" required></textarea>
                 </div>
 
             </div>
@@ -178,8 +178,8 @@ include 'public/header.php';
 <script src="public/js/Site.js" type="text/javascript"></script>
 <script>
                             window.onload = function () {
-                                $("#canton").prop("disabled", true);
-                                $("#district").prop("disabled", true);
+                                $("#canton").prop("disabled", false);
+                                $("#district").prop("disabled", false);
 
                                 loadGeographicInfo();
                             }
@@ -222,7 +222,7 @@ include 'public/header.php';
                         $('#canton').val(data[0].tc_canton);
                         $('#district').val(data[0].tc_distrito);
                         $('#civilStatus').val(data[0].tc_estado_civil);
-                        $('#address').val(data[0].tc_direccion);
+                        $('#addressProfessional').val(data[0].tc_direccion);
                         $('#area').val(data[0].tc_area);
                         $('#office').val(data[0].tc_oficina);
                         $('#place').val(data[0].tc_puesto);
@@ -254,7 +254,7 @@ include 'public/header.php';
                 isFieldEmpty($("#canton").val()) ||
                 isFieldEmpty($("#district").val()) ||
                 isFieldEmpty($("#civilStatus").val()) ||
-                isFieldEmpty($("#address").val()) ||
+                isFieldEmpty($("#addressProfessional").val()) ||
                 isFieldEmpty($("#area").val()) ||
                 isFieldEmpty($("#office").val()) ||
                 isFieldEmpty($("#place").val()) ||
@@ -282,7 +282,7 @@ include 'public/header.php';
                 "canton": $("#canton").val(),
                 "district": $("#district").val(),
                 "civilStatus": $("#civilStatus").val(),
-                "address": $("#address").val(),
+                "address": $("#addressProfessional").val(),
                 "area": $("#area").val(),
                 "office": $("#office").val(),
                 "place": $("#place").val(),
