@@ -333,3 +333,9 @@ label.error {
         text-align: left;
     }
 }
+
+textarea{
+    resize:vertical;
+    min-height:95px;
+    max-height:200px;
+}
