@@ -188,7 +188,7 @@ function getCurrentDate() {
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("birthday").setAttribute("max", today);
     document.getElementById("admissionDate").setAttribute("max", today);
-document.getElementById("date").setAttribute("min", today);
+    document.getElementById("date").setAttribute("min", today);
 }
 
 function myFunction() {
@@ -324,7 +324,6 @@ function searchAppointmentByFilter($identification, $consecutive, $initialDate,
         success: function (response) {
             var data = response;
 
-            console.log(data);
             if (data == 0) {
                 $("#result").html("<div class='alert alert-danger'>*No se encontraron registros</div>");
                 $("#tbody").html('');
@@ -367,4 +366,36 @@ function cleanFormConsultAppointment() {
 
 function AppointmentDetail($val) {
     window.location.replace("?controlador=Appointment&accion=showAppointmentDetail&consecutivo=" + $val);
+}
+
+function modifyAppointment($id_appointment) {
+    window.location.replace("?controlador=Appointment&accion=showModifyAppointmentView&id_cita=" + $id_appointment);
+}
+
+function modifyDataAppointment($id_appointment, $id_professional, $date, $hour,
+        $observations) {
+
+    var parametros = {"id_appointment": $id_appointment,
+        "id_professional": $id_professional,
+        "date": $date, "hour": $hour,
+        "observations": $observations};
+
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Appointment&accion=modifyAppointment',
+        type: 'post',
+
+        beforeSend: function () {
+            $("#resultado").html("<br><div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+        },
+        success: function (response) {
+            $("#resultado").html("<br><div class='alert alert-success'>" + response + "</div>");
+        },
+        error: function (e) {
+            $("#resultado").html("<br><div class='alert alert-danger'>" + e + "</div>");
+        }
+    });
+
+
+
 }

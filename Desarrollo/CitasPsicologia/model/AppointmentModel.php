@@ -98,5 +98,27 @@ class AppointmentModel {
         $consulta->closeCursor();
         return $resultado;
     }
+    
+    public function get_appointments_by_id($id) {
+       $consulta = $this->db->prepare("CALL  sp_buscar_cita_por_id(" . $id . ")");
+       $consulta->execute();
+       $resultado = $consulta->fetchAll();
+       $consulta->closeCursor();
+       return $resultado;
+    }
+    public function modify_appointment($id_appointment, $id_professional, $date, 
+            $hour, $observations) {
+        $consulta = $this->db->prepare("CALL  sp_modificar_cita(" 
+                . $id_appointment . 
+                "," . $id_professional . ",'" . $date . "'," . 
+                "'" . $hour . "','" . $observations . "')");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    
+    
+    
 
 }
