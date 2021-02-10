@@ -48,6 +48,23 @@
             body {
                 font-family: Arial, Helvetica, sans-serif;
             }
+            html {
+              min-height: 86%;
+              position: relative;
+            }
+            body {
+              margin: 0;
+              margin-bottom: 40px;
+              height: 100%
+            }
+            footer- {
+                background-color: black;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+                color: white;
+            }
 
             .navbar1 {
                 overflow: hidden;
@@ -121,27 +138,6 @@
                 padding-left: 15px;
                 margin-right: auto;
                 margin-left: auto;
-
-            }
-
-            .titleAdminSection {
-                margin-top: 0px;
-                height: 400px;
-                background-image: url("public/img/FondoSAPSOBlanco.png");
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                color: white;
-                text-align: center;
-            }
-
-
-            #headerWithoutLogin {
-                color: black;
-                background-color: #f47424;
-                border-bottom-left-radius: 100px;
-                margin-top: 0px;
-                border: #f47424
             }
           
             ul {
@@ -208,12 +204,6 @@
             .footer-big .footer-widget {
                 margin-bottom:40px
             }
-            .footer--light {
-                background-image: url("public/img/FondoSAPSOBlanco.png");
-            }
-            .footer-big .footer-menu ul li a,.footer-big p,.footer-big ul li {
-                background-image: url("public/img/FondoSAPSOBlanco.png");
-            }
             .footer-menu {
                 padding-left:48px
             }
@@ -224,9 +214,6 @@
                 -o-transition:.3s;
                 transition:.3s
             }
-            .footer-menu ul li a:hover {
-                background-image: url("public/img/FondoSAPSOBlanco.png");
-            }
             .footer-menu--1 {
                 width:100%
             }
@@ -234,24 +221,6 @@
                 line-height:42px;
                 margin-bottom:10px;
                 font-size:18px
-            }
-            .mini-footer {
-                background:#FCC300;
-                text-align:center;
-                padding:8px 0;
-                border-top-right-radius: 120px;
-            }
-            .mini-footer p {
-                margin:0;
-                line-height:26px;
-                font-size:15px;
-                color:black
-            }
-            .mini-footer p a {
-                color:#5867dd
-            }
-            .mini-footer p a:hover {
-                color:#34bfa3
             }
             .widget-about img {
                 display:block;
@@ -280,6 +249,39 @@
                     padding-left:0
                 }
             }
+            
+            #headerWithoutLogin {
+                color: black;
+                background-color: #f47424;
+                margin-top: 0px;
+                border: #f47424
+            }
+            
+            
+            .mini-footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+                color: white;
+              }
+
+              .footer-page{
+                  background:#FCC300;
+                  border-top-right-radius: 120px;
+              }
+
+              .title {
+                  height: 400px;
+                  background-image: url("public/img/FondoSAPSOblanco.jpeg");
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  color: white;
+                  text-align: center;
+              }
+              
+              
+            
         </style>
     </head>
 
@@ -287,9 +289,7 @@
         <br>
         <br>                
     </div>
-    <body class="titleAdminSection">
-
-
+    <body class="title">
         <div class="navbar1" >
             <a href="?controlador=Appointment&accion=showReportsView">Reportes</a>
             <div class="dropdown1">
@@ -313,10 +313,14 @@
             <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
         </div>
 
-
-
-
-    
-    </body>
+        <div class="mini-footer">
+            <div class="copyright-text footer-page">
+                <h5 style="padding-top: 0.5em; font-size: 1.25rem; color: black;">Citas de psicología</h5>
+                <p style="margin: 0;line-height: 26px;font-size: 15px;color: black;">Emily Meléndez - Yerlin Leal - Luis Hidalgo - Alejandro Quesada  <p>
+                <p style="margin: 0;line-height: 26px;font-size: 15px;color: black;">Curso Gestión Proyectos Fines académicos © 2021
+                </p>
+            </div>
+        </div> 
+</body>
 
 </html>
