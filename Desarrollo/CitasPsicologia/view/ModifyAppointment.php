@@ -1,13 +1,18 @@
 <?php
 include 'public/header.php';
 ?>
+<script src="public/js/Site.js" type="text/javascript"></script>
 <font color="Black">
 
 <center>
     <br>
     <h3 class="titles">Modificar cita</h3>
 </center>
-
+<?php
+foreach ($vars['appointment'] as $item) {
+    
+}
+?>
 <div class="row">
     <div class="col-sm-3">
         <div class="card">
@@ -15,7 +20,7 @@ include 'public/header.php';
                 Observaciones
             </div>
             <div class="card-body">
-                <textarea class="form-control form-control-sm" id="observations" rows="4">  <?php echo $item['tc_observaciones']; ?> </textarea>
+                <textarea class="form-control form-control-sm" id="observations" name="observations" rows="4"><?php echo $item['tc_observaciones']; ?></textarea>
             </div>
 
         </div>
@@ -27,8 +32,7 @@ include 'public/header.php';
             <div class="col-sm">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-5 control-label small offset-sm-1" style="color: black" for="professionals">Profesional</label>
-                    <select  class="col-sm-6 custom-select custom-select-sm" name= "professionals" id="professionals">
-                        <option value="">Seleccione una opción</option>
+                    <select  class="col-sm-6 custom-select custom-select-sm" name= "professionals" id="professionals">                       
                         <?php
                         foreach ($vars['professionals'] as $res) {
                             ?>
@@ -44,7 +48,7 @@ include 'public/header.php';
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="date">Fecha: </label>
-                    <input type="date" onChange="updateCalendar();" class="col-sm-6 form-control form-control-sm" id="date" value="<?php echo $item['tf_fecha']; ?>">
+                    <input type="date" onChange="updateCalendar();" class="col-sm-6 form-control form-control-sm" id="date" name="date" value="<?php echo $item['tf_fecha']; ?>">
 
                 </div>
             </div>
@@ -52,7 +56,7 @@ include 'public/header.php';
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="hour">Hora deseada</label>
-                    <input type="time" onChange=" updateCalendar();" class="col-sm-6 form-control form-control-sm" id="Hour" name="Hour" required value="<?php echo $item['tc_hora']; ?>">
+                    <input type="time" onChange=" updateCalendar();" class="col-sm-6 form-control form-control-sm" id="hour" name="hour" required value="<?php echo $item['tc_hora']; ?>">
                 </div>
             </div>
         </div>
@@ -60,11 +64,11 @@ include 'public/header.php';
 
         <div class="row">  
             <div class="col-sm " style="margin-top: 2em">
-                <!--BT BUSCAR-->
-                <button type="button" href = "?controlador=User&accion=showAdministratorMainView" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Atrás</button>
+                <!--BT ATRAS-->
+                <a class = "btn btn-success btn-sm" href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView"  style="margin-inline: 3em" >Atrás</a>
 
-                <!--BT CANCELAR-->
-                <button type="button" onclick="" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Modificar</button>
+                <!--BT BUSCAR-->
+                <input type="button" onclick="modifyDataAppointment(<?php echo $item['pk_id_cita']; ?>, $('#professionals').val(), $('#date').val(), $('#hour').val(), $('#observations').val())" class="btn btn-success btn-sm"  style="margin-inline: 3em" value="Modificar"/>                 
             </div>
         </div>
     </div>

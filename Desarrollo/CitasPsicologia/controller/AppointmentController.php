@@ -122,7 +122,7 @@ class AppointmentController
             $resultado .= '<td>' . $value[6] . '</td>';
             $resultado .= '<td>' . $value[7] . '</td>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="AppointmentDetail(' . $value[0] . ')">Ver Detalle</a></td>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Modificar</a></td>';
+            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyAppointment(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
                     <button onclick="deleteProfessional(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
                         Eliminar
@@ -235,4 +235,29 @@ class AppointmentController
         $this->view->show("AppointmentDetailView.php", null);
     }
     
+    public function showModifyAppointmentView() {        
+        require 'model/AppointmentModel.php';
+        $appointmentModel = AppointmentModel::singleton();
+        $consecutivo = $_GET["id_cita"];
+        $appointments['appointment'] = $appointmentModel->get_appointments_by_id($consecutivo);
+        foreach($appointments['appointment'] as $res){
+            if(empty($res['tc_observaciones'])){
+                $res['tc_observaciones'] = '';
+            }
+        }
+        $appointments['professionals'] = $appointmentModel->get_all_professionals();      
+        $this->view->show("ModifyAppointment.php", $appointments);
+   }
+    
+    public function modifyAppointment() {        
+        require 'model/AppointmentModel.php';
+        $appointmentModel = AppointmentModel::singleton();
+        $appointment = $appointmentModel->modify_appointment(
+            $_POST['id_appointment'],
+            $_POST['id_professional'],
+            $_POST['date'],
+            $_POST['hour'],
+            $_POST['observations']);        
+        echo "La cita ha sido modificada";       
+   }
 }
