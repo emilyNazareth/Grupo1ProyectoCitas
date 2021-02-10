@@ -245,7 +245,6 @@ class AppointmentController
                 $res['tc_observaciones'] = '';
             }
         }
-        print_r( $res['tc_observaciones']);    
         $appointments['professionals'] = $appointmentModel->get_all_professionals();      
         $this->view->show("ModifyAppointment.php", $appointments);
    }
