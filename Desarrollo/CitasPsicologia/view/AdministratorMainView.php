@@ -49,7 +49,7 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
             html {
-              min-height: 100%;
+              min-height: 86%;
               position: relative;
             }
             body {
@@ -259,35 +259,28 @@
             
             
             .mini-footer {
- background-color: black;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: white;
-}
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+                color: white;
+              }
 
-.footer-page{
-    background:#FCC300;
-    border-top-right-radius: 120px;
-}
+              .footer-page{
+                  background:#FCC300;
+                  border-top-right-radius: 120px;
+              }
 
-.mini-footer p{
-    margin:0;
-    line-height:26px;
-    font-size:15px;
-    color:black;
-}
-
-.title {
-    height: 400px;
-    background-image: url("../img/FondoSAPSOblanco.jpeg"); /*Esta es la principal*/
-    /*background-position: center;*/
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    text-align: center;
-}
+              .title {
+                  height: 400px;
+                  background-image: url("public/img/FondoSAPSOblanco.jpeg");
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  color: white;
+                  text-align: center;
+              }
+              
+              
             
         </style>
     </head>
@@ -320,11 +313,11 @@
             <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
         </div>
 
-        <div class="mini-footerP">
+        <div class="mini-footer">
             <div class="copyright-text footer-page">
-                <h5 style="color: black">Citas de psicología</h5>
-                <p>Emily Meléndez - Yerlin Leal - Luis Hidalgo - Alejandro Quesada  <p>
-                <p>Curso Gestión Proyectos Fines académicos © 2021
+                <h5 style="padding-top: 0.5em; font-size: 1.25rem; color: black;">Citas de psicología</h5>
+                <p style="margin: 0;line-height: 26px;font-size: 15px;color: black;">Emily Meléndez - Yerlin Leal - Luis Hidalgo - Alejandro Quesada  <p>
+                <p style="margin: 0;line-height: 26px;font-size: 15px;color: black;">Curso Gestión Proyectos Fines académicos © 2021
                 </p>
             </div>
         </div> 
