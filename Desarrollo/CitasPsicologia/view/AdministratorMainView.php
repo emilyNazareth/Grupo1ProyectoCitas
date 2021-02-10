@@ -14,28 +14,28 @@
         //Comprobamos si esta definida la sesión 'userAdministrator'.
 
         if (isset($_SESSION['userAdministrator'])) {
-            if ($_SESSION['userAdministrator'] < time()) {
+            if ($_SESSION['userAdministrator'][1] < time()) {
                 unset($_SESSION['userAdministrator']);
                 echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
-                            window.location.replace('?controlador=User&accion=showLoginView');
+                            window.location.replace('?controlador=User&accion=closeSessionAdministrator');
                             </script>";
             } else {
-                $_SESSION['userAdministrator'] = time() + 900;
+                $_SESSION['userAdministrator'][1] = time() + 900;
             }
         } else {
             //Comprobamos si esta definida la sesión 'userProfessional'.
             if (isset($_SESSION['userProfessional'])) {
-                if ($_SESSION['userProfessional'] < time()) {
+                if ($_SESSION['userProfessional'][1] < time()) {
                     unset($_SESSION['userProfessional']);
                     echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
-                            window.location.replace('?controlador=User&accion=showLoginView');
+                            window.location.replace('?controlador=User&accion=closeSessionAdministrator');
                             </script>";
                 } else {
-                    $_SESSION['userProfessional'] = time() + 900;
+                    $_SESSION['userProfessional'][1] = time() + 900;
                 }
             } else {
                 echo "<script> alert('Debe logearse');
-        window.location.replace('?controlador=User&accion=showLoginView');
+        window.location.replace('?controlador=User&accion=closeSessionAdministrator');
         </script>";
             }
         }
@@ -310,7 +310,7 @@
                     <a href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView">Buscar Cita</a>
                 </div>
             </div>
-            <a href="?controlador=User&accion=showIndexView">Cerrar Sesión</a>
+            <a href="?controlador=User&accion=closeSessionAdministrator">Cerrar Sesión</a>
         </div>
 
 
