@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 include 'public/header.php';
 ?>
 <font color="Black">
@@ -11,6 +11,6 @@ include 'public/header.php';
 <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView">Salir</a>
 
 
-<?php
+<?php 
 include_once 'public/footer.php';
 ?>
