@@ -2,7 +2,7 @@
 include 'public/headerWithoutLogin.php';
 ?>
 
-<div class="row" style="margin-top: 20px">
+<div class="row" style="margin-top: 50px">
     <div class="col">
         <canvas id="AppointmentQuantity"></canvas>
     </div>
@@ -14,7 +14,7 @@ include 'public/headerWithoutLogin.php';
 
 
 <!--BT ATRAS-->
-<div class = "col-sm-6">
+<div class = "col-sm-6" style="margin-top: 50px">
     <a class = "btn btn-success btn-sm" href = "?controlador=User&accion=showAdministratorMainView">Atr&aacute;s</a>
 </div>
 <?php
