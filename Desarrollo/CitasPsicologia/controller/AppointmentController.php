@@ -124,8 +124,8 @@ class AppointmentController
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="AppointmentDetail(' . $value[0] . ')">Ver Detalle</a></td>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
-                    <button onclick="deleteProfessional(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
-                        Eliminar
+                    <button onclick="cancelAppointment(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
+                        Cancelar
                     </button></td>';
             $resultado .= "</tr>";
         }
@@ -136,7 +136,6 @@ class AppointmentController
     {
         $this->view->show("ReportsView.php", null);
     }
-
 
 
     public function loadDataInGraphReportsView()
@@ -234,18 +233,20 @@ class AppointmentController
         
         $this->view->show("AppointmentDetailView.php", null);
     }
+    
+    public function showCancelAppointmentModal(){
+        $modal = file_get_contents("view/CancelAppointmentModal.php");
+        echo str_replace("appointment-id", $_POST["appointment"], $modal);
+    }
+
     public function cancelAppointment() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
-       /* $result = $appointment->cancelAppointmentById(
+        $result = $appointment->cancelAppointmentById(
             $_POST["id"],
             $_POST["justification"]
-        );*/
-        $result = $appointment->cancelAppointmentById(
-            1055,
-            'Falta de tiempo'
         );
-        echo 'cita cancelada';
+        echo 'Cita cancelada';
     }
 
     
