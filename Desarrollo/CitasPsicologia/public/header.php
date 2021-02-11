@@ -50,7 +50,7 @@
                             window.location.replace('?controlador=User&accion=closeSessionAdministrator');
                             </script>";
             } else {
-                $_SESSION['userProfessional'][0] = time() + 900;
+                $_SESSION['userProfessional'][1] = time() + 900;
             }
         } else {
             echo "<script> alert('Debe logearse');
