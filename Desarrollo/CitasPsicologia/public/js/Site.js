@@ -403,3 +403,29 @@ function modifyDataAppointment($id_appointment, $id_professional, $date, $hour,
 
 
 }
+
+function cancelAppointment($appointment) {
+    var parametros = { "appointment": $appointment };
+
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Appointment&accion=showCancelAppointmentModal',
+        type: 'post',
+
+        beforeSend: function() {
+            $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
+        },
+        success: function(modal) {
+
+            $("#resultado").html(modal);
+            $("#cancelAppointmentModal").modal();
+            
+        },
+        error: function(e) {
+            $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
+        }
+    });
+
+
+
+}
