@@ -209,9 +209,14 @@ class AppointmentController {
         }
         $appointments['professionals'] = $appointmentModel->get_all_professionals();
         $this->view->show("ModifyAppointment.php", $appointments);
-    }
+
+        
+   }
+    
+
 
     public function modifyAppointment() {
+
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $appointment = $appointmentModel->modify_appointment(
