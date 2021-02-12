@@ -309,6 +309,7 @@ function modifyInformationProfessional() {
 
 function searchAppointmentByFilter($identification, $consecutive, $initialDate,
     $finalDate, $professional, $gender) {
+    $("#resultado").html("");
     var parameters = {
         "identification": $identification,
         "consecutive": $consecutive,
