@@ -22,12 +22,12 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!--DATEPICKER
-        <script type="text/javascript" src="libs\bootstrap-datepicker\js\bootstrap-datepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="libs\bootstrap-datepicker\css\bootstrap-datepicker.css">-->
+
 
         <link rel="stylesheet" type="text/css" href="public/css/style.css" />
         <script src="public/js/script.js" type="text/javascript"></script>
+        <script src="public/js/Site.js" type="text/javascript"></script>
+
 
 
         <!-- For validations -->

@@ -25,12 +25,14 @@ class AppointmentModel
     }
 
     public function register_appointment(
+
         $idFunctionary,
         $date,
         $hour,
         $idProfessional,
         $patient,
         $observation
+
     ) {
         $consulta = $this->db->prepare("call sp_registrar_cita("
             . $idFunctionary . ",'" . $date . "','" . $hour . "'," .
@@ -44,6 +46,7 @@ class AppointmentModel
     }
 
     public function register_functionary(
+
         $identification,
         $name,
         $firstLastName,
@@ -66,6 +69,7 @@ class AppointmentModel
         $area,
         $office,
         $dateAdmission
+
     ) {
         $consulta = $this->db->prepare("call sp_registrar_funcionario("
             . $identification . ",'" . $name . "','" . $firstLastName . "','" .
@@ -124,8 +128,10 @@ class AppointmentModel
         $consulta->closeCursor();
         return $resultado;
     }
+
     public function get_appointments_quantity_week()
     {
+
         $consulta = $this->db->prepare("CALL  sp_obtener_cantidad_de_citas_por_semana()");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
@@ -133,14 +139,17 @@ class AppointmentModel
         return $resultado;
     }
 
+
     public function get_appointments_by_id($id)
     {
+
         $consulta = $this->db->prepare("CALL  sp_buscar_cita_por_id(" . $id . ")");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
         return $resultado;
     }
+
     public function modify_appointment(
         $id_appointment,
         $id_professional,
@@ -152,7 +161,28 @@ class AppointmentModel
             . $id_appointment .
             "," . $id_professional . ",'" . $date . "'," .
             "'" . $hour . "','" . $observations . "')");
+
         $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+
+    public function get_appointment_by_id_and_identification($id_apointment,
+            $identification) {
+        $consulta = $this->db->prepare("CALL  sp_buscar_cita_por_id_cedula(" 
+                . $id_apointment . "," . $identification . ")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    
+     public function get_appointment_detail($id_apointment) {
+        $consulta = $this->db->prepare("CALL  sp_obtener_detalle_cita(" 
+                . $id_apointment . ")");
+            $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
         return $resultado;
@@ -166,9 +196,11 @@ class AppointmentModel
         $consulta = $this->db->prepare("CALL  sp_cancelar_cita("
             . $id_appointment .
             ",'" . $justification . "')");
+
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();
         return $resultado;
     }
+
 }
