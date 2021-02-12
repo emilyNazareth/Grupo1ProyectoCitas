@@ -83,7 +83,7 @@ class AppointmentController {
             $resultado .= '<td>' . $value[6] . '</td>';
             $resultado .= '<td>' . $value[7] . '</td>';
             $resultado .= '<td><a class="btn btn-success btn-sm" href = "?controlador=Appointment&accion=showAppointmentDetailView&id_cita=' . $value[0] . '">Ver Detalle</a>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Modificar</a></td>';
+            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyAppointment(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
                     <button onclick="cancelAppointment(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
                         Cancelar
@@ -209,9 +209,14 @@ class AppointmentController {
         }
         $appointments['professionals'] = $appointmentModel->get_all_professionals();
         $this->view->show("ModifyAppointment.php", $appointments);
-    }
+
+        
+   }
+    
+
 
     public function modifyAppointment() {
+
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $appointment = $appointmentModel->modify_appointment(
