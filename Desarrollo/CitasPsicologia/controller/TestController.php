@@ -65,12 +65,6 @@ class TestController {
         $cancelTest->testCancelAppointmentModel();
     }
 
-    public function testAppointmentDetail() {
-        require 'test/AppointmentDetailTest.php';
-        $detailTest = new AppointmentDetailTest();
-        $detailTest->testAppointmentDetailModel();
-    }
-
     public function testSearchAppointmentByIdAndIdentification(){
         require 'test/SearchAppointmentByIdAndIdentificationTest.php';
         $searchAppointmentByIdAndIdentificationTest = new SearchAppointmentByIdAndIdentificationTest();
