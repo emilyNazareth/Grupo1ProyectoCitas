@@ -499,3 +499,17 @@ a {
         padding-left:0
     }
 }
+
+#cancelAppointmentModal .modal-content {
+    background-color: #fae8e8;
+    color: black;
+}
+
+#cancelAppointmentModal .modal-header, #cancelAppointmentModal .modal-footer, #cancelAppointmentModal .modal-body {
+    border: none;
+}
+
+#cancelAppointmentModal .modal-footer {
+    justify-content: center;
+    padding-bottom: 3em;
+}

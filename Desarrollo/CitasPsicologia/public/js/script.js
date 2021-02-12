@@ -36,7 +36,12 @@ function userLogin(identification, password) {
                         //*******poner la vista del profesional******
                         window.location.replace("?controlador=User&accion=showAdministratorMainView");
                     } else {
-                        $("#messageSpanId").html("Usuario o contraseña incorrectos, compruebelos");
+                        if (response == 5) {
+                            alert('Esta session ya está activa en otro dispositivo');
+                            window.location.replace('?controlador=User&accion=showLoginView');
+                        } else {
+                            $("#messageSpanId").html("Usuario o contraseña incorrectos, compruebelos");
+                        }
 
                     }
                 }

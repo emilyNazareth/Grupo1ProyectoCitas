@@ -18,7 +18,7 @@ if (empty($vars['professional'])) {
                     <div class="col-sm-6" style="margin-top: 50px">
                         <p class="text-success">Datos Personales del Profesional</p>
                         <div class="row professional-register">
-                            <label class="col-sm-6 control-label small" for="Cedula">Numero de identificación:</label>
+                            <label class="col-sm-6 control-label small" for="Cedula">Número de identificación:</label>
                             <input readonly class="col-sm-4 form-control form-control-sm" type="text" id="Cedula" name="Cedula" value="<?php echo $item['pk_cedula_usuario']; ?>">
 
                         </div>
@@ -65,12 +65,11 @@ if (empty($vars['professional'])) {
                         if ($item['tn_estado'] == 0) {
                         ?>
                             <div class="row professional-register" id="state">
-                                <label class="col-sm-6 control-label small" for="statusLbl">Estado:</label>
-                                <br />
-                                <input id="active" type="radio" for="status" name="status" checked value="Active">Activo
-
-                                <br />
-                                <input id="inactive" type="radio" for="status" name="status" value="Inactive">Inactivo
+                                <label class="col-sm-6 control-label small" for="statusLbl">Estado del profesional:</label>
+                                <input id="active" type="radio" for="status" name="status" checked value="1">
+                                <label style="color:black;">Activo</label>
+                                <input id="inactive" type="radio" for="status" name="status" value="0">
+                                <label style="color:black;">Inactivo</label>
                             </div>
                         <?php
                         }
@@ -80,12 +79,12 @@ if (empty($vars['professional'])) {
                         if ($item['tn_estado'] == 1) {
                         ?>
                             <div class="row professional-register" id="state">
-                                <label class="col-sm-6 control-label small" for="statusLbl">Estado:</label>
-                                <br />
-                                <input id="active" type="radio" for="status" name="status" value="Active">Activo
+                                <label class="col-sm-6 control-label small" for="statusLbl">Estado del profesional:</label>
+                                <input id="active" type="radio" for="status" name="status" value="1">
+                                <label style="color:black;">Activo</label>
+                                <input id="inactive" type="radio" for="status" name="status" checked value="0">
+                                <label style="color:black;">Inactivo</label>
 
-                                <br />
-                                <input id="inactive" type="radio" for="status" name="status" checked value="Inactive">Inactivo
                             </div>
                         <?php
                         }
@@ -132,8 +131,8 @@ if (empty($vars['professional'])) {
                             <input onkeypress="return onlyLetters(event)" class="col-sm-4 form-control form-control-sm" type="text" id="district" name="district" value="<?php echo $item['tc_distrito']; ?>">
                         </div>
                         <div class="row professional-register">
-                            <label class="col-sm-6 control-label small" for="address">Dirección:</label>
-                            <textarea class="col-sm-4 form-control form-control-sm" id="address" name="address" rows="1"><?php echo $item['tc_direccion']; ?></textarea>
+                            <label class="col-sm-6 control-label small" for="addressProfessional">Direcci&oacuten:</label>
+                            <textarea class="col-sm-4 form-control form-control-sm" id="addressProfessional" name="addressProfessional" required><?php echo $item['tc_direccion']; ?></textarea>
                         </div>
                         <div class="alert-danger">
                             <span id="result" style="color:black;"></span>
