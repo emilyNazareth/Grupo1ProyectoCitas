@@ -82,7 +82,7 @@ class AppointmentController {
             $resultado .= '<td>' . $value[5] . '</td>';
             $resultado .= '<td>' . $value[6] . '</td>';
             $resultado .= '<td>' . $value[7] . '</td>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="AppointmentDetail(' . $value[0] . ')">Ver Detalle</a></td>';
+            $resultado .= '<td><a class="btn btn-success btn-sm" href = "?controlador=Appointment&accion=showAppointmentDetailView&id_cita=' . $value[0] . '">Ver Detalle</a>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyProfessionalUrl(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
                     <button onclick="cancelAppointment(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
@@ -256,7 +256,7 @@ class AppointmentController {
     public function showAppointmentDetailView() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
-        $consecutivo = $_SESSION['consecutiveDetailView'];
+        $consecutivo = $_GET["id_cita"];
         $appointmentDetail['appointment'] = $appointment->get_appointment_detail($consecutivo);
         $this->view->show("AppointmentDetailView.php", $appointmentDetail);
     }
