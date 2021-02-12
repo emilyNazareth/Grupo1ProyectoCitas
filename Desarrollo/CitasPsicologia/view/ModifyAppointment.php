@@ -48,7 +48,7 @@ foreach ($vars['appointment'] as $item) {
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="date">Fecha: </label>
-                    <input type="date" onChange="updateCalendar();" class="col-sm-6 form-control form-control-sm" id="date" name="date" value="<?php echo $item['tf_fecha']; ?>">
+                    <input type="date" name="date" id="date" class="col-sm-6 form-control form-control-sm" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> />
 
                 </div>
             </div>

@@ -44,6 +44,42 @@ class UserModel
         }
         return $idRol;
     }
+    //session
+    public function sessionCheck($identification)
+    {
+        $consulta = $this->db->prepare("CALL  `sp_obtener_session`(" . $identification . ");");
+        $consulta->execute();
+        $resultado['session'] = $consulta->fetchAll();
+        $consulta->closeCursor();
+        foreach ($resultado['session'] as $item) {
+            if ($item['tn_tiempo_session'] > time()) {
+                return 1;
+            }else{
+                return 0; 
+            }
+        }
+        return 0;
+    }
+
+    public function saveSession($identification, $time)
+    {
+        $consulta = $this->db->prepare("CALL  `sp_registrar_session`(" . $identification . "," . $time . ");");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+
+        return $resultado;
+    }
+
+    public function closeSession($identification)
+    {
+        $consulta = $this->db->prepare("CALL  `sp_eliminar_session`(" . $identification . ");");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+
+        return $resultado;
+    }
 
     public function register_professional(
         $identification,
@@ -161,7 +197,7 @@ class UserModel
             . $escolaridad . "','" . $especialidad . "','" . $provincia . "','"
             . $canton . "','" . $distrito . "','" . $direccion . "')");
 
-            
+
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
@@ -191,5 +227,4 @@ class UserModel
         $consulta->closeCursor();
         return $resultado;
     }
-
 }

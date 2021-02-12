@@ -5,7 +5,7 @@ include 'public/headerWithoutLogin.php';
 
 
 <center>
-    <form id="search-form" action="/User/SearchAppointmentFunctionary" method="post" style="margin-top: 100px">
+    <form id="search-form"  style="margin-top: 100px">
 
         <div  id="login-form" class="bg1">
             <h3 class="titles">Citas</h3>
@@ -14,20 +14,24 @@ include 'public/headerWithoutLogin.php';
 
         <div class="form-group row"style="margin-left: 100px">
             <label for="_FunctionaryId" class="col-sm-4 col-form-label-sm" style="color: black">Cédula</label>
-            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="_FunctionaryId" id="_FunctionaryId" class="col-sm-3 form-control form-control-sm" required  placeholder="#0###0###">
+            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="functionaryId" id="functionaryId" class="col-sm-3 form-control form-control-sm" required  placeholder="#0###0###">
         </div>
         <div class="form-group row" style="margin-left: 100px">
             <label for="_IdAppointment" class="col-sm-4 col-form-label-sm" style="color: black">Código de cita</label>
-            <input type="text" onkeypress="return onlyNumbers(event)"  minlength="5" maxlength="5 name="name="_IdAppointment" id="_IdAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Código de cita">
+            <input type="text" onkeypress="return onlyNumbers(event)"  minlength="5" maxlength="5 name="name="idAppointment" id="idAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Código de cita">
         </div>
-        <div>
-            <button class="btn btn-success btn-sm" type="submit">
-                Consultar
-            </button>
+        <div>           
+            <input type="button" onclick="searchAppointmentByIdAndIdentification($('#idAppointment').val(), $('#functionaryId').val())" class="btn btn-success btn-sm" id="btn-accept"  value="Consultar"/>       
         </div>
     </form>
 </center>
 <br />
+
+
+<div class="" style="color: black">
+    <span id="result"></span>
+</div>
+
 <div class="row condultFunctionaryTable">
     <table class="table table-bordered table-striped table-hover table-sm table-responsive-md">
         <thead>
@@ -44,7 +48,9 @@ include 'public/headerWithoutLogin.php';
                 <th scope="col">Cancelar</th>
             </tr>
         </thead>
+        <tbody id="tbody">
 
+        </tbody>
     </table>
 
     <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">

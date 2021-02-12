@@ -3,16 +3,13 @@
 /**
  * 
  */
-class AppointmentController
-{
+class AppointmentController {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->view = new View();
     }
 
-    public function showCheckHistory()
-    {
+    public function showCheckHistory() {
 
         $this->view->show("checkHistoryView.php", null);
     }
@@ -21,37 +18,11 @@ class AppointmentController
         require 'model/AppointmentModel.php';
         $functionary = AppointmentModel::singleton();
         $functionary->register_functionary(
-                $_SESSION['functionary']['identification'],
-                $_SESSION['functionary']['name'],
-                $_SESSION['functionary']['firstLastName'],
-                $_SESSION['functionary']['secondLastName'],
-                $_SESSION['functionary']['personalPhone'],
-                $_SESSION['functionary']['roomPhone'],
-                $_SESSION['functionary']['birthday'],
-                $_SESSION['functionary']['gender'],
-                $_SESSION['functionary']['scholarship'],
-                $_SESSION['functionary']['province'],
-                $_SESSION['functionary']['canton'],
-                $_SESSION['functionary']['district'],
-                $_SESSION['functionary']['civilStatus'],
-                $_SESSION['functionary']['address'],
-                $_SESSION['functionary']['officePhone'],
-                $_SESSION['functionary']['email'],
-                $_SESSION['functionary']['idPlaca'],
-                $_SESSION['functionary']['portingExpirationDate'],
-                $_SESSION['functionary']['place'],
-                $_SESSION['functionary']['area'],
-                $_SESSION['functionary']['office'],
-                $_SESSION['functionary']['dateAdmission']
+                $_SESSION['functionary']['identification'], $_SESSION['functionary']['name'], $_SESSION['functionary']['firstLastName'], $_SESSION['functionary']['secondLastName'], $_SESSION['functionary']['personalPhone'], $_SESSION['functionary']['roomPhone'], $_SESSION['functionary']['birthday'], $_SESSION['functionary']['gender'], $_SESSION['functionary']['scholarship'], $_SESSION['functionary']['province'], $_SESSION['functionary']['canton'], $_SESSION['functionary']['district'], $_SESSION['functionary']['civilStatus'], $_SESSION['functionary']['address'], $_SESSION['functionary']['officePhone'], $_SESSION['functionary']['email'], $_SESSION['functionary']['idPlaca'], $_SESSION['functionary']['portingExpirationDate'], $_SESSION['functionary']['place'], $_SESSION['functionary']['area'], $_SESSION['functionary']['office'], $_SESSION['functionary']['dateAdmission']
         );
         //$functionary = AppointmentModel::singleton();
         $functionary->register_appointment(
-                $_SESSION['functionary']['identification'],
-                $_POST['date'],
-                $_POST['hour'],
-                $_POST['idProfessional'],
-                $_SESSION['functionary']['name'],
-                $_POST['observation']
+                $_SESSION['functionary']['identification'], $_POST['date'], $_POST['hour'], $_POST['idProfessional'], $_SESSION['functionary']['name'], $_POST['observation']
                 /* $_SESSION['functionary']['identification'],
                   "2021-12-06",
                   "2:30pm",
@@ -65,24 +36,17 @@ class AppointmentController
         echo ('Cita registrada');
     }
 
-    public function showConsultAppointmentAdministratorView()
-    {
+    public function showConsultAppointmentAdministratorView() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments['professionals'] = $appointment->get_all_professionals();
         $this->view->show("SearchAppointmentAdministratorView.php", $appointments);
     }
 
-    public function searchAppointment()
-    {
+    public function searchAppointment() {
         $resultado = "";
         $resultConsult = $this->getAppointmentsByFilter(
-            $_POST['identification'],
-            $_POST['consecutive'],
-            $_POST['initialDate'],
-            $_POST['finalDate'],
-            $_POST['professional'],
-            $_POST['gender']
+                $_POST['identification'], $_POST['consecutive'], $_POST['initialDate'], $_POST['finalDate'], $_POST['professional'], $_POST['gender']
         );
         if (empty($resultConsult)) {
             $resultado = '0';
@@ -92,24 +56,21 @@ class AppointmentController
         echo $resultado;
     }
 
-    public function getAppointments()
-    {
+    public function getAppointments() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments = $appointment->get_appointments();
         return $appointments;
     }
 
-    public function getAppointmentsByFilter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender)
-    {
+    public function getAppointmentsByFilter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender) {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments = $appointment->get_appointments_by_filter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender);
         return $appointments;
     }
 
-    public function createTableAppointments($appointments)
-    {
+    public function createTableAppointments($appointments) {
         $resultado = '';
         foreach ($appointments as $value) {
             $resultado .= "<tr>";
@@ -121,19 +82,18 @@ class AppointmentController
             $resultado .= '<td>' . $value[5] . '</td>';
             $resultado .= '<td>' . $value[6] . '</td>';
             $resultado .= '<td>' . $value[7] . '</td>';
-            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="AppointmentDetail(' . $value[0] . ')">Ver Detalle</a></td>';
+            $resultado .= '<td><a class="btn btn-success btn-sm" href = "?controlador=Appointment&accion=showAppointmentDetailView&id_cita=' . $value[0] . '">Ver Detalle</a>';
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="modifyAppointment(' . $value[0] . ')">Modificar</a></td>';
             $resultado .= '<td>
-                    <button onclick="deleteProfessional(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
-                        Eliminar
+                    <button onclick="cancelAppointment(' . $value[0] . ')" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelModal">
+                        Cancelar
                     </button></td>';
             $resultado .= "</tr>";
         }
         return $resultado;
     }
 
-    public function showReportsView()
-    {
+    public function showReportsView() {
         $this->view->show("ReportsView.php", null);
     }
 
@@ -141,6 +101,7 @@ class AppointmentController
 
     public function loadDataInGraphReportsView()
     {
+
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointmentsQuantity = $appointment->get_appointments_quantity();
@@ -185,8 +146,8 @@ class AppointmentController
         );
         echo json_encode($msj);
     }
-    public function loadDataInGraphReportsViewTwo()
-    {
+
+    public function loadDataInGraphReportsViewTwo() {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointmentsQuantity = $appointment->get_appointments_quantity_week();
@@ -197,7 +158,7 @@ class AppointmentController
         $friday = 0;
         $saturday = 0;
         foreach ($appointmentsQuantity as $value) {
-            
+
             if ($value['dia'] == 'Monday') {
                 $monday = $value['cantidad'];
             }
@@ -226,38 +187,101 @@ class AppointmentController
             'viernes' => $friday,
             'sabado' => $saturday
         );
-     echo json_encode($msj);
+        echo json_encode($msj);
     }
-    
+
     public function showAppointmentDetail() {
         $consecutivo = $_GET["consecutivo"];
-        
+
         $this->view->show("AppointmentDetailView.php", null);
     }
-    
-    public function showModifyAppointmentView() {        
+
+
+    public function showModifyAppointmentView() {
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $consecutivo = $_GET["id_cita"];
         $appointments['appointment'] = $appointmentModel->get_appointments_by_id($consecutivo);
-        foreach($appointments['appointment'] as $res){
-            if(empty($res['tc_observaciones'])){
+        foreach ($appointments['appointment'] as $res) {
+            if (empty($res['tc_observaciones'])) {
                 $res['tc_observaciones'] = '';
             }
         }
-        $appointments['professionals'] = $appointmentModel->get_all_professionals();      
+        $appointments['professionals'] = $appointmentModel->get_all_professionals();
         $this->view->show("ModifyAppointment.php", $appointments);
+
+        
    }
     
-    public function modifyAppointment() {        
+
+
+    public function modifyAppointment() {
+
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $appointment = $appointmentModel->modify_appointment(
-            $_POST['id_appointment'],
-            $_POST['id_professional'],
-            $_POST['date'],
-            $_POST['hour'],
-            $_POST['observations']);        
-        echo "La cita ha sido modificada";       
-   }
+                $_POST['id_appointment'], $_POST['id_professional'], $_POST['date'], $_POST['hour'], $_POST['observations']);
+        echo "La cita ha sido modificada";
+    }
+
+    public function createTableAppointmentFunctionary($appointments) {
+        $resultado = '';
+        foreach ($appointments as $value) {
+            $resultado .= "<tr>";
+            $resultado .= '<td>' . $value[0] . '</td>';
+            $resultado .= '<td>' . $value[1] . '</td>';
+            $resultado .= '<td>' . $value[2] . '</td>';
+            $resultado .= '<td>' . $value[3] . '</td>';
+            $resultado .= '<td>' . $value[4] . '</td>';
+            $resultado .= '<td>' . $value[5] . '</td>';
+            $resultado .= '<td>' . $value[6] . '</td>';
+            $resultado .= '<td>' . $value[7] . '</td>';
+            $resultado .= '<td><a class="btn btn-success btn-sm" href = "?controlador=Appointment&accion=showAppointmentDetailView&id_cita=' . $value[0] . '">Ver Detalle</a>';
+            $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="cancelAppointment(' . $value[0] . ')">Cancelar</a></td>';
+            $resultado .= "</tr>";
+        }
+        $_SESSION['consecutiveDetailView'] =  $appointments[0][0];
+        return $resultado;
+    }
+
+    public function searchAppointmentByIdAndIdentification() {
+        require 'model/AppointmentModel.php';
+        $appointment = AppointmentModel::singleton();
+        $resultado = "";
+        $resultConsult = $appointment->get_appointment_by_id_and_identification(
+                $_POST['consecutive'], $_POST['identification']);
+        if (empty($resultConsult)) {
+            $resultado = '0';
+        } else {
+            $resultado = $this->createTableAppointmentFunctionary($resultConsult);
+        }
+        echo $resultado;
+    }
+
+    public function showAppointmentDetailView() {
+        require 'model/AppointmentModel.php';
+        $appointment = AppointmentModel::singleton();
+        $consecutivo = $_GET["id_cita"];
+        $appointmentDetail['appointment'] = $appointment->get_appointment_detail($consecutivo);
+        $this->view->show("AppointmentDetailView.php", $appointmentDetail);
+    }
+
+
+    
+    public function showCancelAppointmentModal(){
+        $modal = file_get_contents("view/CancelAppointmentModal.php");
+        echo str_replace("appointment-id", $_POST["appointment"], $modal);
+    }
+
+    public function cancelAppointment() {
+        require 'model/AppointmentModel.php';
+        $appointment = AppointmentModel::singleton();
+        $result = $appointment->cancelAppointmentById(
+            $_POST["id"],
+            $_POST["justification"]
+        );
+        echo 'Cita cancelada';
+    }
+
+ 
 }
