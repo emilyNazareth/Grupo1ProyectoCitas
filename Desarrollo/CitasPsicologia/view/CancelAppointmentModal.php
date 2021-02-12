@@ -39,8 +39,8 @@ function validateModal(){
             $("#cancelAppointmentModal").modal("hide");
         },
         success: function(response) {
+            $("#btn-accept").click();
             $("#resultado").html("<div class='alert alert-success'>" + response + "</div>");
-            $("#btn-accept").click(); 
         },
         error: function(e) {
             $("#message").html("<div class='alert alert-danger'>" + e + "</div>");
