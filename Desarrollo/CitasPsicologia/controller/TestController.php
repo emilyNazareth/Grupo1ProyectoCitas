@@ -51,4 +51,16 @@ class TestController {
         
     }
 
+    public function testCancelAppointment() {
+        require 'test/CancelAppointmentTest.php';
+        $cancelTest = new CancelAppointmentTest();
+        $cancelTest->testCancelAppointmentModel();
+    }
+
+    public function testAppointmentDetail() {
+        require 'test/AppointmentDetailTest.php';
+        $detailTest = new AppointmentDetailTest();
+        $detailTest->testAppointmentDetailModel();
+    }
+
 }
