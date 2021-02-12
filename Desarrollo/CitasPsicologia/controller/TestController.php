@@ -38,17 +38,42 @@ class TestController {
         $registerProfessionalTest->testRegisterFunctionaryModel();
         $registerProfessionalTest->testRegisterAppointmentModel();
     }
+    
     public function testSearchAppointment() {
         require 'test/SearchAppointmentTest.php';
         $searchProfessionalTest = new SearchAppointmentTest();
         $searchProfessionalTest->testSearchAppointmentModel();
         $searchProfessionalTest->testSearchAppointmentModelTwo();
     }
+    
     public function testReports() {
         require 'test/ReportsTest.php';
         $reportTest = new ReportsTest();
         $reportTest->testReportModel();
         
     }
+    public function testModifyAppointment() {
+        require 'test/ModifyAppointmentTest.php';
+        $modifyAppointmentTest = new ModifyAppointmentTest();
+        $modifyAppointmentTest->testModifyAppointmentModel();
+        $modifyAppointmentTest->testModifyAppointmentModel2();
+    }
 
+    public function testCancelAppointment() {
+        require 'test/CancelAppointmentTest.php';
+        $cancelTest = new CancelAppointmentTest();
+        $cancelTest->testCancelAppointmentModel();
+    }
+
+    public function testSearchAppointmentByIdAndIdentification(){
+        require 'test/SearchAppointmentByIdAndIdentificationTest.php';
+        $searchAppointmentByIdAndIdentificationTest = new SearchAppointmentByIdAndIdentificationTest();
+        $searchAppointmentByIdAndIdentificationTest->testSearchAppointmentByIdAndIdentificationModel();
+    }
+    
+    public function testAppointmentDetail(){
+        require 'test/AppointmentDetailTest.php';
+        $appointmetDetailTest = new AppointmentDetailTest();
+        $appointmetDetailTest->testAppointmentDetailModel();
+    }
 }

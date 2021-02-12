@@ -366,7 +366,7 @@ function cleanFormConsultAppointment() {
 }
 
 function AppointmentDetail($val) {
-    window.location.replace("?controlador=Appointment&accion=showAppointmentDetail&consecutivo=" + $val);
+    window.location.replace("?controlador=Appointment&accion=showAppointmentDetailView&consecutivo=" + $val);
 }
 
 function modifyAppointment($id_appointment) {
@@ -399,10 +399,42 @@ function modifyDataAppointment($id_appointment, $id_professional, $date, $hour,
             $("#resultado").html("<br><div class='alert alert-danger'>" + e + "</div>");
         }
     });
-
-
-
 }
+
+
+
+function searchAppointmentByIdAndIdentification($consecutive, $identification) {
+    if (isFieldEmpty($consecutive) || isFieldEmpty($identification)) {
+        $("#result").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
+    } else {
+        $("#result").html("");
+        var parameters = {
+            "consecutive": $consecutive,
+            "identification": $identification
+        };
+
+        $.ajax({
+            data: parameters,
+            url: '?controlador=Appointment&accion=searchAppointmentByIdAndIdentification',
+            type: 'post',
+            success: function(response) {
+                var data = response;
+
+                if (data == 0) {
+                    $("#result").html("<div class='alert alert-danger'>*No se encontraron registros</div>");
+                    $("#tbody").html('');
+                } else {
+                    $("#result").html("");
+                    $("#tbody").html(data);
+                }
+            }
+        });
+    }
+}
+
+
+
+
 
 function cancelAppointment($appointment) {
     var parametros = { "appointment": $appointment };
@@ -419,7 +451,7 @@ function cancelAppointment($appointment) {
 
             $("#resultado").html(modal);
             $("#cancelAppointmentModal").modal();
-            
+
         },
         error: function(e) {
             $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");

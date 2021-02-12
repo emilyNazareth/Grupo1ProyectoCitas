@@ -28,7 +28,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("img/FondoSAPSOBlanco.png");
+    background-image: url("../img/FondoSAPSOBlanco.png");
     background-color: transparent;
     height: 100%;
 
@@ -164,6 +164,7 @@ html {
 }
 
 .title {
+    
     height: 400px;
     background-image: url("../img/FondoSAPSOBlanco.png");
     background-position: center;
@@ -352,7 +353,7 @@ textarea{
     background-color: #f47424;
     border-bottom-left-radius: 100px;
     margin-top: 0px;
-    border: #f47424
+    border: #f47424;
 }
 
 /*fotter*/

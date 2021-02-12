@@ -67,25 +67,29 @@ include 'public/header.php';
                         <option value="Doctorado">Doctorado</option>                  
                     </select>
                 </div>
+
+
                 <!--PROVINCIA-->
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="province">Provincia:</label>
-                    <select class="col-sm-6 custom-select custom-select-sm" id="province" name="province" required>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="province" id="province" name="province" required onchange="activeCanton(); return false;">
                         <option disabled selected value>Seleccione...</option>
                     </select>
                 </div>
 
                 <!--CANTON-->
-                <div class="row functionary-register">
+                <div class="row functionary-register" >
+
                     <label class="col-sm-4 control-label small" for="canton">Cant&oacuten:</label>
-                    <input class="col-sm-6 form-control form-control-sm" id="canton" name="canton" required>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="canton" name="canton" required onchange="activeDistrict();"  required></select>
                 </div>
 
                 <!--DISTRITO-->
+
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="district">Distrito:</label>
-                    <input class="col-sm-6 form-control form-control-sm" id="district" name="district" required>
-                </div>
+                    <select class="col-sm-6 custom-select custom-select-sm" id="district" name="district" required></select>
+                </div>                                                                             
                 <div class="row functionary-register">
                     <label class="col-sm-4 control-label small" for="civilStatus">Estado civil:</label>
                     <select class="col-sm-6 custom-select custom-select-sm" id="civilStatus" name="civilStatus">
@@ -148,7 +152,7 @@ include 'public/header.php';
                 <p class="titles">Aplica si el puesto lo amerita</p>
                 <div class="row functionary-register">
                     <label class="col-sm-6 control-label small" for="idPlaca">Id placa:</label>
-                    <input class="col-sm-5 form-control form-control-sm" type="text" id="idPlaca" name="idPlaca" required>
+                    <input class="col-sm-5 form-control form-control-sm" type="text" id="idPlaca" name="idPlaca" minlength="2" maxlength="5" required>
 
                 </div>
                 <div class="row functionary-register">

@@ -162,3 +162,7 @@ if (empty($vars['professional'])) {
 
 
 <script src="~/Scripts/Site.js"></script>
+
+<?php
+include_once 'public/footer.php';
+?>
