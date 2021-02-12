@@ -366,7 +366,7 @@ function cleanFormConsultAppointment() {
 }
 
 function AppointmentDetail($val) {
-    window.location.replace("?controlador=Appointment&accion=showAppointmentDetail&consecutivo=" + $val);
+    window.location.replace("?controlador=Appointment&accion=showAppointmentDetailView&consecutivo=" + $val);
 }
 
 function modifyAppointment($id_appointment) {
@@ -408,14 +408,16 @@ function searchAppointmentByIdAndIdentification($consecutive, $identification) {
         $("#result").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
     } else {
         $("#result").html("");
-        var parameters = {"consecutive": $consecutive,
-            "identification": $identification};
+        var parameters = {
+            "consecutive": $consecutive,
+            "identification": $identification
+        };
 
         $.ajax({
             data: parameters,
             url: '?controlador=Appointment&accion=searchAppointmentByIdAndIdentification',
             type: 'post',
-            success: function (response) {
+            success: function(response) {
                 var data = response;
 
                 if (data == 0) {
@@ -449,7 +451,7 @@ function cancelAppointment($appointment) {
 
             $("#resultado").html(modal);
             $("#cancelAppointmentModal").modal();
-            
+
         },
         error: function(e) {
             $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
