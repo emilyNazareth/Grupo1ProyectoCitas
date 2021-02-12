@@ -50,5 +50,11 @@ class TestController {
         $reportTest->testReportModel();
         
     }
+    public function testModifyAppointment() {
+        require 'test/ModifyAppointmentTest.php';
+        $modifyAppointmentTest = new ModifyAppointmentTest();
+        $modifyAppointmentTest->testModifyAppointmentModel();
+        $modifyAppointmentTest->testModifyAppointmentModel2();
+    }
 
 }
