@@ -129,4 +129,15 @@ class AppointmentModel {
         return $resultado;
     }
     
+     public function get_appointment_detail($id_apointment) {
+        $consulta = $this->db->prepare("CALL  sp_obtener_detalle_cita(" 
+                . $id_apointment . ")");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    
+    
+    
 }

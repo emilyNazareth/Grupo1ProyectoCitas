@@ -403,7 +403,7 @@ function searchAppointmentByIdAndIdentification($consecutive, $identification) {
     if (isFieldEmpty($consecutive) || isFieldEmpty($identification)) {
         $("#result").html("<div class='alert alert-danger'>* Todos los campos son requeridos y no pueden estar vacíos</div>");
     } else {
-         $("#result").html("");
+        $("#result").html("");
         var parameters = {"consecutive": $consecutive,
             "identification": $identification};
 
@@ -425,3 +425,6 @@ function searchAppointmentByIdAndIdentification($consecutive, $identification) {
         });
     }
 }
+
+
+
