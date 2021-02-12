@@ -3,23 +3,39 @@
 /**
  * 
  */
-class UserController {
+class UserController
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->view = new View();
     }
 
-    public function showLoginView() {
+    public function showLoginView()
+    {
         $this->view->show("loginView.php", null);
     }
 
-    public function showIndexView() {
-        session_unset();
-        session_destroy();
+    public function showIndexView()
+    {
+
         $this->view->show("indexView.php", null);
     }
 
-    public function logIn() {
+    public function closeSessionAdministrator()
+    {
+        require 'model/UserModel.php';
+        $user = UserModel::singleton();
+        if (isset($_SESSION['userAdministrator'])) {
+            $user->closeSession($_SESSION['userAdministrator'][0]);
+        }
+        session_unset();
+        session_destroy();
+        $this->view->show("loginView.php", null);
+    }
+
+    public function logIn()
+    {
         require 'model/UserModel.php';
 
         $identification = $_POST['identification'];
@@ -33,12 +49,27 @@ class UserController {
             if ($result != null) {
 
 
-                if ($result == 1) { //admi  
-                    $_SESSION['userAdministrator'] = time() + 900;
-                    echo '1';
+                if ($result == 1) { //admi 
+                    $result_session = $user->sessionCheck($identification);
+
+                    if ($result_session == 1) { 
+                        echo '5'; //session activa
+                    } else {
+                        $_SESSION['userAdministrator'][0] = $identification;
+                        $_SESSION['userAdministrator'][1] = time() + 900;
+                        $user->saveSession($_SESSION['userAdministrator'][0],   $_SESSION['userAdministrator'][1]);
+                        echo '1';
+                    }
                 } elseif ($result == 2) { //profesional
-                    $_SESSION['userProfessional'] = time() + 900;
-                    echo '2';
+                    $result_session = $user->sessionCheck($identification);
+                    if ($result_session == 1) { 
+                        echo '5'; //session activa
+                    } else {
+                        $_SESSION['userProfessional'][0] = $identification;
+                        $_SESSION['userProfessional'][1] = time() + 900;
+                        $user->saveSession($_SESSION['userProfessional'][0],   $_SESSION['userProfessional'][1]);
+                        echo '2';
+                    }
                 } else {
                     echo '3';
                 }
@@ -48,11 +79,13 @@ class UserController {
         }
     }
 
-    public function showAdministratorMainView() {
+    public function showAdministratorMainView()
+    {
         $this->view->show("AdministratorMainView.php", null);
     }
 
-    public function registerProfessional() {
+    public function registerProfessional()
+    {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $result = $professional->verify_user_identification($_POST['identification']);
@@ -60,13 +93,34 @@ class UserController {
             echo ('El profesional ya existe en el sistema, digite otro');
         } else {
             $professional->register_professional(
-                    $_POST['identification'], $_POST['password'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName'], $_POST['personalPhone'], $_POST['roomPhone'], $_POST['birthday'], $_POST['gender'], $_POST['civilStatus'], $_POST['placeNumber'], $_POST['status'], $_POST['emergencyContactName'], $_POST['emergencyContactNumber'], $_POST['scholarship'], $_POST['specialty'], $_POST['schoolCode'], $_POST['province'], $_POST['canton'], $_POST['district'], $_POST['addressProfessional']
+                $_POST['identification'],
+                $_POST['password'],
+                $_POST['name'],
+                $_POST['firstLastName'],
+                $_POST['secondLastName'],
+                $_POST['personalPhone'],
+                $_POST['roomPhone'],
+                $_POST['birthday'],
+                $_POST['gender'],
+                $_POST['civilStatus'],
+                $_POST['placeNumber'],
+                $_POST['status'],
+                $_POST['emergencyContactName'],
+                $_POST['emergencyContactNumber'],
+                $_POST['scholarship'],
+                $_POST['specialty'],
+                $_POST['schoolCode'],
+                $_POST['province'],
+                $_POST['canton'],
+                $_POST['district'],
+                $_POST['addressProfessional']
             );
             echo ('Profesional Registrado');
         }
     }
 
-    public function searchProfessional() {
+    public function searchProfessional()
+    {
         require 'model/UserModel.php';
         $identification = $_POST['cedula'];
         $name = $_POST['nombre'];
@@ -93,7 +147,8 @@ class UserController {
         echo $resultado;
     }
 
-    public function showSearchProfessionalAdministrator() {
+    public function showSearchProfessionalAdministrator()
+    {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['users'] = $professional->getProfessionals();
@@ -117,7 +172,8 @@ class UserController {
         echo $resultado;
     }
 
-    public function deleteProfessional() {
+    public function deleteProfessional()
+    {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->delete_professional($_POST['identification']);
@@ -128,25 +184,42 @@ class UserController {
         }
     }
 
-    public function updateProfessional() {
+    public function updateProfessional()
+    {
         require 'model/UserModel.php';
 
         $user = UserModel::singleton();
         $result = $user->update_professional(
-                $_POST['cedula'], $_POST['contrasena'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['telPersonal'], $_POST['telHabitacion'], $_POST['estadoCivil'], $_POST['estado'], $_POST['contactoEmergancia'], $_POST['numeroContactoEmergancia'], $_POST['escolaridad'], $_POST['especialidad'], $_POST['provincia'], $_POST['canton'], $_POST['distrito'], $_POST['direccion']
+            $_POST['cedula'],
+            $_POST['contrasena'],
+            $_POST['nombre'],
+            $_POST['primerApellido'],
+            $_POST['segundoApellido'],
+            $_POST['telPersonal'],
+            $_POST['telHabitacion'],
+            $_POST['estadoCivil'],
+            $_POST['estado'],
+            $_POST['contactoEmergancia'],
+            $_POST['numeroContactoEmergancia'],
+            $_POST['escolaridad'],
+            $_POST['especialidad'],
+            $_POST['provincia'],
+            $_POST['canton'],
+            $_POST['distrito'],
+            $_POST['direccion']
         );
 
         if ($result == 1) {
-            
         } else {
 
             echo ('El registro ha sido actualizado');
         }
     }
 
-//end updateProfessional
+    //end updateProfessional
 
-    public function showUpdateProfessional() {
+    public function showUpdateProfessional()
+    {
 
         require 'model/UserModel.php';
         $user = UserModel::singleton();
@@ -155,15 +228,17 @@ class UserController {
         $this->view->show("UpdateProfessionalAdministrator.php", $result);
     }
 
-     public function getProfessionals() {
+    public function getProfessionals()
+    {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['professionals'] = $professional->getProfessionals();
-        
+
         $this->view->show("ScheduleDatesAdministrator.php", $data); //pasar a la vista de la cita
     }
 
-    public function saveFunctionarySession() {
+    public function saveFunctionarySession()
+    {
         $_SESSION['functionary'] = [
             'identification' => $_POST['identification'],
             'name' => $_POST['name'],
@@ -186,7 +261,8 @@ class UserController {
             'place' => $_POST['place'],
             'area' => $_POST['area'],
             'office' => $_POST['office'],
-            'dateAdmission' => $_POST['dateAdmission']];
+            'dateAdmission' => $_POST['dateAdmission']
+        ];
         /* $_SESSION['functionary'] = [
           'identification' => 102340567,
           'name' => 'Erick',
@@ -214,12 +290,11 @@ class UserController {
         echo ('Funcionario Registrado');
     }
 
-    public function searchFunctionaryByIdentification() {
+    public function searchFunctionaryByIdentification()
+    {
         require 'model/UserModel.php';
         $user = UserModel::singleton();
         $result = $user->search_functionary_by_identification($_POST['identification']);
-       echo json_encode($result);
-        
+        echo json_encode($result);
     }
-
 }
