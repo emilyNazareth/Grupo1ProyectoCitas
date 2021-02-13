@@ -12,13 +12,13 @@ include 'public/headerWithoutLogin.php';
             <p class="titles">Seleccione el tipo de b&uacutesqueda</p>
         </div>
 
-        <div class="form-group row"style="margin-left: 100px">
-            <label for="_FunctionaryId" class="col-sm-4 col-form-label-sm" style="color: black">Cédula</label>
-            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="functionaryId" id="functionaryId" class="col-sm-3 form-control form-control-sm" required  placeholder="#0###0###">
+        <div class="form-group row">
+            <label for="_FunctionaryId" class="col-sm-6 col-form-label-sm" style="color: black">Cédula</label>
+            <input type="text" onkeypress="return onlyNumbers(event)" minlength="9" maxlength="9" name="functionaryId" id="functionaryId"  class="col-sm-3 form-control form-control-sm" required  placeholder="#0###0###">
         </div>
-        <div class="form-group row" style="margin-left: 100px">
-            <label for="_IdAppointment" class="col-sm-4 col-form-label-sm" style="color: black">Código de cita</label>
-            <input type="text" onkeypress="return onlyNumbers(event)"  minlength="5" maxlength="5 name="name="idAppointment" id="idAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Código de cita">
+        <div class="form-group row">
+            <label for="_IdAppointment" class="col-sm-6 col-form-label-sm" style="color: black">Código de cita</label>
+            <input type="text" onkeypress="return onlyNumbers(event)"  minlength="5" maxlength="5 name="name="idAppointment" id="idAppointment" class="col-sm-3 form-control form-control-sm" required placeholder="Código">
         </div>
         <div>           
             <input type="button" onclick="searchAppointmentByIdAndIdentification($('#idAppointment').val(), $('#functionaryId').val())" class="btn btn-success btn-sm" id="btn-accept"  value="Consultar"/>       
