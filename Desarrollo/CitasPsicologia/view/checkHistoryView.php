@@ -5,7 +5,7 @@ include 'public/headerWithoutLogin.php';
 
 
 <center>
-    <form id="search-form"  style="margin-top: 100px">
+    <form id="login-form"  style="margin-top: 100px">
 
         <div  id="login-form" class="bg1">
             <h3 class="titles">Citas</h3>
