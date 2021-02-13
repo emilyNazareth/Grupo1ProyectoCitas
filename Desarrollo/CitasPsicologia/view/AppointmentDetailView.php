@@ -96,7 +96,7 @@ foreach ($vars['appointment'] as $res) {
 
                     <!--FECHA-->
                     <div class="row appointment-detail">
-                        <label class="col-sm-4 control-label small" style="color: black" for="date">Fecha inicial:</label>
+                        <label class="col-sm-4 control-label small" style="color: black" for="date">Fecha:</label>
                         <input type="date" class="col-sm-6 form-control form-control-sm appointment-detail-input" id="date" value="<?php echo $res['tf_fecha']; ?>" disabled />
                     </div>
 
