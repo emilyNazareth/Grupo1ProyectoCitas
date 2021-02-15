@@ -102,6 +102,7 @@
     <body class="title">
         <div id="headerWithoutLogin" class="card-header">
             <br>
-            <br>                
+            <br>    
+            <br>             
         </div>
         <div id="resultado"></div>

@@ -1,37 +1,19 @@
-<footer class="footer-area footer--light">
-    <div class="footer-big">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12">
-                    <div class="footer-widget">
-                        <div class="widget-about">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<footer id="contactos" class="text-muted" style="margin-top: 5%;">
+    <center>
         <br>
-    </div>
-    <br>
-    <div class="mini-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright-text">
-                        <h5 style="color: black">Citas de psicología</h5>
-                        <p>Emily Meléndez - Yerlin Leal - Luis Hidalgo - Alejandro Quesada  <p>
-                        <p>Curso Gestión Proyectos Fines académicos © 2021
+        <div id="nameEmail" class="container">
+            <h5>Citas de psicología</h5>
+            <h6>Emily Meléndez</h6>
+                <h6>Yerlin Leal</h6>
+                    <h6>Luis Hidalgo</h6>
+                        <h6>Alejandro Quesada  </h6>
+                            <p class="copyright">Curso Gestión Proyectos Fines académicos © 2021</p> 
 
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>  
-</body>
+                            </div>
+                            </center>
+                            </footer> 
+                            </body>
 
-</html>
+                            </html>
 
 
