@@ -70,7 +70,7 @@ include_once 'public/footer.php';
                                     xAxes: [{
                                             ticks: {
                                                 min: 0,
-                                                max: 10
+                                                max: 20
                                             }
                                         }]
 
