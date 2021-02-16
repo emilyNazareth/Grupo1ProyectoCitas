@@ -97,51 +97,44 @@ class AppointmentController {
         $this->view->show("ReportsView.php", null);
     }
 
-
-
-    public function loadDataInGraphReportsView()
-    {
+    public function loadDataInGraphReportsView() {
 
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointmentsQuantity = $appointment->get_appointments_quantity();
-        if (empty($appointmentsQuantity[0][0])) {
-            $enero = 0;
-        } else {
-            $enero = $appointmentsQuantity[0][0];
-        }
-        if (empty($appointmentsQuantity[1][0])) {
-            $febrero = 0;
-        } else {
-            $febrero = $appointmentsQuantity[1][0];
-        }
-        if (empty($appointmentsQuantity[2][0])) {
-            $marzo = 0;
-        } else {
-            $marzo = $appointmentsQuantity[2][0];
-        }
-        if (empty($appointmentsQuantity[3][0])) {
-            $abril = 0;
-        } else {
-            $abril = $appointmentsQuantity[3][0];
-        }
-        if (empty($appointmentsQuantity[4][0])) {
-            $mayo = 0;
-        } else {
-            $mayo = $appointmentsQuantity[4][0];
-        }
-        if (empty($appointmentsQuantity[5][0])) {
-            $junio = 0;
-        } else {
-            $junio = $appointmentsQuantity[5][0];
-        }
+        $enero = 0;
+        $febrero = 0;
+        $marzo = 0;
+        $abril = 0;
+        $mayo = 0;
+        $junio = 0;
 
+        foreach ($appointmentsQuantity as $value) {
+            if($value ['mes'] == 'January'){
+               $enero =  $value ['cantidad'];
+            }
+            if($value ['mes'] == 'February'){
+               $febrero =  $value ['cantidad'];
+            }
+            if($value ['mes'] == 'March'){
+               $marzo =  $value ['cantidad'];
+            }
+            if($value ['mes'] == 'April'){
+               $abril =  $value ['cantidad'];
+            }
+            if($value ['mes'] == 'May'){
+               $mayo =  $value ['cantidad'];
+            }
+            if($value ['mes'] == 'June'){
+               $junio =  $value ['cantidad'];
+            }
+        }
         $msj = array(
-            'enero' => $appointmentsQuantity[0][0],
-            'febrero' => $appointmentsQuantity[1][0],
-            'marzo' => $appointmentsQuantity[2][0],
-            'abril' => $appointmentsQuantity[3][0],
-            'mayo' => $appointmentsQuantity[4][0],
+            'enero' => $enero,
+            'febrero' => $febrero,
+            'marzo' => $marzo,
+            'abril' => $abril,
+            'mayo' => $mayo,
             'junio' => $junio
         );
         echo json_encode($msj);
@@ -196,7 +189,6 @@ class AppointmentController {
         $this->view->show("AppointmentDetailView.php", null);
     }
 
-
     public function showModifyAppointmentView() {
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
@@ -209,11 +201,7 @@ class AppointmentController {
         }
         $appointments['professionals'] = $appointmentModel->get_all_professionals();
         $this->view->show("ModifyAppointment.php", $appointments);
-
-        
-   }
-    
-
+    }
 
     public function modifyAppointment() {
 
@@ -240,7 +228,7 @@ class AppointmentController {
             $resultado .= '<td><a class=" btn btn-success btn-sm" onclick="cancelAppointment(' . $value[0] . ')">Cancelar</a></td>';
             $resultado .= "</tr>";
         }
-        $_SESSION['consecutiveDetailView'] =  $appointments[0][0];
+        $_SESSION['consecutiveDetailView'] = $appointments[0][0];
         return $resultado;
     }
 
@@ -266,9 +254,7 @@ class AppointmentController {
         $this->view->show("AppointmentDetailView.php", $appointmentDetail);
     }
 
-
-    
-    public function showCancelAppointmentModal(){
+    public function showCancelAppointmentModal() {
         $modal = file_get_contents("view/CancelAppointmentModal.php");
         echo str_replace("appointment-id", $_POST["appointment"], $modal);
     }
@@ -277,14 +263,12 @@ class AppointmentController {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $result = $appointment->cancelAppointmentById(
-            $_POST["id"],
-            $_POST["justification"]
+                $_POST["id"], $_POST["justification"]
         );
         echo 'Cita cancelada';
     }
 
- 
-     public function registerAppointmentFunctionary() {
+    public function registerAppointmentFunctionary() {
         require 'model/AppointmentModel.php';
         $functionary = AppointmentModel::singleton();
         $functionary->register_functionary(
@@ -292,16 +276,16 @@ class AppointmentController {
         );
         $functionary->register_appointment(
                 $_SESSION['functionary']['identification'], $_POST['date'], $_POST['hour'], $_POST['idProfessional'], $_SESSION['functionary']['name'], $_POST['observation']
-              
         );
         echo ('Cita registrada');
     }
-    
-       public function showMainFunctionaryRegister() {
+
+    public function showMainFunctionaryRegister() {
         $this->view->show("MainFunctionaryRegister.php", null);
     }
-    
-       public function showDateConfirmationFunctionary() {
+
+    public function showDateConfirmationFunctionary() {
         $this->view->show("DateConfirmationFunctionary.php", null);
     }
+
 }
