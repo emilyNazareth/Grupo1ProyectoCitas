@@ -46,7 +46,8 @@ include 'public/headerWithoutLogin.php';
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="date">Fecha: </label>
-<input type="date" name="date" id="date" class="col-sm-6 form-control form-control-sm" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> />
+                    <input type="date" name="date" id="date" class="col-sm-6 form-control form-control-sm" required min=<?php $hoy = date("Y-m-d");
+                        echo $hoy; ?> />
                 </div>
             </div>
 
@@ -91,23 +92,22 @@ include 'public/headerWithoutLogin.php';
         var fecha = document.getElementById("date").value;
         var Hour2 = document.getElementById("Hour").value;
         var ProfessionalId = document.getElementById("professionals").value;
-        var Patient = document.getElementById("Patient").value;
         var Observation = document.getElementById("observations").value;
 
 
         if (Hour2 == "") {
-            
+
             $("#resultado").html("<div class='alert alert-danger'>* Ingrese la hora por favor</div>");
             return 0;
         }
 
         if (ProfessionalId == "") {
-            
+
             $("#resultado").html("<div class='alert alert-danger'>* No hay profesional seleccionado</div>");
             return 0;
         }
-         if (fecha == "") {
-            
+        if (fecha == "") {
+
             $("#resultado").html("<div class='alert alert-danger'>* Ingrese una fecha</div>");
             return 0;
         }
@@ -122,10 +122,10 @@ include 'public/headerWithoutLogin.php';
         $.ajax(
                 {
                     data: parameters,
-                    url: '?controlador=Appointment&accion=registerAppointment',
+                    url: '?controlador=Appointment&accion=registerAppointmentFunctionary',
                     type: 'post',
                     success: function (response) {
-                        location.href = "?controlador=Index&accion=showDateConfirmationProfessional";
+                        location.href = "?controlador=Appointment&accion=showDateConfirmationFunctionary";
                     }
                 }
         );

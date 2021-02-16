@@ -284,4 +284,24 @@ class AppointmentController {
     }
 
  
+     public function registerAppointmentFunctionary() {
+        require 'model/AppointmentModel.php';
+        $functionary = AppointmentModel::singleton();
+        $functionary->register_functionary(
+                $_SESSION['functionary']['identification'], $_SESSION['functionary']['name'], $_SESSION['functionary']['firstLastName'], $_SESSION['functionary']['secondLastName'], $_SESSION['functionary']['personalPhone'], $_SESSION['functionary']['roomPhone'], $_SESSION['functionary']['birthday'], $_SESSION['functionary']['gender'], $_SESSION['functionary']['scholarship'], $_SESSION['functionary']['province'], $_SESSION['functionary']['canton'], $_SESSION['functionary']['district'], $_SESSION['functionary']['civilStatus'], $_SESSION['functionary']['address'], $_SESSION['functionary']['officePhone'], $_SESSION['functionary']['email'], $_SESSION['functionary']['idPlaca'], $_SESSION['functionary']['portingExpirationDate'], $_SESSION['functionary']['place'], $_SESSION['functionary']['area'], $_SESSION['functionary']['office'], $_SESSION['functionary']['dateAdmission']
+        );
+        $functionary->register_appointment(
+                $_SESSION['functionary']['identification'], $_POST['date'], $_POST['hour'], $_POST['idProfessional'], $_SESSION['functionary']['name'], $_POST['observation']
+              
+        );
+        echo ('Cita registrada');
+    }
+    
+       public function showMainFunctionaryRegister() {
+        $this->view->show("MainFunctionaryRegister.php", null);
+    }
+    
+       public function showDateConfirmationFunctionary() {
+        $this->view->show("DateConfirmationFunctionary.php", null);
+    }
 }
