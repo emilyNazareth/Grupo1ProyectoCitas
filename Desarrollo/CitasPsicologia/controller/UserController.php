@@ -236,15 +236,17 @@ class UserController
 
         $this->view->show("ScheduleDatesAdministrator.php", $data); //pasar a la vista de la cita
     }
-
-        public function getProfessionals2()
+    
+       public function getProfessionalsFromOutside()
     {
         require 'model/UserModel.php';
         $professional = UserModel::singleton();
         $data['professionals'] = $professional->getProfessionals();
 
-        $this->view->show("ScheduleDatesProfessional.php", $data); //pasar a la vista de la cita
+        $this->view->show("ScheduleDatesFunctionary.php", $data); 
     }
+
+
 
     public function saveFunctionarySession()
     {
@@ -299,6 +301,36 @@ class UserController
         echo ('Funcionario Registrado');
     }
 
+    
+        public function saveFunctionaryFromOutside()
+    {
+        $_SESSION['functionary'] = [
+            'identification' => $_POST['identification'],
+            'name' => $_POST['name'],
+            'firstLastName' => $_POST['firstLastName'],
+            'secondLastName' => $_POST['secondLastName'],
+            'personalPhone' => $_POST['personalPhone'],
+            'roomPhone' => $_POST['roomPhone'],
+            'birthday' => $_POST['birthday'],
+            'gender' => $_POST['gender'],
+            'scholarship' => $_POST['scholarship'],
+            'province' => $_POST['province'],
+            'canton' => $_POST['canton'],
+            'district' => $_POST['district'],
+            'civilStatus' => $_POST['civilStatus'],
+            'address' => $_POST['address'],
+            'officePhone' => $_POST['officePhone'],
+            'email' => $_POST['email'],
+            'idPlaca' => $_POST['idPlaca'],
+            'portingExpirationDate' => $_POST['portingExpirationDate'],
+            'place' => $_POST['place'],
+            'area' => $_POST['area'],
+            'office' => $_POST['office'],
+            'dateAdmission' => $_POST['dateAdmission']
+        ];        
+        echo ('Funcionario Registrado');
+    }
+    
     public function searchFunctionaryByIdentification()
     {
         require 'model/UserModel.php';

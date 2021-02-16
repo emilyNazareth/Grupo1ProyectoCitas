@@ -37,7 +37,7 @@ include 'public/headerWithoutLogin.php';
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <a class="btn btn-success" href="?controlador=Index&accion=showMainFunctionaryRegisterProfessional">Solicite su cita aquí</a>
+                <a class="btn btn-success" href="?controlador=Appointment&accion=showMainFunctionaryRegister"">Solicite su cita aquí</a>
 
             </div>
         </div>

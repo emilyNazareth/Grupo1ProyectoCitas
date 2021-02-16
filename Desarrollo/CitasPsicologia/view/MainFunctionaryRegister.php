@@ -1,4 +1,3 @@
-
 <?php
 include 'public/headerWithoutLogin.php';
 ?>
@@ -298,16 +297,15 @@ include 'public/headerWithoutLogin.php';
 
             $.ajax({
                 data: parametros,
-                url: '?controlador=User&accion=saveFunctionarySession',
+                url: '?controlador=User&accion=saveFunctionaryFromOutside',
                 type: 'post',
 
                 beforeSend: function () {
                     $("#resultado").html("<div class='alert alert-warning'>Procesando, espere por favor ...</div>");
                 },
                 success: function (response) {
-                    //if (response == 1) {
-                    $("#messageSpanId").html("Administrador");
-                    window.location.replace("?controlador=User&accion=getProfessionals2");
+                    //if (response == 1) {                    
+                    window.location.replace("?controlador=User&accion=getProfessionalsFromOutside");
                 }
 
 

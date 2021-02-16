@@ -37,9 +37,9 @@ class IndexController {
             public function showDateConfirmationHome() {
         $this->view->show("DateConfirmationHome.php", null);
     }
-
-    public function showDateConfirmationProfessional() {
-        $this->view->show("DateConfirmationProfessional.php", null);
-    }
+ 
+    
+ 
+    
 
 }
