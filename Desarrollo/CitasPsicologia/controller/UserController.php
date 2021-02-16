@@ -237,6 +237,15 @@ class UserController
         $this->view->show("ScheduleDatesAdministrator.php", $data); //pasar a la vista de la cita
     }
 
+        public function getProfessionals2()
+    {
+        require 'model/UserModel.php';
+        $professional = UserModel::singleton();
+        $data['professionals'] = $professional->getProfessionals();
+
+        $this->view->show("ScheduleDatesProfessional.php", $data); //pasar a la vista de la cita
+    }
+
     public function saveFunctionarySession()
     {
         $_SESSION['functionary'] = [

@@ -25,12 +25,21 @@ class IndexController {
         public function showMainFunctionaryRegisterAdministrator() {
         $this->view->show("MainFunctionaryRegisterAdministrator.php", null);
     }
+
+    public function showMainFunctionaryRegisterProfessional() {
+        $this->view->show("MainFunctionaryRegisterProfessional.php", null);
+    }
+
         public function showScheduleDatesAdministrator() {
         $this->view->show("ScheduleDatesAdministrator.php", null);
     }
     
             public function showDateConfirmationHome() {
         $this->view->show("DateConfirmationHome.php", null);
+    }
+
+    public function showDateConfirmationProfessional() {
+        $this->view->show("DateConfirmationProfessional.php", null);
     }
 
 }
