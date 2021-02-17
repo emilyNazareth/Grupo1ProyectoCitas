@@ -34,6 +34,17 @@ class UserController
         $this->view->show("loginView.php", null);
     }
 
+    public function closeSessionProfessional()
+    {
+        require 'model/UserModel.php';
+        $user = UserModel::singleton();
+        if (isset($_SESSION['userProfessional'])) {
+            $user->closeSession($_SESSION['userProfessional'][0]);
+        }
+        session_unset();
+        session_destroy();
+        $this->view->show("loginView.php", null);
+    }
     public function logIn()
     {
         require 'model/UserModel.php';
