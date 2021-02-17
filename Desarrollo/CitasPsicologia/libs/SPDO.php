@@ -9,7 +9,7 @@
 /**
  * 
  */
-include_once __DIR__ . '/libs/Config.php';
+include_once __DIR__ . '/Config.php';
 
 class SPDO extends PDO {
 
