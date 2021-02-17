@@ -3,27 +3,57 @@
 /**
  * 
  */
-class AppointmentController {
+class AppointmentController
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->view = new View();
     }
 
-    public function showCheckHistory() {
+    public function showCheckHistory()
+    {
 
         $this->view->show("checkHistoryView.php", null);
     }
 
-    public function registerAppointment() {
+    public function registerAppointment()
+    {
         require 'model/AppointmentModel.php';
         $functionary = AppointmentModel::singleton();
         $functionary->register_functionary(
-                $_SESSION['functionary']['identification'], $_SESSION['functionary']['name'], $_SESSION['functionary']['firstLastName'], $_SESSION['functionary']['secondLastName'], $_SESSION['functionary']['personalPhone'], $_SESSION['functionary']['roomPhone'], $_SESSION['functionary']['birthday'], $_SESSION['functionary']['gender'], $_SESSION['functionary']['scholarship'], $_SESSION['functionary']['province'], $_SESSION['functionary']['canton'], $_SESSION['functionary']['district'], $_SESSION['functionary']['civilStatus'], $_SESSION['functionary']['address'], $_SESSION['functionary']['officePhone'], $_SESSION['functionary']['email'], $_SESSION['functionary']['idPlaca'], $_SESSION['functionary']['portingExpirationDate'], $_SESSION['functionary']['place'], $_SESSION['functionary']['area'], $_SESSION['functionary']['office'], $_SESSION['functionary']['dateAdmission']
+            $_SESSION['functionary']['identification'],
+            $_SESSION['functionary']['name'],
+            $_SESSION['functionary']['firstLastName'],
+            $_SESSION['functionary']['secondLastName'],
+            $_SESSION['functionary']['personalPhone'],
+            $_SESSION['functionary']['roomPhone'],
+            $_SESSION['functionary']['birthday'],
+            $_SESSION['functionary']['gender'],
+            $_SESSION['functionary']['scholarship'],
+            $_SESSION['functionary']['province'],
+            $_SESSION['functionary']['canton'],
+            $_SESSION['functionary']['district'],
+            $_SESSION['functionary']['civilStatus'],
+            $_SESSION['functionary']['address'],
+            $_SESSION['functionary']['officePhone'],
+            $_SESSION['functionary']['email'],
+            $_SESSION['functionary']['idPlaca'],
+            $_SESSION['functionary']['portingExpirationDate'],
+            $_SESSION['functionary']['place'],
+            $_SESSION['functionary']['area'],
+            $_SESSION['functionary']['office'],
+            $_SESSION['functionary']['dateAdmission']
         );
         //$functionary = AppointmentModel::singleton();
         $functionary->register_appointment(
-                $_SESSION['functionary']['identification'], $_POST['date'], $_POST['hour'], $_POST['idProfessional'], $_SESSION['functionary']['name'], $_POST['observation']
-                /* $_SESSION['functionary']['identification'],
+            $_SESSION['functionary']['identification'],
+            $_POST['date'],
+            $_POST['hour'],
+            $_POST['idProfessional'],
+            $_SESSION['functionary']['name'],
+            $_POST['observation']
+            /* $_SESSION['functionary']['identification'],
                   "2021-12-06",
                   "2:30pm",
                   "300000888",
@@ -36,17 +66,24 @@ class AppointmentController {
         echo ('Cita registrada');
     }
 
-    public function showConsultAppointmentAdministratorView() {
+    public function showConsultAppointmentAdministratorView()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments['professionals'] = $appointment->get_all_professionals();
         $this->view->show("SearchAppointmentAdministratorView.php", $appointments);
     }
 
-    public function searchAppointment() {
+    public function searchAppointment()
+    {
         $resultado = "";
         $resultConsult = $this->getAppointmentsByFilter(
-                $_POST['identification'], $_POST['consecutive'], $_POST['initialDate'], $_POST['finalDate'], $_POST['professional'], $_POST['gender']
+            $_POST['identification'],
+            $_POST['consecutive'],
+            $_POST['initialDate'],
+            $_POST['finalDate'],
+            $_POST['professional'],
+            $_POST['gender']
         );
         if (empty($resultConsult)) {
             $resultado = '0';
@@ -56,21 +93,45 @@ class AppointmentController {
         echo $resultado;
     }
 
-    public function getAppointments() {
+    public function getAppointments()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments = $appointment->get_appointments();
         return $appointments;
     }
 
-    public function getAppointmentsByFilter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender) {
+    public function getAppointmentsByFilter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender)
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointments = $appointment->get_appointments_by_filter($initialDate, $finalDate, $professional, $consecutive, $identification, $gender);
         return $appointments;
     }
 
-    public function createTableAppointments($appointments) {
+    public function getAppointmentsByFilterProfessional()
+    {
+        require 'model/AppointmentModel.php';
+        $appointment = AppointmentModel::singleton();
+        $resultado = "";
+        $appointments = $appointment->get_appointments_by_filter_professional(
+            $_POST['identification'],
+            $_POST['consecutive'],
+            $_POST['initialDate'],
+            $_POST['finalDate'],
+            $_SESSION['userProfessional'][0],
+            $_POST['gender']
+        );
+        if (empty($appointments)) {
+            $resultado = '0';
+        } else {
+            $resultado = $this->createTableAppointments($resultConsult);
+        }
+        echo $resultado;
+    }
+
+    public function createTableAppointments($appointments)
+    {
         $resultado = '';
         foreach ($appointments as $value) {
             $resultado .= "<tr>";
@@ -93,11 +154,13 @@ class AppointmentController {
         return $resultado;
     }
 
-    public function showReportsView() {
+    public function showReportsView()
+    {
         $this->view->show("ReportsView.php", null);
     }
 
-    public function loadDataInGraphReportsView() {
+    public function loadDataInGraphReportsView()
+    {
 
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
@@ -110,23 +173,23 @@ class AppointmentController {
         $junio = 0;
 
         foreach ($appointmentsQuantity as $value) {
-            if($value ['mes'] == 'January'){
-               $enero =  $value ['cantidad'];
+            if ($value['mes'] == 'January') {
+                $enero =  $value['cantidad'];
             }
-            if($value ['mes'] == 'February'){
-               $febrero =  $value ['cantidad'];
+            if ($value['mes'] == 'February') {
+                $febrero =  $value['cantidad'];
             }
-            if($value ['mes'] == 'March'){
-               $marzo =  $value ['cantidad'];
+            if ($value['mes'] == 'March') {
+                $marzo =  $value['cantidad'];
             }
-            if($value ['mes'] == 'April'){
-               $abril =  $value ['cantidad'];
+            if ($value['mes'] == 'April') {
+                $abril =  $value['cantidad'];
             }
-            if($value ['mes'] == 'May'){
-               $mayo =  $value ['cantidad'];
+            if ($value['mes'] == 'May') {
+                $mayo =  $value['cantidad'];
             }
-            if($value ['mes'] == 'June'){
-               $junio =  $value ['cantidad'];
+            if ($value['mes'] == 'June') {
+                $junio =  $value['cantidad'];
             }
         }
         $msj = array(
@@ -140,7 +203,8 @@ class AppointmentController {
         echo json_encode($msj);
     }
 
-    public function loadDataInGraphReportsViewTwo() {
+    public function loadDataInGraphReportsViewTwo()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $appointmentsQuantity = $appointment->get_appointments_quantity_week();
@@ -183,13 +247,15 @@ class AppointmentController {
         echo json_encode($msj);
     }
 
-    public function showAppointmentDetail() {
+    public function showAppointmentDetail()
+    {
         $consecutivo = $_GET["consecutivo"];
 
         $this->view->show("AppointmentDetailView.php", null);
     }
 
-    public function showModifyAppointmentView() {
+    public function showModifyAppointmentView()
+    {
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $consecutivo = $_GET["id_cita"];
@@ -203,16 +269,23 @@ class AppointmentController {
         $this->view->show("ModifyAppointment.php", $appointments);
     }
 
-    public function modifyAppointment() {
+    public function modifyAppointment()
+    {
 
         require 'model/AppointmentModel.php';
         $appointmentModel = AppointmentModel::singleton();
         $appointment = $appointmentModel->modify_appointment(
-                $_POST['id_appointment'], $_POST['id_professional'], $_POST['date'], $_POST['hour'], $_POST['observations']);
+            $_POST['id_appointment'],
+            $_POST['id_professional'],
+            $_POST['date'],
+            $_POST['hour'],
+            $_POST['observations']
+        );
         echo "La cita ha sido modificada";
     }
 
-    public function createTableAppointmentFunctionary($appointments) {
+    public function createTableAppointmentFunctionary($appointments)
+    {
         $resultado = '';
         foreach ($appointments as $value) {
             $resultado .= "<tr>";
@@ -232,12 +305,15 @@ class AppointmentController {
         return $resultado;
     }
 
-    public function searchAppointmentByIdAndIdentification() {
+    public function searchAppointmentByIdAndIdentification()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $resultado = "";
         $resultConsult = $appointment->get_appointment_by_id_and_identification(
-                $_POST['consecutive'], $_POST['identification']);
+            $_POST['consecutive'],
+            $_POST['identification']
+        );
         if (empty($resultConsult)) {
             $resultado = '0';
         } else {
@@ -246,7 +322,8 @@ class AppointmentController {
         echo $resultado;
     }
 
-    public function showAppointmentDetailView() {
+    public function showAppointmentDetailView()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $consecutivo = $_GET["id_cita"];
@@ -254,38 +331,69 @@ class AppointmentController {
         $this->view->show("AppointmentDetailView.php", $appointmentDetail);
     }
 
-    public function showCancelAppointmentModal() {
+    public function showCancelAppointmentModal()
+    {
         $modal = file_get_contents("view/CancelAppointmentModal.php");
         echo str_replace("appointment-id", $_POST["appointment"], $modal);
     }
 
-    public function cancelAppointment() {
+    public function cancelAppointment()
+    {
         require 'model/AppointmentModel.php';
         $appointment = AppointmentModel::singleton();
         $result = $appointment->cancelAppointmentById(
-                $_POST["id"], $_POST["justification"]
+            $_POST["id"],
+            $_POST["justification"]
         );
         echo 'Cita cancelada';
     }
 
-    public function registerAppointmentFunctionary() {
+    public function registerAppointmentFunctionary()
+    {
         require 'model/AppointmentModel.php';
         $functionary = AppointmentModel::singleton();
         $functionary->register_functionary(
-                $_SESSION['functionary']['identification'], $_SESSION['functionary']['name'], $_SESSION['functionary']['firstLastName'], $_SESSION['functionary']['secondLastName'], $_SESSION['functionary']['personalPhone'], $_SESSION['functionary']['roomPhone'], $_SESSION['functionary']['birthday'], $_SESSION['functionary']['gender'], $_SESSION['functionary']['scholarship'], $_SESSION['functionary']['province'], $_SESSION['functionary']['canton'], $_SESSION['functionary']['district'], $_SESSION['functionary']['civilStatus'], $_SESSION['functionary']['address'], $_SESSION['functionary']['officePhone'], $_SESSION['functionary']['email'], $_SESSION['functionary']['idPlaca'], $_SESSION['functionary']['portingExpirationDate'], $_SESSION['functionary']['place'], $_SESSION['functionary']['area'], $_SESSION['functionary']['office'], $_SESSION['functionary']['dateAdmission']
+            $_SESSION['functionary']['identification'],
+            $_SESSION['functionary']['name'],
+            $_SESSION['functionary']['firstLastName'],
+            $_SESSION['functionary']['secondLastName'],
+            $_SESSION['functionary']['personalPhone'],
+            $_SESSION['functionary']['roomPhone'],
+            $_SESSION['functionary']['birthday'],
+            $_SESSION['functionary']['gender'],
+            $_SESSION['functionary']['scholarship'],
+            $_SESSION['functionary']['province'],
+            $_SESSION['functionary']['canton'],
+            $_SESSION['functionary']['district'],
+            $_SESSION['functionary']['civilStatus'],
+            $_SESSION['functionary']['address'],
+            $_SESSION['functionary']['officePhone'],
+            $_SESSION['functionary']['email'],
+            $_SESSION['functionary']['idPlaca'],
+            $_SESSION['functionary']['portingExpirationDate'],
+            $_SESSION['functionary']['place'],
+            $_SESSION['functionary']['area'],
+            $_SESSION['functionary']['office'],
+            $_SESSION['functionary']['dateAdmission']
         );
         $functionary->register_appointment(
-                $_SESSION['functionary']['identification'], $_POST['date'], $_POST['hour'], $_POST['idProfessional'], $_SESSION['functionary']['name'], $_POST['observation']
+            $_SESSION['functionary']['identification'],
+            $_POST['date'],
+            $_POST['hour'],
+            $_POST['idProfessional'],
+            $_SESSION['functionary']['name'],
+            $_POST['observation']
         );
         echo ('Cita registrada');
     }
 
-    public function showMainFunctionaryRegister() {
+    public function showMainFunctionaryRegister()
+    {
         $this->view->show("MainFunctionaryRegister.php", null);
     }
 
-    public function showDateConfirmationFunctionary() {
+    public function showDateConfirmationFunctionary()
+    {
         $this->view->show("DateConfirmationFunctionary.php", null);
     }
-
 }
