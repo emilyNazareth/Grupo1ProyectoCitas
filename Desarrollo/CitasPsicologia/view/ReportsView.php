@@ -64,7 +64,7 @@ include_once 'public/footer.php';
                                     yAxes: [{
                                             ticks: {
                                                 min: 0,
-                                                max: 10
+                                                max: 20
                                             }
                                         }],
                                     xAxes: [{

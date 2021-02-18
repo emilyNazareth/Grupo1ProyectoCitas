@@ -246,18 +246,18 @@ class UserController
 
     public function getProfessionals()
     {
-        require 'model/UserModel.php';
-        $professional = UserModel::singleton();
-        $data['professionals'] = $professional->getProfessionals();
+        require 'model/AppointmentModel.php';
+        $professional = AppointmentModel::singleton();
+        $data['professionals'] = $professional->get_all_professionals();
 
         $this->view->show("ScheduleDatesAdministrator.php", $data); //pasar a la vista de la cita
     }
     
        public function getProfessionalsFromOutside()
     {
-        require 'model/UserModel.php';
-        $professional = UserModel::singleton();
-        $data['professionals'] = $professional->getProfessionals();
+        require 'model/AppointmentModel.php';
+        $professional = AppointmentModel::singleton();
+        $data['professionals'] = $professional->get_all_professionals();
 
         $this->view->show("ScheduleDatesFunctionary.php", $data); 
     }
