@@ -2,10 +2,41 @@
 include 'public/headerWithoutLogin.php';
 ?>
 
+<?php
+//Comprobamos si esta definida la sesión 'userAdministrator'.
+
+if (isset($_SESSION['userAdministrator'])) {
+    if ($_SESSION['userAdministrator'][1] < time()) {
+        unset($_SESSION['userAdministrator']);
+        echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
+                    window.location.replace('?controlador=User&accion=closeSessionAdministrator');
+                    </script>";
+    } else {
+        $_SESSION['userAdministrator'][1] = time() + 900;
+    }
+} else {
+    //Comprobamos si esta definida la sesión 'userProfessional'.
+    if (isset($_SESSION['userProfessional'])) {
+        if ($_SESSION['userProfessional'][1] < time()) {
+            unset($_SESSION['userProfessional']);
+            echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
+                    window.location.replace('?controlador=User&accion=closeSessionProfessional');
+                    </script>";
+        } else {
+            $_SESSION['userProfessional'][1] = time() + 900;
+        }
+    } else {
+        echo "<script> alert('Debe logearse');
+window.location.replace('?controlador=User&accion=closeSessionAdministrator');
+</script>";
+    }
+}
+?>
+
 
 <!--BT CERRAR SESION-->
 <div class = "col-sm-6">
-    <a class = "btn btn-success btn-sm" href = "">Cerrar Sesi&oacute;n</a>
+    <a class = "btn btn-success btn-sm float-left mt-2" href = "?controlador=user&accion=closeSessionProfessional">Cerrar Sesi&oacute;n</a>
 </div>
 
 <center>
