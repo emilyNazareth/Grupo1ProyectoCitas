@@ -125,7 +125,7 @@ class AppointmentController
         if (empty($appointments)) {
             $resultado = '0';
         } else {
-            $resultado = $this->createTableAppointments($resultConsult);
+            $resultado = $this->createTableAppointmentFunctionary($appointments);
         }
         echo $resultado;
     }

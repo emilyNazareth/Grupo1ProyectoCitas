@@ -94,6 +94,11 @@ class UserController
     {
         $this->view->show("AdministratorMainView.php", null);
     }
+    
+        public function showSearchAppointmentProfessionalView()
+    {
+        $this->view->show("SearchAppointmentProfessionalView.php", null);
+    }
 
     public function registerProfessional()
     {
