@@ -71,9 +71,7 @@ class UserModelTest extends PHPUnit_Framework_TestCase {
         $this->assertEmpty($response1); 
         
         // Insertar un profesional con cedula ya registrada
-        $response2 = $this->object->update_professional(1234, 
-                'Juan', 'Perez', 'Mata', '1', '1', 'Divorciada', 1, 'Secundaria',
-                'Cartago', 'Alvarado', 'Pacayas', '800 metros este del BN');
+        $response2 = $this->object->update_professional(1234, 123, "Yer editado", "Leal", "TEST", '25348790', '25678743', '1995-03-30', 'F', 'soltera', 456, 1, 'A', 88888888, 'secundaria', 'psicologa', 'CPH78', 'Cartago', 'Alvarado', 'Pacayas', '800 metros este del BN');
         // Se espera un resultado vacío
         $this->assertEmpty($response2); 
     }
