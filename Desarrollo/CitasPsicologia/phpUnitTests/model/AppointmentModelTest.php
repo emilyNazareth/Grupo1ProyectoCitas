@@ -72,7 +72,7 @@ class AppointmentModelTest extends TestCase {
     }
 
     public function testGet_appointment_detail() {
-        $response1 = $this->object->get_appointment_detail(-1);
+        $response1 = $this->object->get_appointment_detail(0);
 
         // Se espera vacío
         $this->assertEmpty($response1);
