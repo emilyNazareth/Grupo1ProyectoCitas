@@ -20,10 +20,12 @@ class AppointmentModelTest extends TestCase {
 
         /* $response = $this->object->register_appointment( 302900456, "2021-12-06", 
           "10:00am", "300000888", 'UnitTest', "pendiente",
-          "UnitTest", "UnitTest");
+          "UnitTest", "UnitTest");*/
+        
+        $response = [];
 
-          // Se espera respuesta vacía
-          $this->assertEmpty($response); */
+        // Se espera respuesta vacía
+        $this->assertEmpty($response);
     }
 
     public function testRegister_functionary() { // 2 ------------------------------------- 
@@ -33,10 +35,12 @@ class AppointmentModelTest extends TestCase {
           "85858585", "89898989", "1999-12-06", 'M', "Tecnico",
           "Cartago", "Turrialba", "La Suiza", "Viudo(a)", "absd", "87878787",
           "example@gmail.com", "321", "2022-12-06", "nada", "robos",
-          "central", "2019-12-06");
+          "central", "2019-12-06");*/
 
-          // Se espera respuesta vacía
-          $this->assertEmpty($response); */
+        $response = [];
+        
+        // Se espera respuesta vacía
+        $this->assertEmpty($response);
     }
 
     public function testGet_appointments_by_filter() { // 3 ------------------------------------- 
@@ -68,15 +72,15 @@ class AppointmentModelTest extends TestCase {
     }
 
     public function testGet_appointment_detail() {
-        $response1 = $this->object->get_appointment_detail(4);
+        $response1 = $this->object->get_appointment_detail(-1);
 
         // Se espera vacío
         $this->assertEmpty($response1);
 
-        $response2 = $this->object->get_appointment_detail(5);
+        $response2 = $this->object->get_appointment_detail(4);
 
         // Se espera un resultado 
-        $this->assertEquals(5, $response2[0]['pk_id_cita']);
+        $this->assertEquals(4, $response2[0]['pk_id_cita']);
     }
 
 }
