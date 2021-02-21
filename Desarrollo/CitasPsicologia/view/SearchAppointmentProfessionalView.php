@@ -36,7 +36,7 @@ window.location.replace('?controlador=User&accion=closeSessionAdministrator');
 
 <!--BT CERRAR SESION-->
 <div class = "col-sm-6">
-    <a class = "btn btn-success btn-sm float-left mt-2" href ="?controlador=User&accion=closeSessionAdministrator">Cerrar Sesi&oacute;n</a>
+    <a class = "btn btn-success btn-sm float-left mt-2" href ="?controlador=User&accion=closeSessionProfessional">Cerrar Sesi&oacute;n</a>
 </div>
 
 <center>
