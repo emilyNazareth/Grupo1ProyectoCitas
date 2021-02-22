@@ -5,7 +5,11 @@
         {
             "name": "Yerlin",
             "email": "yeryazmin96@gmail.com"
+        },{
+            "name": "",
+            "email": "yer@gmail.com"
         }
+        
     ],
     "require": {
         "phpunit/phpunit": "9.5.2"
