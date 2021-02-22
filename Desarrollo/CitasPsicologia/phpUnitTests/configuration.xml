@@ -11,8 +11,9 @@
 
     <testsuites>
         <testsuite name="Test models">
-            <directory>model/</directory>
+            <directory>.</directory>
         </testsuite>
+        
     </testsuites>
     
 </phpunit>
