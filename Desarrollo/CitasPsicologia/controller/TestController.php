@@ -83,4 +83,11 @@ class TestController {
         $appointmetDetailTest = new AppointmentDetailTest();
         $appointmetDetailTest->testAppointmentDetailModel();
     }
+    
+    public function test_get_appointments_by_filter_professional(){
+        require 'test/GetAppointmentByFilterProfessionalTest.php';
+        $test = new GetAppointmentByFilterProfessionalTest();
+        $test->test_get_appointments_by_filter_professional_Model();
+    }
+    
 }

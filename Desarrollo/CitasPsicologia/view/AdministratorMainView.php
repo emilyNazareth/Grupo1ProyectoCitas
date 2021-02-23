@@ -293,18 +293,18 @@
         <div class="navbar1" >
             <a href="?controlador=Appointment&accion=showReportsView">Reportes</a>
             <div class="dropdown1">
-                <button class="dropbtn1">Administrar Profesional
+                <div class="dropbtn1">Administrar Profesional
                     <i class="fa fa-caret-down"></i>
-                </button>
+                 </div>
                 <div class="dropdown-content1">
                     <a href="?controlador=Index&accion=showRegisterProfessionalView">Registrar Profesional</a>
                     <a href="?controlador=Index&accion=showSearchProfessionalAdministrator">Buscar Profesional</a>
                 </div>
             </div>
             <div class="dropdown1">
-                <button class="dropbtn1">Administrar Cita
+               <div class="dropbtn1">Administrar Cita
                     <i class="fa fa-caret-down"></i>
-                </button>
+                </div>
                 <div class="dropdown-content1">
                     <a href="?controlador=Index&accion=showMainFunctionaryRegisterAdministrator">Agendar Cita</a>
                     <a href="?controlador=Appointment&accion=showConsultAppointmentAdministratorView">Buscar Cita</a>

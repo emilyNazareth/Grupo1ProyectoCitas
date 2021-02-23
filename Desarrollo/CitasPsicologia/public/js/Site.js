@@ -458,7 +458,33 @@ function cancelAppointment($appointment) {
             $("#resultado").html("<div class='alert alert-danger'>" + e + "</div>");
         }
     });
+}
 
+function searchAppointmentByFilterProfessional($identification, $consecutive, $initialDate,
+    $finalDate, $gender) {
+    $("#resultado").html("");
+    var parameters = {
+        "identification": $identification,
+        "consecutive": $consecutive,
+        "initialDate": $initialDate,
+        "finalDate": $finalDate,
+        "gender": $gender
+    };
 
+    $.ajax({
+        data: parameters,
+        url: '?controlador=Appointment&accion=getAppointmentsByFilterProfessional',
+        type: 'post',
+        success: function(response) {
+            var data = response;
 
+            if (data == 0) {
+                $("#result").html("<div class='alert alert-danger'>*No se encontraron registros</div>");
+                $("#tbodyP").html('');
+            } else {
+                $("#result").html("");
+                $("#tbodyP").html(data);
+            }
+        }
+    });
 }

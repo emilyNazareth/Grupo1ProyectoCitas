@@ -34,7 +34,7 @@ function userLogin(identification, password) {
                     if (response == 2) {
                         $("#messageSpanId").html("Profesional");
                         //*******poner la vista del profesional******
-                        window.location.replace("?controlador=User&accion=showAdministratorMainView");
+                        window.location.replace("?controlador=User&accion=showSearchAppointmentProfessionalView");
                     } else {
                         if (response == 5) {
                             alert('Esta session ya está activa en otro dispositivo');

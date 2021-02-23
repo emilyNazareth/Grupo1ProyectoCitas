@@ -1,5 +1,5 @@
 <?php
-require 'libs/Config.php';
+include_once __DIR__ . '/Config.php';
 $config = Config::singleton();
 $config->set('controllerFolder', 'controller/');
 $config->set('modelFolder', 'model/');

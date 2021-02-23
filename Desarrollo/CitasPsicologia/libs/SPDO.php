@@ -9,6 +9,8 @@
 /**
  * 
  */
+include_once __DIR__ . '/Config.php';
+
 class SPDO extends PDO {
 
     private static $instance = null;

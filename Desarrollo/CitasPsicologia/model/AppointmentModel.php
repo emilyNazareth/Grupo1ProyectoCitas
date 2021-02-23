@@ -12,7 +12,7 @@ class AppointmentModel
     // constructor
     private function __construct()
     {
-        require 'libs/SPDO.php';
+        include_once __DIR__ . '/../libs/SPDO.php';
         $this->db = SPDO::singleton();
     }
 
