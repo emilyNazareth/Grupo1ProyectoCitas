@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="9" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="2.053612">
+    <testsuite name="Test models" tests="9" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="2.053612">
+      <testsuite name="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" tests="5" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="1.028272">
+        <testcase name="testRegister_appointment" class="AppointmentModelTest" classname="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" line="19" assertions="1" time="0.283587">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testRegister_functionary" class="AppointmentModelTest" classname="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" line="31" assertions="1" time="0.000104"/>
+        <testcase name="testGet_appointments_by_filter" class="AppointmentModelTest" classname="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" line="46" assertions="3" time="0.200903"/>
+        <testcase name="testGet_appointment_by_id_and_identification" class="AppointmentModelTest" classname="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" line="58" assertions="2" time="0.165932"/>
+        <testcase name="testGet_appointment_detail" class="AppointmentModelTest" classname="AppointmentModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\AppointmentModelTest.php" line="74" assertions="2" time="0.377747"/>
+      </testsuite>
+      <testsuite name="UserModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\UserModelTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="1.025339">
+        <testcase name="testRegister_professional" class="UserModelTest" classname="UserModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\UserModelTest.php" line="19" assertions="2" time="0.439388"/>
+        <testcase name="testSearchProfessional" class="UserModelTest" classname="UserModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\UserModelTest.php" line="31" assertions="2" time="0.212413"/>
+        <testcase name="testUpdate_professional" class="UserModelTest" classname="UserModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\UserModelTest.php" line="41" assertions="2" time="0.175685"/>
+        <testcase name="testDelete_professional" class="UserModelTest" classname="UserModelTest" file="C:\xampp\htdocs\Gestion\Grupo1ProyectoCitas\Desarrollo\CitasPsicologia\phpUnitTests\model\UserModelTest.php" line="54" assertions="2" time="0.197853"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
