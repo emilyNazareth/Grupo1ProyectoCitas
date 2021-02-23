@@ -1,7 +1,7 @@
 <?php 
 
 use PHPUnit\Framework\TestCase;
-//test merge two
+//test merge three
 include_once __DIR__ . '/../../model/AppointmentModel.php';
 
 class AppointmentModelTest extends TestCase {
