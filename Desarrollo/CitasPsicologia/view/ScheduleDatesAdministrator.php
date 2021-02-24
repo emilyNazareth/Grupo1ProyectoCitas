@@ -46,7 +46,7 @@ include 'public/header.php';
             <div class="col-sm ">
                 <div class="form-group row scheduleDatesFilter">
                     <label class="col-sm-6 control-label small" for="date">Fecha: </label>
-<input type="date" name="date" id="date" class="col-sm-6 form-control form-control-sm" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> />
+                    <input type="date" name="date" id="date" onclick="" class="col-sm-6 form-control form-control-sm" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> />
                 </div>
             </div>
 
