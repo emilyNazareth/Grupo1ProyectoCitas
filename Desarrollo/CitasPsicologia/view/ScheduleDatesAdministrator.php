@@ -65,7 +65,7 @@ include 'public/header.php';
         <div class="row">  
             <div class="col-sm " style="margin-top: 2em">
                 <!--BT BUSCAR-->
-                <button type="button" onclick="goBack();" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Atrás</button>
+                <button type="button" onclick="goBack();" class="btn btn-success btn-sm" id="atras" style="margin-inline: 3em" >Atrás</button>
 
                 <!--BT CANCELAR-->
                 <button type="button" onclick="updateAppointment()" class="btn btn-success btn-sm" id="btn-cancel" style="margin-inline: 3em" >Finalizar</button>
