@@ -62,7 +62,6 @@ foreach ($vars['appointment'] as $res) {
                     </div>
 
 
-
                 </div>
 
                 <div class="col-sm-6" style="margin-top: 20px">
