@@ -6,7 +6,7 @@
 //test
 class AppointmentController
 {
-
+//testNomerge.
     public function __construct()
     {
         $this->view = new View();
