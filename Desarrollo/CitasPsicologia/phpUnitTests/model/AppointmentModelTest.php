@@ -67,7 +67,7 @@ class AppointmentModelTest extends TestCase {
                 get_appointment_by_id_and_identification(28, 306240197);
 
         // Se espera un resultado 
-        $this->assertEquals(28, $response2[0]['pk_id_cita']);
+        $this->assertEquals(1, $response2[0]['pk_id_cita']);
         $this->assertEquals(306240197, $response2[0]['pk_cedula_usuario']);
     }
 
