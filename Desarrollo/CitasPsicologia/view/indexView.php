@@ -1,11 +1,10 @@
+
 <?php
-include 'public/header.php';
+include 'public/headerWithoutLogin.php';
 ?>
 
-
-
 <div class="row">
-    <div class="col-4" style="margin-left: 30px">
+    <div class="col-4" style="margin-left: 50px">
         <div class="row homeOptions">
             <a class="btn btn-success col-md-5 btn-block" href="?controlador=User&accion=showLoginView">Iniciar Sesión</a>
         </div>
@@ -31,18 +30,20 @@ include 'public/header.php';
 
     </div>
     <div class="col-7">
-        <div class="card dateRequest-card">
+        <div class="card dateRequest-card" style="margin-top: 20px">
             <div id="asignInstruction" class="card-header">
                 Asignación de citas por internet
             </div>
             <div class="card-body text-center">
                 <br />
                 <br />               
-                <a class="btn btn-success" href="?controlador=Appointment&accion=showCheckHistory">Solicite su cita aquí</a>
+                <a class="btn btn-success" href="?controlador=Appointment&accion=showMainFunctionaryRegister"">Solicite su cita aquí</a>
+
             </div>
         </div>
     </div>
 </div>
+
 <?php
 include_once 'public/footer.php';
 ?>

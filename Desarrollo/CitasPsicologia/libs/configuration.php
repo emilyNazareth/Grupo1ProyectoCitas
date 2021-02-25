@@ -1,16 +1,15 @@
 <?php
-/**
- * 
- */
 require 'libs/Config.php';
 $config = Config::singleton();
 $config->set('controllerFolder', 'controller/');
 $config->set('modelFolder', 'model/');
 $config->set('viewFolder', 'view/');
 
-$config->set('dbhost', '163.178.107.2'); 
-$config->set('dbname', 'test');
-$config->set('dbuser', 'labsturrialba');
-$config->set('dbpass', 'Saucr.2191');
+$config->set('dbhost', 'ftp.portalinfofc.com'); 
+$config->set('dbname', 'controlcitas');
+$config->set('dbuser', 'controlcitas');
+$config->set('dbpass', '67ConTrol734!');
+
+
 ?>
 
