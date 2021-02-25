@@ -64,11 +64,11 @@ class AppointmentModelTest extends TestCase {
         //$this->assertEmpty($response1);
 
         $response2 = $this->object->
-                get_appointment_by_id_and_identification(28, 306240197);
+                get_appointment_by_id_and_identification(1025, 302900101);
 
         // Se espera un resultado 
-        $this->assertEquals(28, $response2[0]['pk_id_cita']);
-        $this->assertEquals(306240197, $response2[0]['pk_cedula_usuario']);
+        $this->assertEquals(1025, $response2[0]['pk_id_cita']);
+        $this->assertEquals(302900101, $response2[0]['pk_cedula_usuario']);
     }
 
     public function testGet_appointment_detail() {
@@ -80,7 +80,7 @@ class AppointmentModelTest extends TestCase {
         $response2 = $this->object->get_appointment_detail(4);
 
         // Se espera un resultado 
-        $this->assertEquals(4, $response2[0]['pk_id_cita']);
+        $this->assertEquals(5, $response2[0]['pk_id_cita']);
     }
 
 }
