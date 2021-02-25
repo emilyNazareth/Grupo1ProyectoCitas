@@ -47,7 +47,7 @@
                 if ($_SESSION['userProfessional'][1] < time()) {
                     unset($_SESSION['userProfessional']);
                     echo "<script> alert('Tiempo Agotado - Logearse nuevamente');
-                            window.location.replace('?controlador=User&accion=closeSessionAdministrator');
+                            window.location.replace('?controlador=User&accion=closeSessionProfessional');
                             </script>";
                 } else {
                     $_SESSION['userProfessional'][1] = time() + 900;

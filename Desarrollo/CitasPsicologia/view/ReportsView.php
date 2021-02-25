@@ -33,7 +33,6 @@ include_once 'public/footer.php';
                     type: 'post',
                     dataType: 'json',
                     success: function (response) {
-                        //console.log(response.enero);
                         var appointmentChart = document.getElementById('AppointmentQuantity').getContext('2d');
                         var chart = new Chart(appointmentChart, {
 
@@ -54,6 +53,7 @@ include_once 'public/footer.php';
                                         data: [response.enero, response.febrero,
                                             response.marzo, response.abril,
                                             response.mayo, response.junio]
+                                      
                                     }]
                             },
 
@@ -64,13 +64,13 @@ include_once 'public/footer.php';
                                     yAxes: [{
                                             ticks: {
                                                 min: 0,
-                                                max: 10
+                                                max: 20
                                             }
                                         }],
                                     xAxes: [{
                                             ticks: {
                                                 min: 0,
-                                                max: 10
+                                                max: 20
                                             }
                                         }]
 
@@ -102,7 +102,7 @@ include_once 'public/footer.php';
                                         ],
                                         data: [response.lunes, response.martes,
                                             response.miercoles, response.jueves,
-                                            response.viernes, response.sabado],
+                                            response.viernes, response.sabado]
                                     }]
                             },
                             options: {

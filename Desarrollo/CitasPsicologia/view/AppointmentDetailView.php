@@ -52,10 +52,7 @@ foreach ($vars['appointment'] as $res) {
                     <!--SEXO-->
                     <div class="row appointment-detail">
                         <label class="col-sm-4 control-label small">Sexo:</label>
-                        <select class="col-sm-6 custom-select custom-select-sm appointment-detail-select" id="" value="<?php echo $res['tc_sexo']; ?>" disabled />
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
-                        </select>
+                        <input class="col-sm-6 form-control form-control-sm appointment-detail-input" type="text" value="<?php echo $res['tc_sexo']; ?>" disabled />                      
                     </div>
 
                     <!--PUESTO-->
@@ -63,7 +60,6 @@ foreach ($vars['appointment'] as $res) {
                         <label class="col-sm-4 control-label small">Puesto:</label>
                         <input class="col-sm-6 form-control form-control-sm appointment-detail-input" id="" value="<?php echo $res['tc_puesto']; ?>" disabled />
                     </div>
-
 
 
                 </div>

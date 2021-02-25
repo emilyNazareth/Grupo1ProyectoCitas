@@ -12,7 +12,7 @@ class AppointmentModel
     // constructor
     private function __construct()
     {
-        require 'libs/SPDO.php';
+        include_once __DIR__ . '/../libs/SPDO.php';
         $this->db = SPDO::singleton();
     }
 
@@ -110,7 +110,19 @@ class AppointmentModel
 
         return $resultado;
     }
+    public function get_appointments_by_filter_professional($identification, $consecutive, $initialDate, $finalDate, $professional, $gender)
+    {
+        $consulta = $this->db->prepare("call "
+            . "sp_buscar_cita_para_profesional('"
+            . $identification . "','" . $consecutive . "','" . $initialDate .
+            "','" . $finalDate . "','" . $professional . "','" .
+            $gender . "')");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
 
+        return $resultado;
+    }
     public function get_all_professionals()
     {
         $consulta = $this->db->prepare("CALL  sp_obtener_todos_los_profesionales()");

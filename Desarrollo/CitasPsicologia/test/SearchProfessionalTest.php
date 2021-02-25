@@ -9,7 +9,7 @@ class SearchProfessionalTest {
 
         $model = UserModel::singleton();
 
-        $resultado = $model->searchProfessional("", "", "");
+        $resultado = $model->searchProfessional("-1", "Kevin", "");
         echo 'Test: call without parameters -> \n';
         print_r($resultado);
 
